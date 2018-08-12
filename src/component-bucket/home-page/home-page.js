@@ -79,7 +79,7 @@ class HomePage extends Component {
           }
           <div className="contentUnit positionRelative">
             <img src="./assets/icons/app-symbol.svg" className="img-responsive center-block mainAppIcon" alt="Studio React" title="Studio React"/>
-            <h1 className="text-center">Studio<span>React</span></h1>
+            <h1 className="text-center">itudio<span>React</span></h1>
             {
               <FormComponent />
             }
