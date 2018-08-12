@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700|Roboto:300,400,500,700,900");
+.personBioPage {
+  background: #ffffff;
+  color: #000000; }
+  .personBioPage .mainBioParent .row {
+    margin: 0; }
+    .personBioPage .mainBioParent .row .mainBioImageContainer {
+      padding: 10px; }
+      .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer {
+        max-width: 350px; }
+        .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .imageContainer img {
+          padding: 10px;
+          -webkit-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
+          -moz-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
+          box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55); }
+        .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .headerContainer h1 {
+          font-size: 2.0rem;
+          font-family: "Roboto Mono", serif;
+          margin: 20px 0 10px;
+          text-transform: none; }
+        .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .headerContainer .subHeading {
+          margin-top: 20px;
+          margin-bottom: 0px;
+          font-size: 1.2rem; }
+        .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .headerContainer .knownForList {
+          margin-bottom: 20px; }
+          .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .headerContainer .knownForList li {
+            display: inline-block;
+            padding: 5px;
+            -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 3px;
+            font-size: 1.0rem;
+            font-family: "Roboto Mono", serif;
+            font-weight: 700; }
+          .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .headerContainer .knownForList li:first-child {
+            margin-left: 0; }
+        .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .headerContainer .bioPopupButton {
+          display: block;
+          margin-bottom: 20px;
+          width: 100%;
+          border: 1px solid #000000;
+          background: #000000;
+          color: #00FFC7;
+          font-family: "Roboto", sans-serif;
+          font-size: 1.2rem;
+          font-weight: 900;
+          text-transform: uppercase;
+          text-shadow: none;
+          letter-spacing: 3px;
+          -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.75); }
+          .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .headerContainer .bioPopupButton img {
+            max-width: 17px;
+            vertical-align: middle;
+            margin-top: -4px;
+            display: inline-block;
+            margin-left: 5px; }
+        .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .footerContainer {
+          padding: 10px;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          border-radius: 3px;
+          margin-bottom: 5px; }
+          .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .footerContainer h2 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            text-transform: none;
+            margin: 10px 0; }
+          .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .footerContainer p {
+            font-size: 1.2rem;
+            font-family: "Roboto Mono", serif;
+            font-weight: 500; }
+            .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .footerContainer p .makeOpacity {
+              color: #738290; }
+          .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .footerContainer .akaList li {
+            font-size: 1.2rem;
+            font-family: "Roboto Mono", serif;
+            font-weight: 500;
+            margin-bottom: 7px; }
+          .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .footerContainer .akaList li:last-child {
+            margin-bottom: 0; }
+    .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditsHeading {
+      font-size: 1.5rem;
+      font-family: "Roboto Mono", serif;
+      margin: 10px auto 20px;
+      text-transform: none;
+      text-align: center; }
+    .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem {
+      padding: 5px;
+      margin-bottom: 15px; }
+      .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .borderBoxContainer {
+        border: 1px solid transparent;
+        border-left-color: rgba(0, 0, 0, 0.1);
+        border-bottom-color: rgba(0, 0, 0, 0.1);
+        padding: 0 10px 10px 10px; }
+        .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .borderBoxContainer .imageContainer img {
+          -webkit-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
+          -moz-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
+          box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55); }
+        .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .borderBoxContainer .movieName {
+          margin: 15px 0 0;
+          font-size: 1.2rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+      .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .metaList {
+        text-align: right;
+        margin-top: -8px; }
+        .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .metaList li {
+          display: inline-block;
+          margin-bottom: 0;
+          vertical-align: middle; }
+          .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .metaList li .expandIcon {
+            background: #000000;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 23px; }
+        .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .metaList li.episodeCount, .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .metaList li.releaseDate {
+          font-size: 1.0rem;
+          font-family: "Roboto Mono", serif;
+          margin-right: 6px;
+          padding: 5px;
+          border-radius: 5px;
+          -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+          -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25); }
+
+.defaultStudioReactModal {
+  padding-left: 0 !important; }
+  .defaultStudioReactModal .modal-dialog .modal-content {
+    overflow: hidden; }
+    .defaultStudioReactModal .modal-dialog .modal-content .modal-header {
+      text-align: right;
+      background: #00FFC7;
+      padding: 10px; }
+      .defaultStudioReactModal .modal-dialog .modal-content .modal-header .closeThisModal {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border-radius: 50%;
+        -webkit-box-shadow: inset 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: inset 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+        background: #00FFC7;
+        border: 0; }
+        .defaultStudioReactModal .modal-dialog .modal-content .modal-header .closeThisModal img {
+          padding: 8px; }
+    .defaultStudioReactModal .modal-dialog .modal-content .modal-body {
+      color: #000000;
+      font-size: 1.3rem; }
+    .defaultStudioReactModal .modal-dialog .modal-content .modal-footer {
+      border-top: 0;
+      padding-top: 0; }
+      .defaultStudioReactModal .modal-dialog .modal-content .modal-footer .defaultButton {
+        width: 85px;
+        font-size: 1.2rem;
+        line-height: 25px;
+        background: #000000;
+        border: 1px solid #000000;
+        color: #00FFC7;
+        text-shadow: none;
+        -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.75); }
+
+.miniMovieModal {
+  padding-left: 0 !important; }
+  .miniMovieModal .modal-dialog .modal-content {
+    overflow: hidden; }
+    .miniMovieModal .modal-dialog .modal-content .modal-body h3 {
+      font-size: 1.5rem;
+      font-weight: 500; }
+    .miniMovieModal .modal-dialog .modal-content .modal-body .genreTags {
+      font-family: "Roboto Mono", serif;
+      margin: 5px 0 15px; }
+      .miniMovieModal .modal-dialog .modal-content .modal-body .genreTags li {
+        display: inline-block;
+        padding: 5px;
+        -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin: 3px;
+        font-size: 1.0rem;
+        font-family: "Roboto Mono", serif; }
+      .miniMovieModal .modal-dialog .modal-content .modal-body .genreTags li.ratingBlock {
+        background: #000000;
+        color: #00FFC7;
+        padding: 5px 8px;
+        font-weight: 600; }
+        .miniMovieModal .modal-dialog .modal-content .modal-body .genreTags li.ratingBlock img {
+          display: inline-block;
+          vertical-align: middle;
+          margin-top: -4px;
+          max-width: 15px;
+          margin-right: 3px; }
+      .miniMovieModal .modal-dialog .modal-content .modal-body .genreTags li:first-child {
+        margin-left: 0; }
+    .miniMovieModal .modal-dialog .modal-content .modal-body .movieRelease {
+      margin-top: 15px; }
+      .miniMovieModal .modal-dialog .modal-content .modal-body .movieRelease span {
+        font-family: "Roboto Mono", serif; }
+
+@media only screen and (min-width: 768px) {
+  .personBioPage .mainBioParent {
+    padding: 15px;
+    max-width: 768px;
+    margin: 0 auto; }
+    .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .imageContainer {
+      border: 1px solid transparent;
+      border-left-color: rgba(0, 0, 0, 0.05);
+      border-bottom-color: rgba(0, 0, 0, 0.05);
+      padding-left: 10px;
+      padding-bottom: 10px; }
+    .personBioPage .mainBioParent .row .mainProfileContainer {
+      border-right: 1px solid rgba(0, 0, 0, 0.05); }
+      .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer {
+        margin-bottom: 20px; }
+        .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditsHeading {
+          margin-top: 0;
+          text-align: left;
+          padding-left: 10px;
+          border-left: 2px solid #00FFC7;
+          margin-left: 5px; }
+      .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer:last-child {
+        margin-bottom: 0; }
+  .miniMovieModal .modal-dialog .modal-content .modal-body h3 {
+    margin-top: 0; } }
+
+@media only screen and (min-width: 991px) {
+  .personBioPage .mainBioParent {
+    max-width: 991px; } }
+
+@media only screen and (min-width: 1200px) {
+  .personBioPage .mainBioParent {
+    max-width: 1300px; } }

@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700|Roboto:300,400,500,700,900");
+.mainSearchForm {
+  max-width: 350px;
+  margin: 45px auto 0; }
+  .mainSearchForm .form-group .mainSearchInput {
+    background: transparent;
+    border-radius: 0;
+    height: auto;
+    line-height: 30px;
+    border: 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding-left: 35px;
+    color: #ffffff; }
+  .mainSearchForm .form-group .mainSearchInput:focus {
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 255, 199, 0.25);
+    -moz-box-shadow: 0px 1px 10px 0px rgba(0, 255, 199, 0.25);
+    box-shadow: 0px 1px 10px 0px rgba(0, 255, 199, 0.25); }
+  .mainSearchForm .form-group .mainFilterInput {
+    padding-left: 95px;
+    text-transform: capitalize; }
+  .mainSearchForm .form-group .filterIcon {
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    z-index: 10; }
+    .mainSearchForm .form-group .filterIcon img {
+      width: 25px;
+      margin-left: auto; }
+  .mainSearchForm .form-group .filterPreText {
+    cursor: pointer;
+    color: #00FFC7;
+    background: black;
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase; }
+    .mainSearchForm .form-group .filterPreText img {
+      max-width: 15px; }
+  .mainSearchForm .dropDownFilterBlock {
+    margin-top: -25px;
+    margin-bottom: 15px; }
+    .mainSearchForm .dropDownFilterBlock .row {
+      margin: 0; }
+      .mainSearchForm .dropDownFilterBlock .row .selectBlock {
+        margin-top: 10px;
+        padding: 5px; }
+        .mainSearchForm .dropDownFilterBlock .row .selectBlock .radio label {
+          padding-left: 0;
+          display: block;
+          position: relative; }
+          .mainSearchForm .dropDownFilterBlock .row .selectBlock .radio label input[type=radio] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0; }
+          .mainSearchForm .dropDownFilterBlock .row .selectBlock .radio label .borderBoxContainer {
+            padding: 8px 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 1px 1px 5px 0px rgba(71, 66, 71, 0.75);
+            -moz-box-shadow: 1px 1px 5px 0px rgba(71, 66, 71, 0.75);
+            box-shadow: 1px 1px 5px 0px rgba(71, 66, 71, 0.75);
+            font-size: 1.0rem; }
+            .mainSearchForm .dropDownFilterBlock .row .selectBlock .radio label .borderBoxContainer img {
+              margin-bottom: 12px;
+              margin-top: 5px;
+              max-width: 25px; }
+          .mainSearchForm .dropDownFilterBlock .row .selectBlock .radio label input[type=radio]:checked ~ .borderBoxContainer {
+            -webkit-box-shadow: 1px 1px 10px 0px rgba(0, 255, 199, 0.75);
+            -moz-box-shadow: 1px 1px 10px 0px rgba(0, 255, 199, 0.75);
+            box-shadow: 1px 1px 10px 0px rgba(0, 255, 199, 0.75); }
+  .mainSearchForm .defaultButton {
+    display: block;
+    width: 100%;
+    letter-spacing: 3px; }
+    .mainSearchForm .defaultButton img {
+      width: 15px;
+      display: inline-block;
+      margin-left: 7px;
+      vertical-align: middle;
+      margin-top: -4px; }

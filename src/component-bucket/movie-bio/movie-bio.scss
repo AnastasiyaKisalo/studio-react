@@ -1,0 +1,393 @@
+@import "../../_sass/variables.scss";
+
+$stableIndex: 20;
+.movieBioPage {
+  .blockHeading {
+    margin-bottom: 15px;
+    header {
+      display: inline-block;
+      h3, h2 {
+        margin: 0 10px 0 20px;
+        color: $white;
+        font-size: 2.0rem;
+        font-family: $contentFont;
+        letter-spacing: 2px;
+        text-transform: none;
+        border-left: 1px solid $blue;
+        padding-left: 10px;
+        span {
+          color: $grey;
+          font-weight: 500;
+          font-size: 0.9rem;
+          font-family: $headingFont;
+          letter-spacing: 5px;
+          margin-top: 6px;
+          text-transform: uppercase;
+          display: block;
+        }
+      }
+    }
+  }
+  .movieJumbotron {
+    min-height: 100vh;
+    .curtain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      //background: rgba(255, 255, 255, 0.96);
+      z-index: 2;
+      background: rgba(0,0,0,0.58);
+      background: -moz-linear-gradient(left, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.58) 38%, rgba(0,0,0,0.58) 48%, rgba(0,0,0,0.58) 63%, rgba(0,0,0,0.64) 68%, rgba(0,0,0,1) 100%);
+      background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,0.58)), color-stop(38%, rgba(0,0,0,0.58)), color-stop(48%, rgba(0,0,0,0.58)), color-stop(63%, rgba(0,0,0,0.58)), color-stop(68%, rgba(0,0,0,0.64)), color-stop(100%, rgba(0,0,0,1)));
+      background: -webkit-linear-gradient(left, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.58) 38%, rgba(0,0,0,0.58) 48%, rgba(0,0,0,0.58) 63%, rgba(0,0,0,0.64) 68%, rgba(0,0,0,1) 100%);
+      background: -o-linear-gradient(left, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.58) 38%, rgba(0,0,0,0.58) 48%, rgba(0,0,0,0.58) 63%, rgba(0,0,0,0.64) 68%, rgba(0,0,0,1) 100%);
+      background: -ms-linear-gradient(left, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.58) 38%, rgba(0,0,0,0.58) 48%, rgba(0,0,0,0.58) 63%, rgba(0,0,0,0.64) 68%, rgba(0,0,0,1) 100%);
+      background: linear-gradient(to right, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.58) 38%, rgba(0,0,0,0.58) 48%, rgba(0,0,0,0.58) 63%, rgba(0,0,0,0.64) 68%, rgba(0,0,0,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 );
+    }
+    .movieBackdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .posContainer {
+      z-index: $stableIndex;
+      position: absolute;
+      top: 58%;
+      left: 0;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      width: 100%;
+      max-width: 450px;
+      padding: 15px;
+      h1 {
+        letter-spacing: 2px;
+        margin: 0 0 -2px;
+        font-family: $contentFont;
+      }
+      .genreList {
+        margin-bottom: 0;
+        margin-top: 1px;
+        li {
+          color: $blue;
+          display: inline-block;
+          font-weight: 400;
+          font-size: 1.0rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin: 6px;
+        }
+        li:first-child {
+          margin-left: 0;
+        }
+      }
+      p {
+        margin: 30px 0;
+        font-size: 1.2rem;
+        line-height: 20px;
+      }
+    }
+  }
+	.productionParent {
+		background: $white;
+    z-index: $stableIndex;
+		.row {	
+			max-width: 1200px;
+			margin: 0 auto;
+			.blocks {
+				padding: 0;
+			}
+			.productionCompanies {
+				background: $white;
+				.outerContainer {
+					padding: 30px 0;
+					.blockHeading {
+						h2 {
+							color: $black;
+						}
+					}
+					ul {
+						padding: 0 15px;
+						margin: 30px 0 0;
+						li {
+							color: $black;
+							font-family: $contentFont;
+							font-size: 1.2rem;
+							display: inline-block;
+							padding: 5px;
+							.borderBoxContainer {
+								padding: 5px;
+								border: 1px solid $black;
+							}
+						}
+					}
+				}
+			}
+			.productionCountries {
+				background: $white;
+				.outerContainer {
+					padding: 30px 0;
+					.blockHeading {
+						h3 {
+							color: $black;
+						}
+					}
+					ul {
+						margin: 30px 0 0;
+						padding: 0 15px;
+						li {
+							padding: 5px;
+							display: inline-block;
+							.borderBoxContainer {
+								padding: 15px;
+								border: 1px solid rgba(0, 0, 0, 0.05);
+								width: 140px;
+								overflow: hidden;
+								img {
+									max-width: 35px;
+									padding: 10px;
+									border-radius: 3px;
+									-webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+									-moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+									box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+								}
+								span {
+									display: block;
+									color: $black;
+								}
+								.shortCode {
+									font-weight: 700;
+									font-size: 8.0rem;
+									text-transform: uppercase;
+									margin: -15px 0 -20px;
+									text-align: left;
+									color: $lightGrey;
+									text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.35);
+								}
+								.countryName {
+									font-size: 1.2rem;
+									font-family: $contentFont;
+									color: $grey;
+									text-align: left;
+									overflow: hidden;
+									text-overflow: ellipsis;
+									white-space: nowrap;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+  .creditsListingParent {
+    z-index: $stableIndex;
+    background: rgba(0, 0, 0, 0.35);
+    .outerContainer {
+      padding-top: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      .row {
+        margin: 0;
+        .creditsSegment {
+          padding: 0 8px;
+          margin-bottom: 20px;
+          .borderBoxContainer {
+            padding: 10px;
+            .actorName {
+              margin-top: 10px;
+              margin-bottom: 0;
+              font-weight: 400;
+            }
+            .characterName {
+              color: $blue;
+              font-family: $contentFont;
+              font-weight: 600;
+            }
+            .actorName, .characterName {
+              font-size: 1.2rem;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+  }
+	.releaseAndCertificationsParent {
+    z-index: $stableIndex;
+		background: $white;
+		.outerContainer {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 30px 0;
+			.blockHeading {
+				margin-bottom: 40px;
+				h3 {
+					color: $black;
+				}
+			}
+			.countries {
+				padding: 0 20px;
+        .countryBlock {
+          margin-bottom: 35px;
+          .countryHeader {
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            width: 140px;
+            overflow: hidden;
+            img {
+              max-width: 35px;
+              padding: 10px;
+              border-radius: 3px;
+              -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+              -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+              box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+            }
+            h4 {
+              font-weight: 700;
+              font-size: 4.5rem;
+              text-transform: uppercase;
+              margin: 10px 0 3px;
+              text-align: left;
+              color: $lightGrey;
+              text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.35);
+            }
+            p {
+              font-size: 1.2rem;
+              font-family: $contentFont;
+              color: $grey;
+              text-align: left;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+          .countryHeader:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            width: 250px;
+            border-top: 1px dotted rgba(0, 0, 0, 0.15);
+            z-index: -1;
+          }
+          .countryBody {
+            margin-top: 5px;
+            ul {
+              margin-bottom: 0;
+              padding: 0 5px;
+              margin: 0 -10px;
+              li {
+                font-size: 1.2rem;
+                padding: 5px;
+                color: $black;
+                .borderBoxContainer {
+                  padding: 10px;
+                  border: 1px solid rgba(0, 0, 0, 0.05);
+                  .certification {
+                    color: $black;
+                    display: inline-block;
+                    font-weight: 700;
+                    font-size: 2.5rem;
+                    margin-bottom: 25px;
+                    span {
+                      font-size: 1.2rem;
+                      display: block;
+                      color: $lightGrey;
+                      text-transform: uppercase;
+                      letter-spacing: 3px;
+                    }
+                  }
+                  .date {
+                    margin-bottom: 0;
+                    font-family: $contentFont;
+                  }
+                  .type {
+                    margin-bottom: 0;
+                    font-family: $contentFont;
+                  }
+                }
+              }
+            }
+          }
+        }
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+  .movieBioPage {
+    .movieJumbotron {
+      .posContainer {
+        left: auto;
+        right: 10%;
+        p {
+          font-size: 1.3rem;
+        }
+      }
+    }
+		.productionParent {
+			.row {	
+				.productionCompanies {
+					.outerContainer {
+						padding: 60px 0;
+					}
+				}
+				.productionCountries {
+					.outerContainer {
+						padding: 60px 0;
+					}
+				}
+			}
+		}
+    .creditsListingParent {
+      .outerContainer {
+        .row {
+          .creditsSegment {
+            .borderBoxContainer {
+              .imageContainer {
+                border: 1px solid transparent;
+                border-left-color: rgba(255, 255, 255, 0.05);
+                border-bottom-color: rgba(255, 255, 255, 0.05);
+                padding-left: 10px;
+                padding-bottom: 10px;
+                img {
+                  -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+                  -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+                  box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+		.releaseAndCertificationsParent {
+			.outerContainer {
+				padding: 60px 0;
+				.countryBlock {
+					.countryBody {
+						ul {
+							li {
+								display: inline-block;
+							}
+						}
+					}
+				}
+			}
+		}
+  }
+}

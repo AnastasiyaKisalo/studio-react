@@ -1,0 +1,378 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700|Roboto:300,400,500,700,900");
+.tvBioPage .blockHeading {
+  margin-bottom: 15px; }
+  .tvBioPage .blockHeading header {
+    display: inline-block; }
+    .tvBioPage .blockHeading header h3 {
+      margin: 0 10px 0 20px;
+      color: #ffffff;
+      font-size: 2.0rem;
+      font-family: "Roboto Mono", serif;
+      letter-spacing: 2px;
+      text-transform: none;
+      border-left: 1px solid #00FFC7;
+      padding-left: 10px; }
+      .tvBioPage .blockHeading header h3 span {
+        color: #738290;
+        font-weight: 500;
+        font-size: 0.9rem;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 5px;
+        margin-top: 6px;
+        text-transform: uppercase;
+        display: block; }
+
+.tvBioPage .tvBioJumbotron {
+  min-height: 100vh; }
+  .tvBioPage .tvBioJumbotron .curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2; }
+  .tvBioPage .tvBioJumbotron .bgImageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat; }
+  .tvBioPage .tvBioJumbotron .contentBox {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 15px;
+    z-index: 10; }
+    .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer {
+      padding: 15px;
+      z-index: 5; }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer h {
+        letter-spacing: 2px;
+        margin: 0 0 -2px;
+        font-family: "Roboto Mono", serif; }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .genreList {
+        margin-bottom: 0;
+        margin-top: -8px; }
+        .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .genreList li {
+          display: inline-block;
+          font-weight: 400;
+          font-size: 1.0rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin: 6px; }
+        .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .genreList li:first-child {
+          margin-left: 0; }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .languageList li {
+        background: #000000;
+        color: #00FFC7;
+        padding: 3px 5px 5px;
+        border-radius: 5px;
+        display: inline-block;
+        font-family: "Roboto Mono", serif;
+        font-size: 1.1rem;
+        margin: 3px;
+        -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+        -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.25); }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .languageList li:first-child {
+        margin-left: 0; }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .aboutInfo {
+        font-size: 1.3rem;
+        line-height: 20px;
+        margin-top: 45px; }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .firstReleaseInfo {
+        margin-top: 45px;
+        letter-spacing: 2px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: "Roboto Mono", serif; }
+        .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .firstReleaseInfo span {
+          color: #00FFC7;
+          text-transform: none;
+          font-family: "Roboto", sans-serif;
+          letter-spacing: 0; }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .createdBy {
+        margin-top: 45px;
+        font-size: 1.2rem;
+        font-family: "Roboto Mono", serif;
+        letter-spacing: 2px; }
+      .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .createdByList {
+        margin-top: 15px; }
+        .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .createdByList li {
+          display: inline-block;
+          max-width: 70px;
+          font-size: 1.2rem;
+          color: #00FFC7;
+          margin: 5px 8px; }
+          .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .createdByList li img {
+            margin-bottom: 8px; }
+        .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer .createdByList li:first-child {
+          margin-left: 0; }
+    .tvBioPage .tvBioJumbotron .contentBox .segment .imageContainer {
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      -webkit-box-shadow: 1px 15px 35px 1px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 1px 15px 35px 1px rgba(0, 0, 0, 0.95);
+      box-shadow: 1px 15px 35px 1px rgba(0, 0, 0, 0.95); }
+
+.tvBioPage .seasonsBoxContainer {
+  z-index: 10;
+  position: relative; }
+  .tvBioPage .seasonsBoxContainer .ratingRadialWrapper {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5); }
+    .tvBioPage .seasonsBoxContainer .ratingRadialWrapper svg circle {
+      stroke-dashoffset: 0;
+      stroke-width: 10px;
+      stroke: rgba(255, 255, 255, 0.35); }
+    .tvBioPage .seasonsBoxContainer .ratingRadialWrapper svg circle:nth-child(2) {
+      stroke: #00FFC7;
+      stroke-width: 20px;
+      stroke-dashoffset: 0; }
+    .tvBioPage .seasonsBoxContainer .ratingRadialWrapper .ratingValue {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-size: 2.0rem;
+      font-weight: 700;
+      font-family: "Roboto Mono", serif;
+      color: #ffffff; }
+  .tvBioPage .seasonsBoxContainer .ratingRadialWrapper:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -webkit-box-shadow: inset 0px 1px 8px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0px 1px 8px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 1px 8px 0px rgba(0, 0, 0, 0.3);
+    width: 75%;
+    height: 75%;
+    border-radius: 50%; }
+  .tvBioPage .seasonsBoxContainer .ratingText {
+    font-family: "Roboto Mono", serif;
+    color: #ffffff;
+    margin-bottom: 0; }
+  .tvBioPage .seasonsBoxContainer .episodesSeasons {
+    max-width: 400px;
+    margin: 30px auto 30px; }
+    .tvBioPage .seasonsBoxContainer .episodesSeasons .row {
+      margin: 0; }
+      .tvBioPage .seasonsBoxContainer .episodesSeasons .row .segment {
+        padding: 10px; }
+        .tvBioPage .seasonsBoxContainer .episodesSeasons .row .segment .borderBoxContainer {
+          padding: 10px;
+          font-size: 1.1rem;
+          font-family: "Roboto Mono", serif; }
+          .tvBioPage .seasonsBoxContainer .episodesSeasons .row .segment .borderBoxContainer span {
+            display: block;
+            font-weight: 700;
+            font-size: 3.2rem;
+            font-family: "Roboto", sans-serif;
+            color: #00FFC7; }
+      .tvBioPage .seasonsBoxContainer .episodesSeasons .row .segment:nth-child(1) {
+        border-right: 1px solid rgba(255, 255, 255, 0.15); }
+
+.tvBioPage .seasonsListingParent .outerContainer {
+  max-width: 1200px;
+  margin: 0 auto; }
+  .tvBioPage .seasonsListingParent .outerContainer .row {
+    margin: 0; }
+    .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment {
+      padding: 0 8px;
+      margin-bottom: 20px; }
+      .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer {
+        padding: 10px; }
+        .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .imageContainer p {
+          padding: 8px 5px;
+          background: rgba(0, 0, 0, 0.85);
+          color: #ffffff;
+          position: absolute;
+          bottom: 0;
+          left: 0px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
+          margin-bottom: 0;
+          font-family: "Roboto Mono", serif;
+          font-size: 1.2rem;
+          font-weight: 700;
+          text-align: center; }
+        .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .airDate {
+          font-size: 1.0rem;
+          text-align: right;
+          color: #000000;
+          padding: 5px 0; }
+          .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .airDate p {
+            display: inline-block;
+            margin-bottom: 0;
+            background: #ffffff;
+            padding: 5px;
+            border-radius: 3px; }
+            .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .airDate p span {
+              font-family: "Roboto Mono", serif;
+              font-weight: 700; }
+
+.tvBioPage .creditsListingParent .outerContainer {
+  padding-top: 30px;
+  max-width: 1200px;
+  margin: 0 auto; }
+  .tvBioPage .creditsListingParent .outerContainer .row {
+    margin: 0; }
+    .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment {
+      padding: 0 8px;
+      margin-bottom: 20px; }
+      .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer {
+        padding: 10px; }
+        .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .actorName {
+          margin-top: 10px;
+          margin-bottom: 0;
+          font-weight: 400; }
+        .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .characterName {
+          color: #00FFC7;
+          font-family: "Roboto Mono", serif;
+          font-weight: 600; }
+        .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .actorName, .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .characterName {
+          font-size: 1.2rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+
+.tvBioPage .similarListingParent .outerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 30px; }
+  .tvBioPage .similarListingParent .outerContainer .row {
+    margin: 0; }
+    .tvBioPage .similarListingParent .outerContainer .row .similarSegment {
+      padding: 0 8px;
+      margin-bottom: 20px; }
+      .tvBioPage .similarListingParent .outerContainer .row .similarSegment .borderBoxContainer {
+        padding: 10px; }
+        .tvBioPage .similarListingParent .outerContainer .row .similarSegment .borderBoxContainer .imageContainer p {
+          padding: 8px 5px;
+          background: rgba(0, 0, 0, 0.85);
+          color: #ffffff;
+          position: absolute;
+          bottom: 0;
+          left: 0px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
+          margin-bottom: 0;
+          font-family: "Roboto Mono", serif;
+          font-size: 1.2rem;
+          font-weight: 700;
+          text-align: center; }
+
+@media only screen and (min-width: 768px) {
+  .tvBioPage .tvBioJumbotron .contentBox .segment .imageContainer {
+    max-width: 400px; }
+  .tvBioPage .tvBioJumbotron .contentBox .segment .posContainer {
+    padding: 0 15px; }
+  .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .imageContainer {
+    border: 1px solid transparent;
+    border-left-color: rgba(255, 255, 255, 0.05);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    padding-left: 10px;
+    padding-bottom: 10px; }
+    .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .imageContainer img {
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+    .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .imageContainer p {
+      max-width: calc(100% - 10px);
+      left: 10px;
+      bottom: 10px; }
+    .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .imageContainer .episodeCount {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 60px;
+      height: 60px;
+      background: #000000;
+      color: #00FFC7;
+      border-radius: 50%;
+      display: block;
+      padding: 5px;
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+      .tvBioPage .seasonsListingParent .outerContainer .row .seasonSegment .borderBoxContainer .imageContainer .episodeCount span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        font-family: "Roboto Mono", serif;
+        font-size: 0.9rem;
+        font-weight: 700; }
+  .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer {
+    border: 1px solid transparent;
+    border-left-color: rgba(255, 255, 255, 0.05);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    padding-left: 10px;
+    padding-bottom: 10px; }
+    .tvBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer img {
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+  .tvBioPage .similarListingParent .outerContainer .row .similarSegment .borderBoxContainer .imageContainer {
+    border: 1px solid transparent;
+    border-left-color: rgba(255, 255, 255, 0.05);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    padding-left: 10px;
+    padding-bottom: 10px; }
+    .tvBioPage .similarListingParent .outerContainer .row .similarSegment .borderBoxContainer .imageContainer img {
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+    .tvBioPage .similarListingParent .outerContainer .row .similarSegment .borderBoxContainer .imageContainer p {
+      max-width: calc(100% - 10px);
+      left: 10px;
+      bottom: 10px; }
+    .tvBioPage .similarListingParent .outerContainer .row .similarSegment .borderBoxContainer .imageContainer .episodeCount {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 60px;
+      height: 60px;
+      background: #000000;
+      color: #00FFC7;
+      border-radius: 50%;
+      display: block;
+      padding: 5px;
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+      .tvBioPage .similarListingParent .outerContainer .row .similarSegment .borderBoxContainer .imageContainer .episodeCount span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        font-family: "Roboto Mono", serif;
+        font-size: 0.9rem;
+        font-weight: 700; } }
+
+@media only screen and (min-width: 1200px) {
+  .tvBioPage .tvBioJumbotron {
+    background-attachment: fixed; } }

@@ -1,0 +1,338 @@
+@import "../../_sass/variables.scss";
+
+.personBioPage {
+  background: $white;
+  color: $black;
+  .mainBioParent {
+    .row {
+      margin: 0;
+      .mainBioImageContainer {
+        padding: 10px;
+        .borderBoxContainer {
+          max-width: 350px;
+          .imageContainer {
+            img {
+              padding: 10px;
+              -webkit-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+              -moz-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+              box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+            }
+          }
+          .headerContainer {
+            h1 {
+              font-size: 2.0rem;
+              font-family: $contentFont;
+              margin: 20px 0 10px;
+              text-transform: none;
+            }
+            .subHeading {
+              margin-top: 20px;
+              margin-bottom: 0px;
+              font-size: 1.2rem;
+            }
+            .knownForList {
+              margin-bottom: 20px;
+              li {
+                display: inline-block;
+                padding: 5px;
+                -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+                -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+                box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+                border-radius: 5px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                margin: 3px;
+                font-size: 1.0rem;
+                font-family: $contentFont;
+                font-weight: 700;
+              }
+              li:first-child {
+                margin-left: 0;
+              }
+            }
+            .bioPopupButton {
+              display: block;
+              margin-bottom: 20px;
+              width: 100%;
+              border: 1px solid $black;
+              background: $black;
+              color: $blue;
+              font-family: $headingFont;
+              font-size: 1.2rem;
+              font-weight: 900;
+              text-transform: uppercase;
+              text-shadow: none;
+              letter-spacing: 3px;
+              -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+              -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+              box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+              img {
+                max-width: 17px;
+                vertical-align: middle;
+                margin-top: -4px;
+                display: inline-block;
+                margin-left: 5px;
+              }
+            }
+          }
+          .footerContainer {
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 3px;
+            margin-bottom: 5px;
+            h2 {
+              font-size: 1.3rem;
+              font-weight: 300;
+              text-transform: none;
+              margin: 10px 0;
+            }
+            p {
+              font-size: 1.2rem;
+              font-family: $contentFont;
+              font-weight: 500;
+              .makeOpacity {
+                color: $grey;
+              }
+            }
+            .akaList {
+              li {
+                font-size: 1.2rem;
+                font-family: "Roboto Mono", serif;
+                font-weight: 500;
+                margin-bottom: 7px;
+              }
+              li:last-child {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+      .mainProfileContainer {
+        .borderBoxContainer {
+          .creditsHeading {
+            font-size: 1.5rem;
+            font-family: $contentFont;
+            margin: 10px auto 20px;
+            text-transform: none;
+            text-align: center;
+          }
+          .creditItem {
+            padding: 5px;
+            margin-bottom: 15px;
+            .borderBoxContainer {
+              border: 1px solid transparent;
+              border-left-color: rgba(0, 0, 0, 0.10);
+              border-bottom-color: rgba(0, 0, 0, 0.10);
+              padding: 0 10px 10px 10px;
+              .imageContainer {
+                img {
+                  -webkit-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+                  -moz-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+                  box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+                }
+              }
+              .movieName {
+                margin: 15px 0 0;
+                font-size: 1.2rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+            }
+            .metaList {
+              text-align: right;
+              margin-top: -8px;
+              li {
+                display: inline-block;
+                margin-bottom: 0;
+                vertical-align: middle;
+                .expandIcon {
+                  background: $black;
+                  border-radius: 5px;
+                  padding: 5px;
+                  max-width: 23px;
+                }
+              }
+              li.episodeCount, li.releaseDate {
+                font-size: 1.0rem;
+                font-family: $contentFont;
+                margin-right: 6px;
+                padding: 5px;
+                border-radius: 5px;
+                -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+                -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+                box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.defaultStudioReactModal {
+  padding-left: 0 !important;
+  .modal-dialog {
+    .modal-content {
+      overflow: hidden;
+      .modal-header {
+        text-align: right;
+        background: $blue;
+        padding: 10px;
+        .closeThisModal {
+          width: 28px;
+          height: 28px;
+          padding: 0;
+          border-radius: 50%;
+          -webkit-box-shadow: inset 0px 1px 10px 0px rgba(0,0,0,0.10);
+          -moz-box-shadow: inset 0px 1px 10px 0px rgba(0,0,0,0.10);
+          box-shadow: inset 0px 1px 10px 0px rgba(0,0,0,0.10);
+          background: $blue;
+          border: 0;
+          img {
+            padding: 8px;
+          }
+        }
+      }
+      .modal-body {
+        color: $black;
+        font-size: 1.3rem;
+      }
+      .modal-footer {
+        border-top: 0;
+        padding-top: 0;
+        .defaultButton {
+          width: 85px;
+          font-size: 1.2rem;
+          line-height: 25px;
+          background: $black;
+          border: 1px solid $black;
+          color: $blue;
+          text-shadow: none;
+          -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+          -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+          box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+        }
+      }
+    }
+  }
+}
+.miniMovieModal {
+  padding-left: 0 !important;
+  .modal-dialog {
+    .modal-content {
+      overflow: hidden;
+      .modal-body {
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+        .genreTags {
+          font-family: $contentFont;
+          margin: 5px 0 15px;
+          li {
+            display: inline-block;
+            padding: 5px;
+            -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+            -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.25);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 3px;
+            font-size: 1.0rem;
+            font-family: $contentFont;
+          }
+          li.ratingBlock {
+            background: $black;
+            color: $blue;
+            padding: 5px 8px;
+            font-weight: 600;
+            img {
+              display: inline-block;
+              vertical-align: middle;
+              margin-top: -4px;
+              max-width: 15px;
+              margin-right: 3px;
+            }
+          }
+          li:first-child {
+            margin-left: 0;
+          }
+        }
+        .movieRelease {
+          margin-top: 15px;
+          span {
+            font-family: $contentFont;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .personBioPage {
+    .mainBioParent {
+      padding: 15px;
+      max-width: 768px;
+      margin: 0 auto;
+      .row {
+        .mainBioImageContainer {
+          .borderBoxContainer {
+            .imageContainer {
+              border: 1px solid transparent;
+              border-left-color: rgba(0, 0, 0, 0.05);
+              border-bottom-color: rgba(0, 0, 0, 0.05);
+              padding-left: 10px;
+              padding-bottom: 10px;
+            }
+          }
+        }
+        .mainProfileContainer {
+          border-right: 1px solid rgba(0, 0, 0, 0.05);
+          .borderBoxContainer {
+            margin-bottom: 20px;
+            .creditsHeading {
+              margin-top: 0;
+              text-align: left;
+              padding-left: 10px;
+              border-left: 2px solid $blue;
+              margin-left: 5px;
+            }
+          }
+          .borderBoxContainer:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+  .miniMovieModal {
+    .modal-dialog {
+      .modal-content {
+        .modal-body {
+          h3 {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .personBioPage {
+    .mainBioParent {
+      max-width: 991px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .personBioPage {
+    .mainBioParent {
+      max-width: 1300px;
+    }
+  }
+}

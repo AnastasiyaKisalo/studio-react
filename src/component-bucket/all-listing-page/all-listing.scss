@@ -1,0 +1,163 @@
+@import "../../_sass/variables.scss";
+
+.allListing {
+  background: $white;
+  color: $white;
+  min-height: 100vh;
+  .listingContainerParent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+    .blockHeading {
+      text-align: right;
+      margin-bottom: 15px;
+      margin-right: 10px;
+      header {
+        display: inline-block;
+        h2 {
+          margin: 0 10px 0 25px;
+          color: $black;
+          font-size: 2.0rem;
+          font-family: $contentFont;
+          letter-spacing: 2px;
+          text-transform: none;
+          border-right: 1px solid $blue;
+          padding-right: 10px;
+          span {
+            color: $grey;
+            font-weight: 500;
+            font-size: 0.9rem;
+            font-family: $headingFont;
+            letter-spacing: 5px;
+            margin-top: 6px;
+            text-transform: uppercase;
+            display: block;
+          }
+        }
+      }
+      .defaultButton {
+        font-size: 1.2rem;
+        font-family: $headingFont;
+        letter-spacing: 2px;
+        color: $grey;
+      }
+      header, .defaultButton {
+        vertical-align: middle;
+        margin-top: -4px;
+      }
+    }
+    .row {
+      margin: 0;
+    }
+    .movieListing {
+      padding: 10px;
+      margin-bottom: 10px;
+      .borderBoxContainer {
+        border-radius: 3px;
+        overflow: hidden;
+        .imageContainer {
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+        .nameContainer {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 10px 8px;
+          background: rgba(0, 0, 0, 0.65);
+          p {
+            margin: 0;
+            font-family: $contentFont;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+          }
+        }
+      }
+      .footerContainer {
+        .metaList {
+          text-align: right;
+          li {
+            vertical-align: middle;
+            margin-top: 4px;
+            display: inline-block
+          }
+          .releaseDate {
+            font-size: 0.9rem;
+            background: $white;
+            color: $black;
+            padding: 5px;
+            border-radius: 3px;
+            margin-right: 5px;
+            -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+            -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+            letter-spacing: 2px;
+            span {
+              font-weight: 700;
+            }
+          }
+          .viewDetails {
+            background: $black;
+            padding: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 3px;
+            img {
+              max-width: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .allListing {
+    .listingContainerParent {
+      max-width: 768px;
+      margin: 0 auto;
+      .movieListing {
+        .borderBoxContainer {
+          .imageContainer {
+            border: 1px solid transparent;
+            border-left-color: rgba(0, 0, 0, 0.05);
+            border-bottom-color: rgba(0, 0, 0, 0.05);
+            padding-left: 8px;
+            overflow: hidden;
+            img {
+              margin-bottom: 8px;
+              -webkit-box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.15);
+              -moz-box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.15);
+              box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.15);
+              border-radius: 3px;
+            }
+            .nameContainer {
+              bottom: 8px;
+              left: 8px;
+              width: calc(100% - 8px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 991px) {
+  .allListing {
+    .listingContainerParent {
+      max-width: 991px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .allListing {
+    .listingContainerParent {
+      max-width: 1200px;
+    }
+  }
+}
