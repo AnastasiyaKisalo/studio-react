@@ -160,60 +160,154 @@ const ReleaseAndCertifications = (props) => {
         </div>
         <div className="countries">
           <div className="countryBlock">
-            <div className="countryHeader">
-              <header>
-                <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
-                <h4 className="text-center">US</h4>
-                <p className="text-center">United States of America</p>
-              </header>
-            </div>
-            <div className="countryBody">
-              <ul className="list-unstyled">
-                <li>
-                  <div className="borderBoxContainer">
-                    <p className="certification">R <span>Rating</span></p>
-                    <p className="type">Theatrical Release</p>
-                    <p className="date">30 Mar 1999</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="borderBoxContainer">
-                    <p className="certification">PG-12 <span>Rating</span></p>
-                    <p className="type">Theatrical Release</p>
-                    <p className="date">30 Mar 1999</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <Row className="show-grid">
+              <div className="countryHeader">
+                <header>
+                  <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
+                  <h4 className="text-center">US</h4>
+                  <p className="text-center">United States of America</p>
+                </header>
+              </div>
+              <div className="countryBody">
+                <ul className="list-unstyled">
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">R <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">PG-12 <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </Row>
           </div>
           <div className="countryBlock">
-            <div className="countryHeader">
-              <header>
-                <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
-                <h4 className="text-center">US</h4>
-                <p className="text-center">United States of America</p>
-              </header>
-            </div>
-            <div className="countryBody">
-              <ul className="list-unstyled">
-                <li>
-                  <div className="borderBoxContainer">
-                    <p className="certification">R <span>Rating</span></p>
-                    <p className="type">Theatrical Release</p>
-                    <p className="date">30 Mar 1999</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="borderBoxContainer">
-                    <p className="certification">PG-12 <span>Rating</span></p>
-                    <p className="type">Theatrical Release</p>
-                    <p className="date">30 Mar 1999</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            <Row className="show-grid">
+              <div className="countryHeader">
+                <header>
+                  <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
+                  <h4 className="text-center">US</h4>
+                  <p className="text-center">United States of America</p>
+                </header>
+              </div>
+              <div className="countryBody">
+                <ul className="list-unstyled">
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">R <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">PG-12 <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">R <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">PG-12 <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">R <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">PG-12 <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">R <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="borderBoxContainer">
+                      <p className="certification">PG-12 <span>Rating</span></p>
+                      <p className="type">Theatrical Release</p>
+                      <p className="date">30 Mar 1999</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </Row>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const SimilarComponent = (props) => {
+  return (
+    <div className="similarMoviesParent positionRelative">
+      <div className="outerContainer">
+        <div className="blockHeading">
+          <header>
+            <h3>Similar<br/><span>Movies</span></h3>
+          </header>
+        </div>
+        <Row className="show-grid">
+          <Col xs={6} sm={4} md={3} className="creditsSegment">
+            <div className="borderBoxContainer">
+              <div className="imageContainer positionRelative">
+                <img src="https://image.tmdb.org/t/p/original/q8ffBuxQlYOHrvPniLgCbmKK4Lv.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
+                <p className="movieName text-center">The Terminator</p>
+              </div>
+            </div>
+          </Col>
+          <Col xs={6} sm={4} md={3} className="creditsSegment">
+            <div className="borderBoxContainer">
+              <div className="imageContainer positionRelative">
+                <img src="https://image.tmdb.org/t/p/original/lz4xYdF1n09lyiCfZWtWT44SZiG.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
+                <p className="movieName text-center">Terminator 3: Rise of the Machines</p>
+              </div>
+            </div>
+          </Col>
+          <Col xs={6} sm={4} md={3} className="creditsSegment">
+            <div className="borderBoxContainer">
+              <div className="imageContainer positionRelative">
+                <img src="https://image.tmdb.org/t/p/original/vfzE3pjE5G7G7kcZWrA3fnbZo7V.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
+                <p className="movieName text-center">Blade Runner</p>
+              </div>
+            </div>
+          </Col>
+          <Col xs={6} sm={4} md={3} className="creditsSegment">
+            <div className="borderBoxContainer">
+              <div className="imageContainer positionRelative">
+                <img src="https://image.tmdb.org/t/p/original/ezIurBz2fdUc68d98Fp9dRf5ihv.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
+                <p className="movieName text-center">The Matrix Reloaded</p>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );
@@ -248,6 +342,7 @@ class MovieBioPage extends Component {
         </div>
         <CreditsComponent />
         <ReleaseAndCertifications />
+        <SimilarComponent />
       </div>
     );
   };

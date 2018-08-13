@@ -128,9 +128,9 @@
                 max-width: 35px;
                 padding: 10px;
                 border-radius: 3px;
-                -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
-                -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
-                box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15); }
+                -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.35);
+                -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.35);
+                box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.35); }
               .movieBioPage .productionParent .row .productionCountries .outerContainer ul li .borderBoxContainer span {
                 display: block;
                 color: #000000; }
@@ -145,11 +145,15 @@
               .movieBioPage .productionParent .row .productionCountries .outerContainer ul li .borderBoxContainer .countryName {
                 font-size: 1.2rem;
                 font-family: "Roboto Mono", serif;
-                color: #738290;
+                color: #000000;
                 text-align: left;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap; }
+          .movieBioPage .productionParent .row .productionCountries .outerContainer ul li:nth-child(odd) .borderBoxContainer {
+            background: #738290; }
+          .movieBioPage .productionParent .row .productionCountries .outerContainer ul li:nth-child(even) .borderBoxContainer {
+            background: #cccccc; }
 
 .movieBioPage .creditsListingParent {
   z-index: 20;
@@ -244,7 +248,7 @@
               color: #000000; }
               .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer {
                 padding: 10px;
-                border: 1px solid rgba(0, 0, 0, 0.05); }
+                border: 1px solid rgba(0, 0, 0, 0.1); }
                 .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer .certification {
                   color: #000000;
                   display: inline-block;
@@ -263,6 +267,39 @@
                 .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer .type {
                   margin-bottom: 0;
                   font-family: "Roboto Mono", serif; }
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(even) .borderBoxContainer {
+              background: #cccccc; }
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(odd) .borderBoxContainer {
+              background: #738290; }
+
+.movieBioPage .similarMoviesParent {
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.85); }
+  .movieBioPage .similarMoviesParent .outerContainer {
+    padding-top: 30px;
+    max-width: 1200px;
+    margin: 0 auto; }
+    .movieBioPage .similarMoviesParent .outerContainer .row {
+      margin: 0; }
+      .movieBioPage .similarMoviesParent .outerContainer .row .creditsSegment {
+        padding: 0 8px;
+        margin-bottom: 20px; }
+        .movieBioPage .similarMoviesParent .outerContainer .row .creditsSegment .borderBoxContainer {
+          padding: 10px; }
+          .movieBioPage .similarMoviesParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer .movieName {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: "Roboto Mono", serif;
+            margin-bottom: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 8px 5px; }
 
 @media only screen and (min-width: 768px) {
   .movieBioPage .movieJumbotron .posContainer {
@@ -286,5 +323,50 @@
       box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
   .movieBioPage .releaseAndCertificationsParent .outerContainer {
     padding: 60px 0; }
-    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .countryBody ul li {
-      display: inline-block; } }
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row {
+      margin: 0; }
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryHeader {
+        float: left; }
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody {
+        margin-top: 0;
+        float: left;
+        width: calc(100% - 250px); }
+        .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul {
+          margin: 0; }
+          .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li {
+            padding-top: 0;
+            display: inline-block;
+            width: 220px;
+            margin-bottom: 5px; }
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li .type, .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li .date {
+              text-align: right; } }
+
+@media only screen and (min-width: 1200px) {
+  .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row {
+    margin: 0; }
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li {
+      width: 250px; }
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li .borderBoxContainer {
+        transition-property: all;
+        -moz-transition-property: all;
+        -webkit-transition-property: all;
+        -o-transition-property: all;
+        -ms-transition-property: all;
+        transition-duration: 0.25s;
+        -webkit-transition-duration: 0.25s;
+        -ms-transition-duration: 0.25s;
+        -moz-transition-duration: 0.25s;
+        -o-transition-duration: 0.25s;
+        transition-timing-function: linear;
+        -webkit-transition-timing-function: linear;
+        -o-transition-timing-function: linear;
+        -ms-transition-timing-function: linear;
+        -moz-transition-timing-function: linear; }
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .borderBoxContainer {
+      background: #000000; }
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .certification {
+      color: #ffffff; }
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .certification span {
+        color: #cccccc; }
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .type, .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .date {
+      color: #ffffff; } }

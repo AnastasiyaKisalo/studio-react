@@ -155,9 +155,9 @@ $stableIndex: 20;
 									max-width: 35px;
 									padding: 10px;
 									border-radius: 3px;
-									-webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
-									-moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
-									box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+									-webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.35);
+									-moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.35);
+									box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.35);
 								}
 								span {
 									display: block;
@@ -175,7 +175,7 @@ $stableIndex: 20;
 								.countryName {
 									font-size: 1.2rem;
 									font-family: $contentFont;
-									color: $grey;
+									color: $black;
 									text-align: left;
 									overflow: hidden;
 									text-overflow: ellipsis;
@@ -183,6 +183,16 @@ $stableIndex: 20;
 								}
 							}
 						}
+            li:nth-child(odd) {
+              .borderBoxContainer {
+                background: $grey;
+              }
+            }
+            li:nth-child(even) {
+              .borderBoxContainer {
+                background: $lightGrey;
+              }
+            }
 					}
 				}
 			}
@@ -295,7 +305,7 @@ $stableIndex: 20;
                 color: $black;
                 .borderBoxContainer {
                   padding: 10px;
-                  border: 1px solid rgba(0, 0, 0, 0.05);
+                  border: 1px solid rgba(0, 0, 0, 0.1);
                   .certification {
                     color: $black;
                     display: inline-block;
@@ -320,12 +330,58 @@ $stableIndex: 20;
                   }
                 }
               }
+              li:nth-child(even) {
+                .borderBoxContainer {
+                  background: $lightGrey;
+                }
+              }
+              li:nth-child(odd) {
+                .borderBoxContainer {
+                  background: $grey;
+                }
+              }
             }
           }
         }
 			}
 		}
 	}
+  .similarMoviesParent {
+    z-index: $stableIndex;
+    background: rgba(0, 0, 0, 0.85);
+    .outerContainer {
+      padding-top: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      .row {
+        margin: 0;
+        .creditsSegment {
+          padding: 0 8px;
+          margin-bottom: 20px;
+          .borderBoxContainer {
+            padding: 10px;
+            .imageContainer {
+              .movieName {
+                font-size: 1.2rem;
+                font-weight: 700;
+                font-family: $contentFont;
+                margin-bottom: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                padding: 8px 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -379,13 +435,67 @@ $stableIndex: 20;
 			.outerContainer {
 				padding: 60px 0;
 				.countryBlock {
-					.countryBody {
-						ul {
-							li {
-								display: inline-block;
-							}
-						}
-					}
+          .row {
+            margin: 0;
+            .countryHeader {
+              float: left;
+            }
+            .countryBody {
+              margin-top: 0;
+              float: left;
+              width: calc(100% - 250px);
+              ul {
+                margin: 0;
+                li {
+                  padding-top: 0;
+                  display: inline-block;
+                  width: 220px;
+                  margin-bottom: 5px;
+                  .type, .date {
+                    text-align: right;
+                  }
+                }
+              }
+            }
+          }
+				}
+			}
+		}
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .movieBioPage {
+		.releaseAndCertificationsParent {
+			.outerContainer {
+				.countryBlock {
+          .row {
+            margin: 0;
+            .countryBody {
+              ul {
+                li {
+                  width: 250px;
+                  .borderBoxContainer {
+                    @include transition(all, 0.25s, linear);
+                  }
+                }
+                li:hover {
+                  .borderBoxContainer {
+                    background: $black;
+                  }
+                  .certification {
+                    color: $white;
+                    span {
+                      color: $lightGrey;
+                    }
+                  }
+                  .type, .date {
+                    color: $white;
+                  }
+                }
+              }
+            }
+          }
 				}
 			}
 		}
