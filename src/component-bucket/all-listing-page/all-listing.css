@@ -63,7 +63,8 @@
             font-family: "Roboto Mono", serif;
             font-weight: 700;
             font-size: 1.2rem;
-            text-align: center; }
+            text-align: center;
+            color: #ffffff; }
       .allListing .listingContainerParent .movieListing .footerContainer .metaList {
         text-align: right; }
         .allListing .listingContainerParent .movieListing .footerContainer .metaList li {
