@@ -333,11 +333,21 @@ $stableIndex: 20;
               li:nth-child(even) {
                 .borderBoxContainer {
                   background: $lightGrey;
+                  .certification {
+                    span {
+                      color: $grey;
+                    }
+                  }
                 }
               }
               li:nth-child(odd) {
                 .borderBoxContainer {
-                  background: $grey;
+                  background: #EDF0F6;
+                  .certification {
+                    span {
+                      color: $grey;
+                    }
+                  }
                 }
               }
             }

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { Col, Row, Clearfix } from "react-bootstrap";
+import uuidv1 from "uuid/v1";
 import "./movie-bio.css";
+
+//Required Imports For Axios
+import axios from "axios";
+import apiSetupObject from "../../axios/axios-setup.js";
 
 const WrapperObject = (props) => {
   return props.children;
@@ -14,24 +19,29 @@ const CurtainElement = (props) => {
 
 const MovieBackdrop = ({bgSetup}) => {
   return (
-    <div className="movieBackdrop" style={{backgroundImage: 'url(' + bgSetup + ')'}}></div>
+    <div className="movieBackdrop" style={{backgroundImage: 'url(https://image.tmdb.org/t/p/original' + bgSetup + ')'}}></div>
   );
 };
 
-const PosContainer = (props) => {
+const PosContainer = ({genres, movieName, movieDescription}) => {
   return (
     <div className="posContainer positionRelative">
-      <h1>The Matrix</h1>
+      <h1>{movieName}</h1>
       <ul className="list-unstyled genreList">
-        <li>Action</li>
-        <li>Science Fiction</li>
+        {
+          genres.map((thisGenreObject, thisIndex) => {
+            return (
+              <li key={thisIndex + thisGenreObject.name}>{thisGenreObject.name}</li>
+            );
+          })
+        }
       </ul>
-      <p>Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.</p>
+      <p>{movieDescription}</p>
     </div>
   );
 };
 
-const ProductionCompaniesList = (props) => {
+const ProductionCompaniesList = ({productionCompanies}) => {
   return (
     <section className="productionCompanies positionRelative">
       <div className="outerContainer">
@@ -41,33 +51,24 @@ const ProductionCompaniesList = (props) => {
           </header>
         </div>
         <ul className="list-unstyled">
-          <li>
-            <div className="borderBoxContainer">
-              Village Roadshow Pictures
-            </div>
-          </li>
-          <li>
-            <div className="borderBoxContainer">
-              Warner Bros. Pictures
-            </div>
-          </li>
-          <li>
-            <div className="borderBoxContainer">
-              Groucho II Film Partnership
-            </div>
-          </li>
-          <li>
-            <div className="borderBoxContainer">
-              Silver Pictures
-            </div>
-          </li>
+          {
+            productionCompanies.map((thisCompanyObject, thisIndex) => {
+              return (
+                <li key={thisIndex + thisCompanyObject.name}>
+                  <div className="borderBoxContainer">
+                    {thisCompanyObject.name}
+                  </div>
+                </li>
+              );
+            })
+          }
         </ul>
       </div>
     </section>
   );
 };
 
-const ProductionCountries = (props) => {
+const ProductionCountries = ({productionCountries}) => {
   return (
     <section className="productionCountries positionRelative">
       <div className="outerContainer">
@@ -77,27 +78,40 @@ const ProductionCountries = (props) => {
           </header>
         </div>
         <ul className="list-unstyled">
-          <li>
-            <div className="borderBoxContainer">
-              <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
-              <span className="shortCode">au</span>
-              <span className="countryName">Australia</span>
-            </div>
-          </li>
-          <li>
-            <div className="borderBoxContainer">
-              <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
-              <span className="shortCode">us</span>
-              <span className="countryName">United States of America</span>
-            </div>
-          </li>
+          {
+            productionCountries.map((thisCountryObject, thisIndex) => {
+              return (
+                <li key={thisCountryObject.name + thisIndex}>
+                  <div className="borderBoxContainer">
+                    <img src="./assets/icons/location-icon.svg" className="img-responsive" alt={thisCountryObject.name} title={thisCountryObject.name}/>
+                    <span className="shortCode">{thisCountryObject.iso_3166_1}</span>
+                    <span className="countryName">{thisCountryObject.name}</span>
+                  </div>
+                </li>
+              );
+            })
+          }
         </ul>
       </div>
     </section>
   );
 };
 
-const CreditsComponent = (props) => {
+const CreditsSegment = ({profile_path, name, character}) => {
+  return (
+    <Col xs={6} sm={4} md={3} className="creditsSegment">
+      <div className="borderBoxContainer">
+        <div className="imageContainer positionRelative">
+          <img src={`https://image.tmdb.org/t/p/original` + profile_path} className="img-responsive center-block" alt="Example" title="Example"/>
+        </div>
+        <p className="actorName text-center">{name}</p>
+        <p className="characterName text-center">{character}</p>
+      </div>
+    </Col>
+  );
+};
+
+const CreditsComponent = ({creditsInfo}) => {
   return (
     <div className="creditsListingParent positionRelative">
       <div className="outerContainer">
@@ -107,49 +121,100 @@ const CreditsComponent = (props) => {
           </header>
         </div>
         <Row className="show-grid">
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/bOlYWhVuOiU6azC4Bw6zlXZ5QTC.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-              </div>
-              <p className="actorName text-center">Keanu Reeves</p>
-              <p className="characterName text-center">Thomas Anderson / Neo</p>
-            </div>
-          </Col>
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/8suOhUmPbfKqDQ17jQ1Gy0mI3P4.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-              </div>
-              <p className="actorName text-center">Laurence Fishburne</p>
-              <p className="characterName text-center">Morpheus</p>
-            </div>
-          </Col>
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/6gk8GmlfjW8ONS19KMeISp8Cqxf.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-              </div>
-              <p className="actorName text-center">Carrie-Anne Moss</p>
-              <p className="characterName text-center">Trinity</p>
-            </div>
-          </Col>
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/ysED1kp94bpnweNVaDoVQQ6iy8X.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-              </div>
-              <p className="actorName text-center">Hugo Weaving</p>
-              <p className="characterName text-center">Agent Smith</p>
-            </div>
-          </Col>
+          {
+            creditsInfo.map((thisCreditsObject, thisIndex) => {
+              if((thisIndex + 1) === 2) {
+                return (
+                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                    <CreditsSegment {...thisCreditsObject}/>
+                    <Clearfix visibleXsBlock></Clearfix>
+                  </WrapperObject>
+                );
+              }
+              else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0 && (thisIndex + 1) % 4 === 0){
+                return (
+                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                    <CreditsSegment {...thisCreditsObject}/>
+                    <Clearfix></Clearfix>
+                  </WrapperObject>
+                );
+              }
+              else if((thisIndex + 1) % 4 === 0) {
+                return (
+                <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                  <CreditsSegment {...thisCreditsObject}/>
+                  <Clearfix visibleMdBlock visibleLgBlock></Clearfix>
+                </WrapperObject>
+                );
+              }
+              else if((thisIndex + 1) % 3 === 0) {
+                return (
+                <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                  <CreditsSegment {...thisCreditsObject}/>
+                  <Clearfix visibleSmBlock></Clearfix>
+                </WrapperObject>
+                );
+              }
+              else if((thisIndex + 1) % 2 === 0) {
+                return (
+                <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                  <CreditsSegment {...thisCreditsObject}/>
+                  <Clearfix visibleXsBlock></Clearfix>
+                </WrapperObject>
+                );
+              }
+              else {
+                return (
+                  <CreditsSegment {...thisCreditsObject} key={thisCreditsObject.name + thisIndex}/>
+                );
+              }
+            })
+          }
         </Row>
       </div>
     </div>
   );
 };
 
-const ReleaseAndCertifications = (props) => {
+const CountryBlock = ({iso_3166_1: isoCode, countryString, release_dates: infoArray}) => {
+  const monthArray = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        releaseTypes =  ["Premiere", "Theatrical (Limited)", "Theatrical", "Digital", "Physical", "TV"];
+  return (
+    <div className="countryBlock">
+      <Row className="show-grid">
+        <div className="countryHeader">
+          <header>
+            <img src="./assets/icons/location-icon.svg" className="img-responsive" alt={isoCode} title={isoCode}/>
+            <h4 className="text-center">{isoCode}</h4>
+            <p className="text-center">{countryString}</p>
+          </header>
+        </div>
+        <div className="countryBody">
+          <ul className="list-unstyled">
+            {
+              infoArray.map((thisInfo, thisIndex) => {
+                const d = new Date(thisInfo.release_date),
+                      releaseDateValue = d.getDate() + " " + monthArray[d.getMonth()] + " " + d.getFullYear(),
+                      certification = !!thisInfo.certification ? thisInfo.certification : "-No Info-";
+                return (
+                  <li key={uuidv1()}>
+                    <div className="borderBoxContainer">
+                      <p className="certification">{certification} <span>Certification</span></p>
+                      <p className="type">{releaseTypes[Number(thisInfo.type) - 1]}</p>
+                      <p className="date">{releaseDateValue}</p>
+                    </div>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
+      </Row>
+    </div>
+  );
+};
+
+const ReleaseAndCertifications = ({releaseCertsObject, countryCodes}) => {
   return (
     <div className="releaseAndCertificationsParent positionRelative">
       <div className="outerContainer">
@@ -159,157 +224,97 @@ const ReleaseAndCertifications = (props) => {
           </header>
         </div>
         <div className="countries">
-          <div className="countryBlock">
-            <Row className="show-grid">
-              <div className="countryHeader">
-                <header>
-                  <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
-                  <h4 className="text-center">US</h4>
-                  <p className="text-center">United States of America</p>
-                </header>
-              </div>
-              <div className="countryBody">
-                <ul className="list-unstyled">
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">R <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">PG-12 <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </Row>
-          </div>
-          <div className="countryBlock">
-            <Row className="show-grid">
-              <div className="countryHeader">
-                <header>
-                  <img src="./assets/icons/location-icon.svg" className="img-responsive" alt="Example" title="Example"/>
-                  <h4 className="text-center">US</h4>
-                  <p className="text-center">United States of America</p>
-                </header>
-              </div>
-              <div className="countryBody">
-                <ul className="list-unstyled">
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">R <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">PG-12 <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">R <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">PG-12 <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">R <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">PG-12 <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">R <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="borderBoxContainer">
-                      <p className="certification">PG-12 <span>Rating</span></p>
-                      <p className="type">Theatrical Release</p>
-                      <p className="date">30 Mar 1999</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </Row>
-          </div>
+          {
+            releaseCertsObject.map((thisObject, thisIndex) => {
+              thisObject.countryString = countryCodes[thisObject.iso_3166_1];
+              return (<CountryBlock key={thisObject.countryString + thisObject.iso_3166_1 + thisIndex} {...thisObject}/>);
+            })
+          }
         </div>
       </div>
     </div>
   );
 };
 
-const SimilarComponent = (props) => {
+const SimilarSegment = ({poster_path, title}) => {
   return (
-    <div className="similarMoviesParent positionRelative">
-      <div className="outerContainer">
-        <div className="blockHeading">
-          <header>
-            <h3>Similar<br/><span>Movies</span></h3>
-          </header>
+    <Col xs={6} sm={4} md={3} className="creditsSegment">
+      <div className="borderBoxContainer">
+        <div className="imageContainer positionRelative">
+          <img src={`https://image.tmdb.org/t/p/original` + poster_path} className="img-responsive center-block" alt={title} title={title}/>
+          <p className="movieName text-center">{title}</p>
         </div>
-        <Row className="show-grid">
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/q8ffBuxQlYOHrvPniLgCbmKK4Lv.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-                <p className="movieName text-center">The Terminator</p>
-              </div>
-            </div>
-          </Col>
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/lz4xYdF1n09lyiCfZWtWT44SZiG.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-                <p className="movieName text-center">Terminator 3: Rise of the Machines</p>
-              </div>
-            </div>
-          </Col>
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/vfzE3pjE5G7G7kcZWrA3fnbZo7V.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-                <p className="movieName text-center">Blade Runner</p>
-              </div>
-            </div>
-          </Col>
-          <Col xs={6} sm={4} md={3} className="creditsSegment">
-            <div className="borderBoxContainer">
-              <div className="imageContainer positionRelative">
-                <img src="https://image.tmdb.org/t/p/original/ezIurBz2fdUc68d98Fp9dRf5ihv.jpg" className="img-responsive center-block" alt="Example" title="Example"/>
-                <p className="movieName text-center">The Matrix Reloaded</p>
-              </div>
-            </div>
-          </Col>
-        </Row>
       </div>
-    </div>
+    </Col>
+  )
+}
+
+const SimilarComponent = ({similarListings}) => {
+  return (
+    <WrapperObject>
+      {
+        <div className="similarMoviesParent positionRelative">
+          <div className="outerContainer">
+            <div className="blockHeading">
+              <header>
+                <h3>Similar<br/><span>Movies</span></h3>
+              </header>
+            </div>
+            <Row className="show-grid">
+              {
+                similarListings.map((thisSimilarObject, thisIndex) => {
+                  if((thisIndex + 1) === 2) {
+                    return (
+                      <WrapperObject key={thisSimilarObject.title + thisIndex}>
+                        <SimilarSegment {...thisSimilarObject}/>
+                        <Clearfix visibleXsBlock></Clearfix>
+                      </WrapperObject>
+                    );
+                  }
+                  else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0 && (thisIndex + 1) % 4 === 0){
+                    return (
+                      <WrapperObject key={thisSimilarObject.title + thisIndex}>
+                        <SimilarSegment {...thisSimilarObject}/>
+                        <Clearfix></Clearfix>
+                      </WrapperObject>
+                    );
+                  }
+                  else if((thisIndex + 1) % 4 === 0) {
+                    return (
+                    <WrapperObject key={thisSimilarObject.title + thisIndex}>
+                      <SimilarSegment {...thisSimilarObject}/>
+                      <Clearfix visibleMdBlock visibleLgBlock></Clearfix>
+                    </WrapperObject>
+                    );
+                  }
+                  else if((thisIndex + 1) % 3 === 0) {
+                    return (
+                    <WrapperObject key={thisSimilarObject.title + thisIndex}>
+                      <SimilarSegment {...thisSimilarObject}/>
+                      <Clearfix visibleSmBlock></Clearfix>
+                    </WrapperObject>
+                    );
+                  }
+                  else if((thisIndex + 1) % 2 === 0) {
+                    return (
+                    <WrapperObject key={thisSimilarObject.title + thisIndex}>
+                      <SimilarSegment {...thisSimilarObject}/>
+                      <Clearfix visibleXsBlock></Clearfix>
+                    </WrapperObject>
+                    );
+                  }
+                  else {
+                    return (
+                      <SimilarSegment {...thisSimilarObject} key={thisSimilarObject.title + thisIndex}/>
+                    );
+                  }
+                })
+              }
+            </Row>
+          </div>
+        </div>
+      }
+    </WrapperObject>
   );
 };
 
@@ -317,34 +322,167 @@ class MovieBioPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      releaseTypes: ["Premiere", "Theatrical (Limited)", "Theatrical", "Digital", "Physical", "TV"]
+      searchResultsObject: {},
+      languageCodes: null,
+      countryCodes: null
     };
+
+    this.makeLocationQuerySplit = this.makeLocationQuerySplit.bind(this);
+    this.buildMovieBioPage = this.buildMovieBioPage.bind(this);
+  };
+
+  makeLocationQuerySplit(locationQuery) {
+    let searchObject = {};
+    if("URLSearchParams" in window && "entries" in URLSearchParams.prototype) {
+      let urlParams = new URLSearchParams(locationQuery).entries();
+      for(let thisValuePair of urlParams) {
+        searchObject[thisValuePair[0]] = thisValuePair[1];
+      }
+    }
+    else {
+      let locationQuerySplit = locationQuery.split("?")[1].split("&");
+      for (var i = 0; i < locationQuerySplit.length; i++) {
+        let thisValuePair = locationQuerySplit[i].split("=");
+        searchObject[thisValuePair[0]] = thisValuePair[1];
+      }
+    }
+    return searchObject;
+  };
+
+  buildMovieBioPage(searchObject) {
+    const movieName = searchObject.qt.split("___").join(" "),
+          movieId = searchObject.qid;
+    let languageCodesResponse = null,
+        countryCodesResponse = null;
+    
+    axios.get("https://sricharankrishnan.github.io/iso-group-code-files/iso_639-1-language.json")
+    .then((apiResponseObject) => {
+      if(apiResponseObject.status === 200) {
+        return apiResponseObject.data;
+      }
+      else {
+        throw new Error("Something Went Wrong - API Call for Language Codes");
+      }
+    })
+    .then((successResponse) => {
+      languageCodesResponse = successResponse;
+    })
+    .catch((errorResponse) => {
+      console.log(errorResponse);
+    });
+    
+    axios.get("https://sricharankrishnan.github.io/iso-group-code-files/iso_3166-1.alpha2-codes.json")
+    .then((apiResponseObject) => {
+      if(apiResponseObject.status === 200) {
+        return apiResponseObject.data;
+      }
+      else {
+        throw new Error("Something Went Wrong - API Call for Language Codes");
+      }
+    })
+    .then((successResponse) => {
+      countryCodesResponse = successResponse;
+    })
+    .catch((errorResponse) => {
+      console.log(errorResponse);
+    });
+
+    axios.get(apiSetupObject.baseUrl + "movie/" + searchObject.qid, {
+      params: {
+        api_key: apiSetupObject.apiKey,
+        append_to_response: "credits,similar,release_dates"
+      }
+    })
+    .then((apiResponseObject) => {
+      if(apiResponseObject.status === 200 && apiResponseObject.statusText === "OK") {
+        const checkNameAgainst = apiResponseObject.data.title.toLowerCase(),
+              checkIdAgainst = String(apiResponseObject.data.id);
+        if(checkNameAgainst === movieName && checkIdAgainst === movieId) {
+          return apiResponseObject.data;
+        }
+        else {
+          throw new Error("Something Went Wrong Somewhere");
+        }
+      }
+      else {
+        throw new Error("Something Went Wrong Somewhere");
+      }
+    }) 
+    .then(({backdrop_path: backdropPath, genres, title: movieName, overview: movieDescription, production_companies: productionCompanies,
+            production_countries: productionCountries, credits, similar, release_dates
+    }) => {
+      this.setState(($prevState, $nowProps) => {
+        return {
+          languageCodes: languageCodesResponse,
+          countryCodes: countryCodesResponse,
+          searchResultsObject: {
+            backdropPath,
+            posContainerComponent: {
+              genres,
+              movieName,
+              movieDescription
+            },
+            productionCompaniesComponent: {
+              productionCompanies
+            },
+            productionCountriesComponent: {
+              productionCountries
+            },
+            creditsComponent: {
+              creditsInfo: credits.cast
+            },
+            releaseAndCertComponent: {
+              releaseCertsObject: release_dates.results
+            },
+            similarComponent: {
+              similarListings: similar.results
+            }
+          }
+        }
+      });
+    })
+    .catch((errorResponse) => {
+      console.log(errorResponse);
+    });
   };
 
   render() {
-    let bgImage = "https://image.tmdb.org/t/p/original/7u3pxc0K1wx32IleAkLv78MKgrw.jpg";
+    const { searchResultsObject, languageCodes, countryCodes } = this.state;
     return (
-      <div className="outerBorder movieBioPage">
-        <div className="movieJumbotron positionRelative">
-          <CurtainElement />
-          <MovieBackdrop bgSetup={bgImage}/>
-          <PosContainer />
-        </div>
-        <div className="productionParent positionRelative">
-          <Row className="show-grid">
-            <Col xs={12} sm={6} className="blocks">
-              <ProductionCompaniesList />
-            </Col>
-            <Col xs={12} sm={6} className="blocks">
-              <ProductionCountries />
-            </Col>
-          </Row>
-        </div>
-        <CreditsComponent />
-        <ReleaseAndCertifications />
-        <SimilarComponent />
-      </div>
+      <WrapperObject>
+        {
+          searchResultsObject !== {} && !!languageCodes && !!countryCodes ?
+          <div className="outerBorder movieBioPage">
+            <div className="movieJumbotron positionRelative">
+              <CurtainElement />
+              <MovieBackdrop bgSetup={searchResultsObject.backdropPath}/>
+              <PosContainer {...searchResultsObject.posContainerComponent}/>
+            </div>
+            <div className="productionParent positionRelative">
+              <Row className="show-grid">
+                <Col xs={12} sm={6} className="blocks">
+                  <ProductionCompaniesList {...searchResultsObject.productionCompaniesComponent}/>
+                </Col>
+                <Col xs={12} sm={6} className="blocks">
+                  <ProductionCountries {...searchResultsObject.productionCountriesComponent}/>
+                </Col>
+              </Row>
+            </div>
+            <CreditsComponent {...searchResultsObject.creditsComponent}/>
+            <ReleaseAndCertifications {...searchResultsObject.releaseAndCertComponent} countryCodes={countryCodes}/>
+            <SimilarComponent {...searchResultsObject.similarComponent}/>
+          </div>
+          :
+          null
+        }
+      </WrapperObject>
     );
+  };
+
+  componentDidMount() {
+    let locationQuery = this.props.location.search,
+        searchObject = this.makeLocationQuerySplit(locationQuery);
+    this.buildMovieBioPage(searchObject);
   };
 }
 export default MovieBioPage;

@@ -419,7 +419,7 @@ class TvBioPage extends Component {
   };
 
   buildTvBioPage(searchObject) {
-    const tvShowName = searchObject.qt.split("-").join(" "),
+    const tvShowName = searchObject.qt.split("___").join(" "),
           tvShowId = searchObject.qid;
     let languageCodesResponse = null;
 
@@ -455,6 +455,9 @@ class TvBioPage extends Component {
         else {
           throw new Error("Something Went Wrong Somewhere");
         }
+      }
+      else {
+        throw new Error("Something Went Wrong Somewhere");
       }
     })
     .then(({backdrop_path, poster_path, name, genres, languages, overview, first_air_date, created_by: createdBy,

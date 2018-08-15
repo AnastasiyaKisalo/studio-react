@@ -269,8 +269,12 @@
                   font-family: "Roboto Mono", serif; }
             .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(even) .borderBoxContainer {
               background: #cccccc; }
+              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(even) .borderBoxContainer .certification span {
+                color: #738290; }
             .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(odd) .borderBoxContainer {
-              background: #738290; }
+              background: #EDF0F6; }
+              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(odd) .borderBoxContainer .certification span {
+                color: #738290; }
 
 .movieBioPage .similarMoviesParent {
   z-index: 20;

@@ -248,7 +248,7 @@ class PersonBioPage extends Component {
   };
 
   buildCelebrityPage(searchObject) {
-    const celebName = searchObject.qt.split("-").join(" "),
+    const celebName = searchObject.qt.split("___").join(" "),
           celebrityId = searchObject.qid;
     axios.all([this.getBasicDetails(celebrityId), this.getMovieCredits(celebrityId), this.getTvCredits(celebrityId)])
       .then(axios.spread((basicDetails, movieCredits, tvCredits) => {

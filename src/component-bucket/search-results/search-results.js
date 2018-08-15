@@ -35,7 +35,7 @@ const NoResultsComponent = (props) => {
 const SearchItem = (thisResultObject) => {
   let searchItemName = thisResultObject.name || thisResultObject.original_title,
       imageUrl = thisResultObject.profile_path || thisResultObject.poster_path,
-      queryUrl = "?qt=" + searchItemName.toLowerCase().split(" ").join("-") + "&st=" + thisResultObject.searchType + "&qid=" + thisResultObject.id,
+      queryUrl = "?qt=" + searchItemName.toLowerCase().split(" ").join("___") + "&st=" + thisResultObject.searchType + "&qid=" + thisResultObject.id,
       baseUrl = "/" + thisResultObject.searchType + "-bio";
   return (
     <Col xs={6} sm={4} className="searchItem">
