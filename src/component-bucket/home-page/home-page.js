@@ -67,10 +67,16 @@ class HomePage extends Component {
       {videoUrl: "./assets/videos/home-sample-video.webm", videoType: "video/webm"},
       {videoUrl: "./assets/videos/home-sample-video.mp4", videoType: "video/mp4"}
     ];
-    let videoComponent = !this.state.loadVideoElement ? null : <HomeVideoComponent videoBuildObject={homeVideoObject}/>;
+    let videoComponent = !this.state.loadVideoElement ? null : <HomeVideoComponent videoBuildObject={homeVideoObject}/>,
+        borderClassArray = ["outerBorder", "homePage"];
+
+    console.log(this.props);
+    if(this.props.lockScrollStatus) {
+      borderClassArray.push("preventBodyScroll");
+    }
 
     return (
-      <div className="outerBorder homePage">
+      <div className={borderClassArray.join(" ")}>
         <div className="homeJumbotron positionRelative">
           <div className="bgContainer"></div>
           <div className="curtain"></div>

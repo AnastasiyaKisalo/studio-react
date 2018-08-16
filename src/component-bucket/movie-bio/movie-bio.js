@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Clearfix } from "react-bootstrap";
 import uuidv1 from "uuid/v1";
 import "./movie-bio.css";
+import { withRouter } from "react-router";
 
 //Required Imports For Axios
 import axios from "axios";
@@ -485,4 +486,4 @@ class MovieBioPage extends Component {
     this.buildMovieBioPage(searchObject);
   };
 }
-export default MovieBioPage;
+export default withRouter(MovieBioPage);

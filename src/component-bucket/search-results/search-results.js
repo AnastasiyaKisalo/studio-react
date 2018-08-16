@@ -3,6 +3,7 @@ import { Row, Col, Clearfix } from "react-bootstrap";
 import Pagination from "react-js-pagination";
 import "./search-results.css";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 import FormComponent from "../main-form-component/main-form.js";
 
@@ -239,9 +240,10 @@ class SearchResultsPage extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props);
     let locationQuery = this.props.location.search,
         searchObject = this.makeLocationQuerySplit(locationQuery);
     this.performSearchApi(searchObject);
   }
 }
-export default connect(MapStateToProps, MapDispatchToProps)(SearchResultsPage);
+export default withRouter(connect(MapStateToProps, MapDispatchToProps)(SearchResultsPage));

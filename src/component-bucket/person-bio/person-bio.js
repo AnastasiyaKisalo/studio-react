@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Modal, Button, Clearfix } from "react-bootstrap";
 import "./person-bio.css";
+import { withRouter } from "react-router";
 
 //Required Import for Axios
 import axios from "axios";
@@ -462,4 +463,4 @@ class PersonBioPage extends Component {
     this.buildCelebrityPage(searchObject);
   }
 }
-export default PersonBioPage;
+export default withRouter(PersonBioPage);

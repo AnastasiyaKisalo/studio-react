@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Clearfix } from "react-bootstrap";
 import "./tv-bio.css";
+import { withRouter } from "react-router";
 
 //Required Imports For Axios
 import axios from "axios";
@@ -555,4 +556,4 @@ class TvBioPage extends Component {
     this.buildTvBioPage(searchObject);
   };
 };
-export default TvBioPage;
+export default withRouter(TvBioPage);

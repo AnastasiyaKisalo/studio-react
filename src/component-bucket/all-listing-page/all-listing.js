@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col, Button, Clearfix } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./all-listing.css";
+import { withRouter } from "react-router";
 
 import axios from "axios";
 import apiSetupObject from "../../axios/axios-setup.js";
@@ -341,4 +342,4 @@ class AllListing extends Component {
     }
   };
 }
-export default AllListing;
+export default withRouter(AllListing);

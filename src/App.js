@@ -4,6 +4,7 @@ import './App.css';
 //Routes and Links Import Details Starts Here;
 import { Switch, Route } from "react-router-dom";
 
+import { NavbarComponent, NavigationComponent } from "./component-bucket/navigation/navigation.js";
 import HomePage from "./component-bucket/home-page/home-page.js";
 import SearchResultsPage from "./component-bucket/search-results/search-results.js";
 import AllListingPage from "./component-bucket/all-listing-page/all-listing.js";
@@ -16,28 +17,43 @@ const WrapperObject = (props) => {
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navigationShow: false
+    }
+
+    this.handleMenuToggle = this.handleMenuToggle.bind(this);
+  };
+
+  handleMenuToggle() {
+    this.setState(($prevState, $nowProps) => {
+      return {
+        navigationShow: !$prevState.navigationShow
+      }
+    });
+  };
+
   render() {
     return (
-      <div>
+      <WrapperObject>
         <WrapperObject>
-          <Switch>
-            <Route path="/" exact component={HomePage}/>
-            <Route path="/search-results" component={SearchResultsPage}/>
-            <Route path="/view-listings" component={AllListingPage} />
-            <Route path="/person-bio" component={PersonBioPage} />
-            <Route path="/tv-bio" component={TvBioPage} />
-            <Route path="/movie-bio" component={MovieBioPage} />
-          </Switch>
+          <nav>
+            <NavbarComponent onClickHandler={this.handleMenuToggle}/>
+            <NavigationComponent showNav={this.state.navigationShow} onClickHandler={this.handleMenuToggle}/>
+          </nav>
         </WrapperObject>
-      </div>
+        <Switch>
+          <Route path="/" exact render={() => {return (<HomePage lockScrollStatus={this.state.navigationShow}/>)}}/>
+          <Route path="/search-results" render={() => {return (<SearchResultsPage/>)}}/>
+          <Route path="/view-listings" render={() => {return (<AllListingPage/>)}} />
+          <Route path="/person-bio" render={() => {return (<PersonBioPage/>)}} />
+          <Route path="/tv-bio" render={()=> {return (<TvBioPage/>)}} />
+          <Route path="/movie-bio" render={() => {return (<MovieBioPage/>)}} />
+        </Switch>
+      </WrapperObject>
     );
   }
 }
 
 export default App;
-
-// Think about redirection or not found in case anything is not correct.
-// Check if the name and id value on the url matches the celeb details.
-// You can use URLSearchParams for sending the query url from the home page and then make the axios call from there
-// Loading Process check.. keep a background image to show loading..
-// Pagination done again with required query parameters to be passed to the search url
