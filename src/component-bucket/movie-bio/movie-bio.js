@@ -8,6 +8,9 @@ import { withRouter } from "react-router";
 import axios from "axios";
 import apiSetupObject from "../../axios/axios-setup.js";
 
+//Required Import for Loader Component;
+import LoaderComponent from "../loading-component/loader.js";
+
 const WrapperObject = (props) => {
   return props.children;
 };
@@ -18,10 +21,38 @@ const CurtainElement = (props) => {
   );
 };
 
-const MovieBackdrop = ({bgSetup}) => {
-  return (
-    <div className="movieBackdrop" style={{backgroundImage: 'url(https://image.tmdb.org/t/p/original' + bgSetup + ')'}}></div>
-  );
+class MovieBackdrop extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bgUrl: null
+    }
+
+    this.baseUrl = "https://image.tmdb.org/t/p/original";
+    this.initiateBg = this.initiateBg.bind(this);
+  };
+
+  initiateBg() {
+    const tempImage = new Image();
+    tempImage.setAttribute("src", this.baseUrl + this.props.bgSetup);
+    tempImage.addEventListener("load", () => {
+      this.setState(($prevState, $nowProps) => {
+        return {
+          bgUrl: tempImage.getAttribute("src")
+        }
+      });
+    });
+  }
+
+  render() {
+    return (
+      <div className="movieBackdrop" style={{backgroundImage: 'url(' + this.state.bgUrl + ')'}}></div>
+    );
+  };
+
+  componentDidMount() {
+    this.initiateBg();
+  };
 };
 
 const PosContainer = ({genres, movieName, movieDescription}) => {
@@ -98,82 +129,120 @@ const ProductionCountries = ({productionCountries}) => {
   );
 };
 
-const CreditsSegment = ({profile_path, name, character}) => {
-  return (
-    <Col xs={6} sm={4} md={3} className="creditsSegment">
-      <div className="borderBoxContainer">
-        <div className="imageContainer positionRelative">
-          <img src={`https://image.tmdb.org/t/p/original` + profile_path} className="img-responsive center-block" alt="Example" title="Example"/>
+class CreditsSegment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.imageRef = React.createRef();
+  };
+
+  loadProfileImage() {
+    const baseUrl = "https://image.tmdb.org/t/p/original",
+          imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", baseUrl + this.props.profile_path);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+  render() {
+    const loaderImage = "./assets/icons/loading-img.png",
+          {name, character} = this.props;
+    return (
+      <Col xs={6} sm={4} md={3} className="creditsSegment">
+        <div className="borderBoxContainer">
+          <div className="imageContainer positionRelative">
+            <img ref={this.imageRef} src={loaderImage} className="img-responsive center-block" alt={name} title={name}/>
+          </div>
+          <p className="actorName text-center">{name}</p>
+          <p className="characterName text-center">{character}</p>
         </div>
-        <p className="actorName text-center">{name}</p>
-        <p className="characterName text-center">{character}</p>
-      </div>
-    </Col>
-  );
+      </Col>
+    );
+  };
+
+  componentDidMount() {
+    this.loadProfileImage();
+  };
 };
 
 const CreditsComponent = ({creditsInfo}) => {
   return (
-    <div className="creditsListingParent positionRelative">
-      <div className="outerContainer">
-        <div className="blockHeading">
-          <header>
-            <h3>Credits<br/><span>The People</span></h3>
-          </header>
-        </div>
-        <Row className="show-grid">
-          {
-            creditsInfo.map((thisCreditsObject, thisIndex) => {
-              if((thisIndex + 1) === 2) {
-                return (
+    <WrapperObject>
+    {
+      creditsInfo.length > 0 ?
+      <div className="creditsListingParent positionRelative">
+        <div className="outerContainer">
+          <div className="blockHeading">
+            <header>
+              <h3>Credits<br/><span>The People</span></h3>
+            </header>
+          </div>
+          <Row className="show-grid">
+            {
+              creditsInfo.map((thisCreditsObject, thisIndex) => {
+                if((thisIndex + 1) === 2) {
+                  return (
+                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                      <CreditsSegment {...thisCreditsObject}/>
+                      <Clearfix visibleXsBlock></Clearfix>
+                    </WrapperObject>
+                  );
+                }
+                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0 && (thisIndex + 1) % 4 === 0){
+                  return (
+                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                      <CreditsSegment {...thisCreditsObject}/>
+                      <Clearfix></Clearfix>
+                    </WrapperObject>
+                  );
+                }
+                else if((thisIndex + 1) % 4 === 0) {
+                  return (
+                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                    <CreditsSegment {...thisCreditsObject}/>
+                    <Clearfix visibleMdBlock visibleLgBlock></Clearfix>
+                  </WrapperObject>
+                  );
+                }
+                else if((thisIndex + 1) % 3 === 0) {
+                  return (
+                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                    <CreditsSegment {...thisCreditsObject}/>
+                    <Clearfix visibleSmBlock></Clearfix>
+                  </WrapperObject>
+                  );
+                }
+                else if((thisIndex + 1) % 2 === 0) {
+                  return (
                   <WrapperObject key={thisCreditsObject.name + thisIndex}>
                     <CreditsSegment {...thisCreditsObject}/>
                     <Clearfix visibleXsBlock></Clearfix>
                   </WrapperObject>
-                );
-              }
-              else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0 && (thisIndex + 1) % 4 === 0){
-                return (
-                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                    <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix></Clearfix>
-                  </WrapperObject>
-                );
-              }
-              else if((thisIndex + 1) % 4 === 0) {
-                return (
-                <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                  <CreditsSegment {...thisCreditsObject}/>
-                  <Clearfix visibleMdBlock visibleLgBlock></Clearfix>
-                </WrapperObject>
-                );
-              }
-              else if((thisIndex + 1) % 3 === 0) {
-                return (
-                <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                  <CreditsSegment {...thisCreditsObject}/>
-                  <Clearfix visibleSmBlock></Clearfix>
-                </WrapperObject>
-                );
-              }
-              else if((thisIndex + 1) % 2 === 0) {
-                return (
-                <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                  <CreditsSegment {...thisCreditsObject}/>
-                  <Clearfix visibleXsBlock></Clearfix>
-                </WrapperObject>
-                );
-              }
-              else {
-                return (
-                  <CreditsSegment {...thisCreditsObject} key={thisCreditsObject.name + thisIndex}/>
-                );
-              }
-            })
-          }
-        </Row>
+                  );
+                }
+                else {
+                  return (
+                    <CreditsSegment {...thisCreditsObject} key={thisCreditsObject.name + thisIndex}/>
+                  );
+                }
+              })
+            }
+          </Row>
+        </div>
       </div>
-    </div>
+      :
+      null
+    }
+    </WrapperObject>
   );
 };
 
@@ -217,43 +286,84 @@ const CountryBlock = ({iso_3166_1: isoCode, countryString, release_dates: infoAr
 
 const ReleaseAndCertifications = ({releaseCertsObject, countryCodes}) => {
   return (
-    <div className="releaseAndCertificationsParent positionRelative">
-      <div className="outerContainer">
-        <div className="blockHeading">
-          <header>
-            <h3>Release Dates<br/><span>And Certifications</span></h3>
-          </header>
-        </div>
-        <div className="countries">
-          {
-            releaseCertsObject.map((thisObject, thisIndex) => {
-              thisObject.countryString = countryCodes[thisObject.iso_3166_1];
-              return (<CountryBlock key={thisObject.countryString + thisObject.iso_3166_1 + thisIndex} {...thisObject}/>);
-            })
-          }
+    <WrapperObject>
+    {
+      releaseCertsObject.length > 0 ?
+      <div className="releaseAndCertificationsParent positionRelative">
+        <div className="outerContainer">
+          <div className="blockHeading">
+            <header>
+              <h3>Release Dates<br/><span>And Certifications</span></h3>
+            </header>
+          </div>
+          <div className="countries">
+            {
+              releaseCertsObject.map((thisObject, thisIndex) => {
+                thisObject.countryString = countryCodes[thisObject.iso_3166_1];
+                return (<CountryBlock key={thisObject.countryString + thisObject.iso_3166_1 + thisIndex} {...thisObject}/>);
+              })
+            }
+          </div>
         </div>
       </div>
-    </div>
+      :
+      null
+    }
+    </WrapperObject>
   );
 };
 
-const SimilarSegment = ({poster_path, title}) => {
-  return (
-    <Col xs={6} sm={4} md={3} className="creditsSegment">
-      <div className="borderBoxContainer">
-        <div className="imageContainer positionRelative">
-          <img src={`https://image.tmdb.org/t/p/original` + poster_path} className="img-responsive center-block" alt={title} title={title}/>
-          <p className="movieName text-center">{title}</p>
+class SimilarSegment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.imageRef = React.createRef();
+    
+    this.loadProfileImage = this.loadProfileImage.bind(this);
+  };
+
+  loadProfileImage() {
+    const baseUrl = "https://image.tmdb.org/t/p/original",
+          imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", baseUrl + this.props.poster_path);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+  render() {
+    const {title} = this.props,
+          loaderImage = "./assets/icons/loading-img.png";
+    return (
+      <Col xs={6} sm={4} md={3} className="creditsSegment">
+        <div className="borderBoxContainer">
+          <div className="imageContainer positionRelative">
+            <img ref={this.imageRef} src={loaderImage} className="img-responsive center-block" alt={title} title={title}/>
+            <p className="movieName text-center">{title}</p>
+          </div>
         </div>
-      </div>
-    </Col>
-  )
+      </Col>
+    );
+  };
+
+  componentDidMount() {
+    this.loadProfileImage();
+  };
 }
 
 const SimilarComponent = ({similarListings}) => {
   return (
     <WrapperObject>
       {
+        similarListings.length > 0 ?
         <div className="similarMoviesParent positionRelative">
           <div className="outerContainer">
             <div className="blockHeading">
@@ -314,6 +424,8 @@ const SimilarComponent = ({similarListings}) => {
             </Row>
           </div>
         </div>
+        :
+        null
       }
     </WrapperObject>
   );
@@ -323,6 +435,7 @@ class MovieBioPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isBuilding: true,
       searchResultsObject: {},
       languageCodes: null,
       countryCodes: null
@@ -330,6 +443,7 @@ class MovieBioPage extends Component {
 
     this.makeLocationQuerySplit = this.makeLocationQuerySplit.bind(this);
     this.buildMovieBioPage = this.buildMovieBioPage.bind(this);
+    this.hideLoaderDiv = this.hideLoaderDiv.bind(this);
   };
 
   makeLocationQuerySplit(locationQuery) {
@@ -351,8 +465,6 @@ class MovieBioPage extends Component {
   };
 
   buildMovieBioPage(searchObject) {
-    const movieName = searchObject.qt.split("___").join(" "),
-          movieId = searchObject.qid;
     let languageCodesResponse = null,
         countryCodesResponse = null;
     
@@ -396,14 +508,7 @@ class MovieBioPage extends Component {
     })
     .then((apiResponseObject) => {
       if(apiResponseObject.status === 200 && apiResponseObject.statusText === "OK") {
-        const checkNameAgainst = apiResponseObject.data.title.toLowerCase(),
-              checkIdAgainst = String(apiResponseObject.data.id);
-        if(checkNameAgainst === movieName && checkIdAgainst === movieId) {
-          return apiResponseObject.data;
-        }
-        else {
-          throw new Error("Something Went Wrong Somewhere");
-        }
+        return apiResponseObject.data;
       }
       else {
         throw new Error("Something Went Wrong Somewhere");
@@ -447,36 +552,54 @@ class MovieBioPage extends Component {
     });
   };
 
+  hideLoaderDiv() {
+    this.setState(($prevState, $nowProps) => {
+      return {
+        isBuilding: false
+      }
+    });
+  };
+
   render() {
     const { searchResultsObject, languageCodes, countryCodes } = this.state;
+    let mainContainerClasses = ["outerBorder", "movieBioPage", "positionRelative", "preventBodyScroll"],
+        hasBeenBuilt = !this.state.isBuilding ? true : false;
+
+    if(hasBeenBuilt) {
+      mainContainerClasses.pop();
+    }
+
     return (
-      <WrapperObject>
+      <div className={mainContainerClasses.join(" ")}>
         {
-          searchResultsObject !== {} && !!languageCodes && !!countryCodes ?
-          <div className="outerBorder movieBioPage">
-            <div className="movieJumbotron positionRelative">
-              <CurtainElement />
-              <MovieBackdrop bgSetup={searchResultsObject.backdropPath}/>
-              <PosContainer {...searchResultsObject.posContainerComponent}/>
-            </div>
-            <div className="productionParent positionRelative">
-              <Row className="show-grid">
-                <Col xs={12} sm={6} className="blocks">
-                  <ProductionCompaniesList {...searchResultsObject.productionCompaniesComponent}/>
-                </Col>
-                <Col xs={12} sm={6} className="blocks">
-                  <ProductionCountries {...searchResultsObject.productionCountriesComponent}/>
-                </Col>
-              </Row>
-            </div>
-            <CreditsComponent {...searchResultsObject.creditsComponent}/>
-            <ReleaseAndCertifications {...searchResultsObject.releaseAndCertComponent} countryCodes={countryCodes}/>
-            <SimilarComponent {...searchResultsObject.similarComponent}/>
-          </div>
-          :
-          null
+          <WrapperObject>
+            <LoaderComponent isBuilding={this.state.isBuilding}/>
+            {
+              !!searchResultsObject && !!languageCodes && !!countryCodes &&
+              <WrapperObject>
+                <div className="movieJumbotron positionRelative">
+                  <CurtainElement />
+                  <MovieBackdrop bgSetup={searchResultsObject.backdropPath}/>
+                  <PosContainer {...searchResultsObject.posContainerComponent}/>
+                </div>
+                <div className="productionParent positionRelative">
+                  <Row className="show-grid">
+                    <Col xs={12} sm={6} className="blocks">
+                      <ProductionCompaniesList {...searchResultsObject.productionCompaniesComponent}/>
+                    </Col>
+                    <Col xs={12} sm={6} className="blocks">
+                      <ProductionCountries {...searchResultsObject.productionCountriesComponent}/>
+                    </Col>
+                  </Row>
+                </div>
+                <CreditsComponent {...searchResultsObject.creditsComponent}/>
+                <ReleaseAndCertifications {...searchResultsObject.releaseAndCertComponent} countryCodes={countryCodes}/>
+                <SimilarComponent {...searchResultsObject.similarComponent}/>
+              </WrapperObject>
+            }
+          </WrapperObject>
         }
-      </WrapperObject>
+      </div>
     );
   };
 
@@ -484,6 +607,12 @@ class MovieBioPage extends Component {
     let locationQuery = this.props.location.search,
         searchObject = this.makeLocationQuerySplit(locationQuery);
     this.buildMovieBioPage(searchObject);
+  };
+  
+  componentDidUpdate($oldProps, $oldState) {
+    if(!!$oldState.isBuilding) {
+      this.hideLoaderDiv();
+    }
   };
 }
 export default withRouter(MovieBioPage);

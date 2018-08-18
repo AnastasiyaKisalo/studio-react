@@ -38,8 +38,8 @@ class MovieListing extends Component {
   };
 
   render() {
-    const {imageUrl, movieName, rating, releaseDate, id, loaderImage} = this.props,
-          queryUrl = "/movie-bio?qt=" + movieName.toLowerCase().split(" ").join("___") + "&st=movie" + "&qid=" + id;
+    const {imageUrl, movieName, releaseDate, id, loaderImage} = this.props,
+          queryUrl = "/movie-bio?st=movie" + "&qid=" + id;
     return (
       <Col xs={12} sm={4} lg={3} className="movieListing">
         <Link to={queryUrl}>
@@ -65,7 +65,6 @@ class MovieListing extends Component {
   };
 
   componentDidMount() {
-    const $this = this;
     setTimeout(() => {
       this.handleImageLoadProcess();
     }, 500);
@@ -93,8 +92,8 @@ class TvOnAir extends Component {
   };
 
   render() {
-    const {imageUrl, movieName, rating, releaseDate, id, loaderImage} = this.props,
-          queryUrl = "/tv-bio?qt=" + movieName.toLowerCase().split(" ").join("___") + "&st=tv" + "&qid=" + id;
+    const {imageUrl, movieName, releaseDate, id, loaderImage} = this.props,
+          queryUrl = "/tv-bio?st=tv" + "&qid=" + id;
 
     return (
       <Col xs={12} sm={4} lg={3} className="movieListing">
@@ -121,7 +120,6 @@ class TvOnAir extends Component {
   };
 
   componentDidMount() {
-    const $this = this;
     setTimeout(() => {
       this.handleImageLoadProcess();
     }, 500);
@@ -175,7 +173,6 @@ class PopularPeople extends Component {
   };
 
   componentDidMount() {
-    const $this = this;
     setTimeout(() => {
       this.handleImageLoadProcess();
     }, 500);

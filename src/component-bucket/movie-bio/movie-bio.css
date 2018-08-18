@@ -23,7 +23,8 @@
         display: block; }
 
 .movieBioPage .movieJumbotron {
-  min-height: 100vh; }
+  margin-top: 55px;
+  height: calc(100vh - 55px); }
   .movieBioPage .movieJumbotron .curtain {
     position: fixed;
     top: 0;
@@ -31,14 +32,7 @@
     right: 0;
     bottom: 0;
     z-index: 2;
-    background: rgba(0, 0, 0, 0.58);
-    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.58) 38%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.58) 63%, rgba(0, 0, 0, 0.64) 68%, black 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0, 0, 0, 0.58)), color-stop(38%, rgba(0, 0, 0, 0.58)), color-stop(48%, rgba(0, 0, 0, 0.58)), color-stop(63%, rgba(0, 0, 0, 0.58)), color-stop(68%, rgba(0, 0, 0, 0.64)), color-stop(100%, black));
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.58) 38%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.58) 63%, rgba(0, 0, 0, 0.64) 68%, black 100%);
-    background: -o-linear-gradient(left, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.58) 38%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.58) 63%, rgba(0, 0, 0, 0.64) 68%, black 100%);
-    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.58) 38%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.58) 63%, rgba(0, 0, 0, 0.64) 68%, black 100%);
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.58) 38%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.58) 63%, rgba(0, 0, 0, 0.64) 68%, black 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=1 ); }
+    background: rgba(0, 0, 0, 0.9); }
   .movieBioPage .movieJumbotron .movieBackdrop {
     position: fixed;
     top: 0;
@@ -47,12 +41,12 @@
     bottom: 0;
     z-index: 1;
     background-size: cover;
-    background-position: center center;
+    background-position: top center;
     background-repeat: no-repeat; }
   .movieBioPage .movieJumbotron .posContainer {
     z-index: 20;
     position: absolute;
-    top: 58%;
+    top: 50%;
     left: 0;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);

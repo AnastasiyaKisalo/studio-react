@@ -7,6 +7,9 @@ import { withRouter } from "react-router";
 import axios from "axios";
 import apiSetupObject from "../../axios/axios-setup.js";
 
+//Required Import for Loader Component;
+import LoaderComponent from "../loading-component/loader.js";
+
 const WrapperObject = (props) => {
   return props.children;
 };
@@ -17,13 +20,42 @@ const CurtainElement = (props) => {
   );
 };
 
-const BackgroundImageElement = ({bgSetup}) => {
-  return (
-    <div className="bgImageContainer" style={{backgroundImage: 'url(' + bgSetup + ')'}}></div>
-  );
+class BackgroundImageElement extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bgUrl: null
+    }
+
+    this.initiateBg = this.initiateBg.bind(this);
+  };
+
+  initiateBg() {
+    console.log(this.props.bgSetup);
+    const tempImage = new Image();
+    tempImage.setAttribute("src", this.props.bgSetup);
+    tempImage.addEventListener("load", () => {
+      this.setState(($prevState, $nowProps) => {
+        return {
+          bgUrl: tempImage.getAttribute("src")
+        }
+      });
+    });
+  };
+
+  render() {
+    return (
+      <div className="bgImageContainer" style={{backgroundImage: 'url(' + this.state.bgUrl + ')'}}></div>
+    );
+  };
+  
+  componentDidMount() {
+    this.initiateBg();
+  };
 };
 
 const PosContainer = ({name, genres, languages, lCodes, overview, firstAirDate, createdBy}) => {
+  let noImageIcon = "./assets/icons/no-image-icon.png";
   return (
     <div className="posContainer">
       <h1>{name}</h1>
@@ -57,9 +89,10 @@ const PosContainer = ({name, genres, languages, lCodes, overview, firstAirDate, 
           <ul className="list-unstyled createdByList">
             {
               createdBy.map((thisElement, thisIndex) => {
+                const thisCreatorPath = thisElement.profile_path ? ("https://image.tmdb.org/t/p/original" + thisElement.profile_path) : noImageIcon;
                 return (
                   <li key={thisElement.name.split(" ").join("-")}>
-                    <img src={`https://image.tmdb.org/t/p/original` + thisElement.profile_path} 
+                    <img src={thisCreatorPath} 
                     className="img-responsive" 
                     alt={thisElement.name} title={thisElement.name}/>
                     {thisElement.name}
@@ -122,26 +155,62 @@ const RatingRadialComponent = ({voteAverage, numberOfSeasons, numberOfEpisodes})
   );
 };
 
-const SeasonsSegment = ({poster_path, name, episode_count, airDateValue}) => {
-  return (
-    <Col xs={6} sm={4} md={3} className="seasonSegment">
-      <div className="borderBoxContainer">
-        <div className="imageContainer positionRelative">
-          <img src={`https://image.tmdb.org/t/p/original` + poster_path}
-            className="img-responsive center-block" 
-            alt={name} 
-            title={name}/>
-          <p>{name}</p>
-          <span className="episodeCount hidden-xs text-center">
-            <span>{episode_count} Episodes</span>
-          </span>
+class SeasonsSegment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    
+    this.imageRef = React.createRef();
+    this.loadProfileImage = this.loadProfileImage.bind(this);
+  };
+
+  loadProfileImage() {
+    const baseUrl = "https://image.tmdb.org/t/p/original",
+          imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", baseUrl + this.props.poster_path);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+  render() {
+    const {name, episode_count, airDateValue} = this.props,
+          loaderImage = "./assets/icons/loading-img.png";
+
+    return (
+      <Col xs={6} sm={4} md={3} className="seasonSegment">
+        <div className="borderBoxContainer">
+          <div className="imageContainer positionRelative">
+            <img src={loaderImage}
+              className="img-responsive center-block" 
+              alt={name} 
+              title={name}
+              ref={this.imageRef}
+            />
+            <p>{name}</p>
+            <span className="episodeCount hidden-xs text-center">
+              <span>{episode_count} Episodes</span>
+            </span>
+          </div>
+          <div className="airDate">
+            <p><span>Air Date: </span>{airDateValue}</p>
+          </div>
         </div>
-        <div className="airDate">
-          <p><span>Air Date: </span>{airDateValue}</p>
-        </div>
-      </div>
-    </Col>
-  );
+      </Col>
+    );
+  };
+  
+  componentDidMount() {
+    this.loadProfileImage();
+  };
 };
 
 const SeasonsListingComponent = ({seasonsListing}) => {
@@ -217,21 +286,54 @@ const SeasonsListingComponent = ({seasonsListing}) => {
   );
 };
 
-const CreditsSegment = ({profile_path, name, character}) => {
-  return (
-    <Col xs={6} sm={4} md={3} className="creditsSegment">
-      <div className="borderBoxContainer">
-        <div className="imageContainer positionRelative">
-          <img src={`https://image.tmdb.org/t/p/original` + profile_path} 
-            className="img-responsive center-block" 
-            alt={name}
-            title={name}/>
+class CreditsSegment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.imageRef = React.createRef();
+  };
+
+  loadProfileImage() {
+    const baseUrl = "https://image.tmdb.org/t/p/original",
+          imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", baseUrl + this.props.profile_path);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+  render() {
+    const loaderImage = "./assets/icons/loading-img.png",
+          {name, character} = this.props;
+    return (
+      <Col xs={6} sm={4} md={3} className="creditsSegment">
+        <div className="borderBoxContainer">
+          <div className="imageContainer positionRelative">
+            <img src={loaderImage} 
+              className="img-responsive center-block" 
+              alt={name}
+              title={name}
+              ref={this.imageRef}
+              />
+          </div>
+          <p className="actorName text-center">{name}</p>
+          <p className="characterName text-center">{character}</p>
         </div>
-        <p className="actorName text-center">{name}</p>
-        <p className="characterName text-center">{character}</p>
-      </div>
-    </Col>
-  );
+      </Col>
+    );
+  };
+
+  componentDidMount() {
+    this.loadProfileImage();
+  };
 }
 
 const CreditsComponent = ({creditsInfo}) => {
@@ -304,19 +406,55 @@ const CreditsComponent = ({creditsInfo}) => {
   );
 };
 
-const SimilarSegment = ({poster_path, name}) => {
-  return (
-    <Col xs={6} sm={4} md={3} className="similarSegment">
-      <div className="borderBoxContainer">
-        <div className="imageContainer positionRelative">
-          <img src={`https://image.tmdb.org/t/p/original` + poster_path}
-          className="img-responsive center-block" 
-          alt={name} title={name}/>
-          <p>{name}</p>
+class SimilarSegment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.imageRef = React.createRef();
+    
+    this.loadProfileImage = this.loadProfileImage.bind(this);
+  };
+  
+  loadProfileImage() {
+    const baseUrl = "https://image.tmdb.org/t/p/original",
+          imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", baseUrl + this.props.poster_path);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+
+  render() {
+    const {name} = this.props,
+          loaderImage = "./assets/icons/loading-img.png";
+    return (
+      <Col xs={6} sm={4} md={3} className="similarSegment">
+        <div className="borderBoxContainer">
+          <div className="imageContainer positionRelative">
+            <img src={loaderImage}
+            className="img-responsive center-block" 
+            alt={name} title={name}
+            ref={this.imageRef}
+            />
+            <p>{name}</p>
+          </div>
         </div>
-      </div>
-    </Col>
-  )
+      </Col>
+    )
+  };
+  
+  componentDidMount() {
+    this.loadProfileImage();
+  };
 }
 
 const SimilarShowsComponent = ({similarListings}) => {
@@ -393,6 +531,7 @@ class TvBioPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isBuilding: true,
       languageCodes: null,
       searchResultsObject: {}
     };
@@ -420,12 +559,11 @@ class TvBioPage extends Component {
   };
 
   buildTvBioPage(searchObject) {
-    const tvShowName = searchObject.qt.split("___").join(" "),
-          tvShowId = searchObject.qid;
     let languageCodesResponse = null;
 
     axios.get("https://sricharankrishnan.github.io/iso-group-code-files/iso_639-1-language.json")
     .then((apiResponseObject) => {
+      console.log("iso");
       if(apiResponseObject.status === 200) {
         return apiResponseObject.data;
       }
@@ -447,15 +585,9 @@ class TvBioPage extends Component {
       }
     })
     .then((apiResponseObject) => {
+      console.log("tv api");
       if(apiResponseObject.status === 200 && apiResponseObject.statusText === "OK") {
-        const checkNameAgainst = apiResponseObject.data.name.toLowerCase(),
-              checkIdAgainst = String(apiResponseObject.data.id);
-        if(checkNameAgainst === tvShowName && checkIdAgainst === tvShowId) {
-          return apiResponseObject.data;
-        }
-        else {
-          throw new Error("Something Went Wrong Somewhere");
-        }
+        return apiResponseObject.data;
       }
       else {
         throw new Error("Something Went Wrong Somewhere");
@@ -511,42 +643,61 @@ class TvBioPage extends Component {
     });
   };
 
+  hideLoaderDiv() {
+    this.setState(($prevState, $nowProps) => {
+      return {
+        isBuilding: false
+      }
+    });
+  };
+
   render() {
     const { searchResultsObject, languageCodes } = this.state;
-    console.log(searchResultsObject);
+    let mainContainerClasses = ["outerBorder", "tvBioPage", "positionRelative", "preventBodyScroll"],
+        hasBeenBuilt = !this.state.isBuilding ? true : false;
+
+    if(hasBeenBuilt) {
+      mainContainerClasses.pop();
+    }
+
     return (
-      <WrapperObject>
+      <div className={mainContainerClasses.join(" ")}>
       {
-        (searchResultsObject !== {} && languageCodes) ?
-        <div className="outerBorder tvBioPage">
-          <div className="tvBioJumbotron positionRelative">
-            <CurtainElement />
-            <BackgroundImageElement bgSetup={searchResultsObject.backdropPath}/>
-            <div className="contentBox positionRelative">
-              <Row className="show-grid">
-                <Col xs={12} sm={6} className="segment">
-                  <ImageUnit {...searchResultsObject.imageContainer} name={searchResultsObject.posContainer.name}/>
-                </Col>
-                <Col xs={12} sm={6} className="segment">
-                  <PosContainer 
-                    lCodes={languageCodes}
-                    {...searchResultsObject.posContainer}
-                  />
-                </Col>
-              </Row>
-            </div>
-          </div>
-          <div className="seasonsBoxContainer">
-            <RatingRadialComponent {...searchResultsObject.ratingComponent}/>
-            <SeasonsListingComponent {...searchResultsObject.seasonsListingComponent}/>
-            <CreditsComponent {...searchResultsObject.creditsListingComponent}/>
-            <SimilarShowsComponent {...searchResultsObject.similarListingComponent}/>
-          </div>
-        </div>
-        :
-        null
+        <WrapperObject>
+          <LoaderComponent isBuilding={this.state.isBuilding}/>
+          {
+            searchResultsObject !== {} && !!languageCodes ?
+            <WrapperObject>
+              <div className="tvBioJumbotron positionRelative">
+                <CurtainElement />
+                <BackgroundImageElement bgSetup={searchResultsObject.backdropPath}/>
+                <div className="contentBox positionRelative">
+                  <Row className="show-grid">
+                    <Col xs={12} sm={6} className="segment">
+                      <ImageUnit {...searchResultsObject.imageContainer} name={searchResultsObject.posContainer.name}/>
+                    </Col>
+                    <Col xs={12} sm={6} className="segment">
+                      <PosContainer 
+                        lCodes={languageCodes}
+                        {...searchResultsObject.posContainer}
+                      />
+                    </Col>
+                  </Row>
+                </div>
+              </div>
+              <div className="seasonsBoxContainer">
+                <RatingRadialComponent {...searchResultsObject.ratingComponent}/>
+                <SeasonsListingComponent {...searchResultsObject.seasonsListingComponent}/>
+                <CreditsComponent {...searchResultsObject.creditsListingComponent}/>
+                <SimilarShowsComponent {...searchResultsObject.similarListingComponent}/>
+              </div>
+            </WrapperObject>
+            :
+            null
+          }
+        </WrapperObject>
       }
-      </WrapperObject>
+      </div>
     );
   };
 
@@ -554,6 +705,12 @@ class TvBioPage extends Component {
     let locationQuery = this.props.location.search,
         searchObject = this.makeLocationQuerySplit(locationQuery);
     this.buildTvBioPage(searchObject);
+  };
+  
+  componentDidUpdate($oldProps, $oldState) {
+    if(!!$oldState.isBuilding) {
+      this.hideLoaderDiv();
+    }
   };
 };
 export default withRouter(TvBioPage);
