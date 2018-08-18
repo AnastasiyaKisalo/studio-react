@@ -2,7 +2,7 @@
 .allListing {
   background: #ffffff;
   color: #ffffff;
-  min-height: 100vh; }
+  min-height: calc(100vh - 55px); }
   .allListing .listingContainerParent {
     max-width: 1200px;
     margin: 0 auto;
@@ -51,6 +51,8 @@
           background-size: cover;
           background-position: center center;
           background-repeat: no-repeat; }
+          .allListing .listingContainerParent .movieListing .borderBoxContainer .imageContainer img {
+            background: #cccccc; }
         .allListing .listingContainerParent .movieListing .borderBoxContainer .nameContainer {
           position: absolute;
           bottom: 0;

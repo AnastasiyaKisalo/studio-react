@@ -27,6 +27,11 @@
     .segment:first-child {
       font-family: $contentFont;
       text-transform: uppercase;
+      padding: 0;
+      a {
+        display: block;
+        padding: 15px;
+      }
       span {
         letter-spacing: 3px;
       }

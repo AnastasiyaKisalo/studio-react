@@ -22,7 +22,11 @@
         margin-left: auto; }
     .navBar .row .segment:first-child {
       font-family: "Roboto Mono", serif;
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      padding: 0; }
+      .navBar .row .segment:first-child a {
+        display: block;
+        padding: 15px; }
       .navBar .row .segment:first-child span {
         letter-spacing: 3px; }
       .navBar .row .segment:first-child img {

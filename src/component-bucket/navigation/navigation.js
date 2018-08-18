@@ -8,7 +8,9 @@ export const NavbarComponent = (props) => {
     <div className="navBar">
       <Row className="show-grid">
         <Col xs={6} className="segment">
-          <img src="./assets/icons/app-symbol.svg" className="img-responsive" alt="Studio React" title="Studio React"/>
+          <Link to={"/"}>
+            <img src="./assets/icons/app-symbol.svg" className="img-responsive" alt="Studio React" title="Studio React"/>
+          </Link>
         </Col>
         <Col xs={6} className="segment">
           <Button onClick={props.onClickHandler} className="defaultButton" type="button">

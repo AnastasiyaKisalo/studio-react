@@ -98,6 +98,10 @@ a, a:hover, a:focus {
 }
 
 .preventBodyScroll {
-  height: 100vh;
+  height: calc(100vh - 55px) !important;
   overflow: hidden;
+}
+
+.outerBorder {
+  margin-top: 55px;
 }
