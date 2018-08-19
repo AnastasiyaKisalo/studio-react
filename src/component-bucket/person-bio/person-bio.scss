@@ -17,6 +17,9 @@
               -moz-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
               box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
             }
+            img.onLoading {
+              background: $lightGrey;
+            }
           }
           .headerContainer {
             h1 {
@@ -129,6 +132,9 @@
                   -webkit-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
                   -moz-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
                   box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+                }
+                img.onLoading {
+                  background: $lightGrey;
                 }
               }
               .movieName {

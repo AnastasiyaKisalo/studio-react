@@ -15,6 +15,13 @@ import { MapStateToProps, MapDispatchToProps } from "../../redux-reducer/mapping
 import axios from "axios";
 import apiSetupObject from "../../axios/axios-setup.js";
 
+//Required Import for Loader Component;
+import LoaderComponent from "../loading-component/loader.js";
+
+//Import Requirements from Local Functionalities and Testings;
+import {TestObjectEmptiness} from "../functionalities.js";
+
+
 const WrapperObject = (props) => {
   return props.children;
 };
@@ -33,28 +40,69 @@ const NoResultsComponent = (props) => {
   );
 };
 
-const SearchItem = (thisResultObject) => {
-  let searchItemName = thisResultObject.name || thisResultObject.original_title,
-      imageUrl = thisResultObject.profile_path || thisResultObject.poster_path,
-      queryUrl = "?qt=" + searchItemName.toLowerCase().split(" ").join("___") + "&st=" + thisResultObject.searchType + "&qid=" + thisResultObject.id,
-      baseUrl = "/" + thisResultObject.searchType + "-bio";
-  return (
-    <Col xs={6} sm={4} className="searchItem">
-      <Link to={baseUrl + queryUrl}>
-        <div className="borderBoxContainer">
-          <div className="imageContainer">
-            <img src={`https://image.tmdb.org/t/p/w500` + imageUrl} className="img-responsive itemImage" alt={name} title={name}/>
+class SearchItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageClass: ["img-responsive", "center-block", "itemImage", "onLoading"]
+    };
+
+    this.imageRef = React.createRef();
+    this.loadProfileImage = this.loadProfileImage.bind(this);
+  };
+  
+  loadProfileImage() {
+    const imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png",
+          imageUrl = this.props.profile_path || this.props.poster_path,
+          baseUrl = "https://image.tmdb.org/t/p/w500";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", baseUrl + imageUrl);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+      this.setState(($prevState, $nowProps) => {
+        return {
+          imageClass: ["img-responsive", "center-block"]
+        }
+      });
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+  render() {
+    let searchItemName = this.props.name || this.props.original_title,
+        imageUrl = this.props.profile_path || this.props.poster_path,
+        queryUrl = "?st=" + this.props.searchType + "&qid=" + this.props.id,
+        baseUrl = "/" + this.props.searchType + "-bio",
+        loaderImage = "./assets/icons/loading-img.png";
+
+    return (
+      <Col xs={6} sm={4} lg={3} className="searchItem">
+        <Link to={baseUrl + queryUrl}>
+          <div className="borderBoxContainer">
+            <div className="imageContainer">
+              <img ref={this.imageRef} src={loaderImage} className={this.state.imageClass.join(" ")} alt={name} title={name}/>
+            </div>
+            <div className="itemName">
+              <p>{searchItemName}</p>
+            </div>
+            <div className="footerContainer">
+              <img src="./assets/icons/right-arrow-black.svg" className="img-responsive" alt="View Details" title="View Details"/>
+            </div>
           </div>
-          <div className="itemName">
-            <p>{searchItemName}</p>
-          </div>
-          <div className="footerContainer">
-            <img src="./assets/icons/right-arrow-black.svg" className="img-responsive" alt="View Details" title="View Details"/>
-          </div>
-        </div>
-      </Link>
-    </Col>
-  );
+        </Link>
+      </Col>
+    );
+  };
+
+  componentDidMount() {
+    this.loadProfileImage();
+  };
 };
 
 const SearchItemComponent = ({resultsArray, searchType}) => {
@@ -72,7 +120,7 @@ const SearchItemComponent = ({resultsArray, searchType}) => {
               </WrapperObject>
             );
           }
-          else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 ===0){
+          else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0 && (thisIndex + 1) % 4 === 0){
             return (
               <WrapperObject key={searchKeyValue}>
                 <SearchItem {...thisResultObject} searchType={searchType}/>
@@ -80,11 +128,35 @@ const SearchItemComponent = ({resultsArray, searchType}) => {
               </WrapperObject>
             );
           }
+          else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 4 === 0) {
+            return (
+              <WrapperObject key={searchKeyValue}>
+                <SearchItem {...thisResultObject} searchType={searchType}/>
+                <Clearfix visibleXsBlock visibleLgBlock></Clearfix>
+              </WrapperObject>
+            )
+          }
+          else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0) {
+            return (
+              <WrapperObject key={searchKeyValue}>
+                <SearchItem {...thisResultObject} searchType={searchType}/>
+                <div className="clearfix hidden-lg"></div>
+              </WrapperObject>
+            )
+          }
+          else if((thisIndex + 1) % 4 === 0) {
+            return (
+            <WrapperObject key={searchKeyValue}>
+              <SearchItem {...thisResultObject} searchType={searchType}/>
+              <Clearfix visibleMdBlock visibleLgBlock></Clearfix>
+            </WrapperObject>
+            );
+          }
           else if((thisIndex + 1) % 3 === 0) {
             return (
             <WrapperObject key={searchKeyValue}>
               <SearchItem {...thisResultObject} searchType={searchType}/>
-              <Clearfix visibleSmBlock visibleMdBlock visibleLgBlock></Clearfix>
+              <Clearfix visibleSmBlock></Clearfix>
             </WrapperObject>
             );
           }
@@ -105,28 +177,32 @@ const SearchItemComponent = ({resultsArray, searchType}) => {
       }
     </WrapperObject>
   );
-}
+};
 
-const SearchResultsListing = ({setupProps}) => {
+const SearchResultsListing = ({searchListingResults, searchType, paginationChangeHandler, activePageNumber}) => {
+  let totalResults = searchListingResults.total_results,
+      resultsArray = searchListingResults.results,
+      totalPages = searchListingResults.total_pages;
+
   return (
     <div className="resultsListingParent">
       <Row className="show-grid">
         <Col xs={12} sm={6} md={4} className="searchTopLevelSegment heading">
           <header>
             <h2>Search Results</h2>
-            <p>We've found {setupProps.totalResults} entities that match <br className="hidden-xs hidden-sm"/>your search query</p>
+            <p>We've found {totalResults} entities that match <br className="hidden-xs hidden-sm"/>your search query</p>
           </header>
         </Col>
-        <Col xs={12} md={8} className="searchTopLevelSegment content">
+        <Col xs={12} className="searchTopLevelSegment content">
           <Row className="show-grid">
-            <SearchItemComponent resultsArray={setupProps.resultsArray} searchType={setupProps.searchType}/>
+            <SearchItemComponent resultsArray={resultsArray} searchType={searchType}/>
           </Row>
           <div className="paginationContainer text-center">
             {
-              setupProps.totalPages > 1 &&
-              <Pagination onChange={setupProps.paginationChangeHandler} 
-                activePage={Number(setupProps.activePageNumber)} 
-                totalItemsCount={setupProps.totalResults} 
+              totalPages > 1 &&
+              <Pagination onChange={paginationChangeHandler} 
+                activePage={Number(activePageNumber)} 
+                totalItemsCount={totalResults} 
                 pageRangeDisplayed={3}
                 itemsCountPerPage={20}
               />
@@ -142,14 +218,17 @@ class SearchResultsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isBuilding: true,
       paginationActivePage: null,
       searchListingResults: null,
       searchType: null
     };
 
+    this.resultsListingSetup = {};
     this.paginationHandleChange = this.paginationHandleChange.bind(this);
     this.makeLocationQuerySplit = this.makeLocationQuerySplit.bind(this);
     this.performSearchApi = this.performSearchApi.bind(this);
+    this.hideLoaderDiv = this.hideLoaderDiv.bind(this);
   };
 
   paginationHandleChange(thisPageNumber) {
@@ -209,41 +288,54 @@ class SearchResultsPage extends Component {
     return searchObject;
   };
 
-  render() {
-    let resultsListingSetup = {
-      activePageNumber: this.state.paginationActivePage,
-      paginationChangeHandler: this.paginationHandleChange,
-    };
-    if(this.state.searchListingResults) {
-      let {results: resultsArray, total_pages: totalPages, total_results: totalResults} = this.state.searchListingResults;
-      if(!!resultsArray && !!totalPages && !!totalResults) {
-        resultsListingSetup.resultsArray = resultsArray;
-        resultsListingSetup.totalPages = totalPages;
-        resultsListingSetup.totalResults = totalResults;
-        resultsListingSetup.searchType = this.state.searchType
+  hideLoaderDiv() {
+    this.setState(($prevState, $nowProps) => {
+      return {
+        isBuilding: false
       }
-    }
+    });
+  };
 
+  render() {
+    let FinalRenderComponent,
+        mainContainerClasses = ["outerBorder", "searchResultsPage", "positionRelative", "preventBodyScroll"],
+        hasBeenBuilt = !this.state.isBuilding ? true : false;
     return (
-      <div className="outerBorder searchResultsPage">
+      <div className={mainContainerClasses.join(" ")}>
+        <LoaderComponent isBuilding={this.state.isBuilding}/>
         {
-          !!resultsListingSetup.totalResults && resultsListingSetup.totalResults > 0 ?
-          <SearchResultsListing setupProps={resultsListingSetup}/>
-          :
+          !!this.state.searchListingResults ?
           <WrapperObject>
-            <NoResultsComponent />
-            <FormComponent />
+            {
+              "results" in this.state.searchListingResults && this.state.searchListingResults.results.length > 0 ?
+              <SearchResultsListing {...this.state} 
+                paginationChangeHandler={this.paginationHandleChange} 
+                activePageNumber={this.state.paginationActivePage}
+              />
+              :
+              <WrapperObject>
+                <NoResultsComponent />
+                <FormComponent />
+              </WrapperObject>
+            }
           </WrapperObject>
+          :
+          <p>Shite!</p>
         }
       </div>
     );
   };
 
   componentDidMount() {
-    console.log(this.props);
     let locationQuery = this.props.location.search,
         searchObject = this.makeLocationQuerySplit(locationQuery);
     this.performSearchApi(searchObject);
-  }
+  };
+
+  componentDidUpdate($oldProps, $oldState) {
+    if(!!$oldState.isBuilding) {
+      this.hideLoaderDiv();
+    }
+  };
 }
 export default withRouter(connect(MapStateToProps, MapDispatchToProps)(SearchResultsPage));

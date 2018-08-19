@@ -70,7 +70,6 @@ class HomePage extends Component {
     let videoComponent = !this.state.loadVideoElement ? null : <HomeVideoComponent videoBuildObject={homeVideoObject}/>,
         borderClassArray = ["outerBorder", "homePage"];
 
-    console.log(this.props);
     if(this.props.lockScrollStatus) {
       borderClassArray.push("preventBodyScroll");
     }

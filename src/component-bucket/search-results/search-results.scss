@@ -73,16 +73,20 @@
         }
       }
       .searchTopLevelSegment.content {
+        padding-left: 0;
+        padding-right: 0;
         .searchItem {
           margin-bottom: 45px;
           .borderBoxContainer {
             .imageContainer {
               .itemImage {
-                max-height: 320px;
                 padding: 10px;
                 -webkit-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
                 -moz-box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
                 box-shadow: 0px 4px 17px 0px rgba(204,204,204,0.55);
+              }
+              .itemImage.onLoading {
+                background: $lightGrey;
               }
             }
             .itemName {
@@ -138,7 +142,6 @@
                 padding-left: 8px;
                 .itemImage {
                   margin-bottom: 8px;
-                  height: 260px;
                 }
               }
             }
@@ -152,14 +155,8 @@
 @media only screen and (min-width: 992px) {
   .searchResultsPage {
     .resultsListingParent {
-      max-width: 991px;
+      max-width: 992px;
       .row {
-        padding: 0 15px;
-        .searchTopLevelSegment.heading {
-          position: sticky;
-          top: 15px;
-          margin-left: 0;
-        }
         .searchTopLevelSegment.content {
           padding: 0;
         }

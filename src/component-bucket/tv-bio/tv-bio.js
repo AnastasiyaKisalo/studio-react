@@ -107,12 +107,44 @@ const PosContainer = ({name, genres, languages, lCodes, overview, firstAirDate, 
   );
 };
 
-const ImageUnit = ({posterPath, name}) => {
-  return (
-    <div className="imageContainer">
-      <img src={posterPath} className="img-responsive center-block posterImage" alt={name} title={name}/>
-    </div>
-  );
+class ImageUnit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+
+    this.imageRef = React.createRef();
+    this.initiateProfilePic = this.initiateProfilePic.bind(this);
+  };
+
+  initiateProfilePic() {
+    const imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", this.props.posterPath);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+  render() {
+    const loaderImage = "./assets/icons/loading-img.png",
+          {name} = this.props;
+    return (
+      <div className="imageContainer">
+        <img ref={this.imageRef} src={loaderImage} className="img-responsive center-block posterImage" alt={name} title={name}/>
+      </div>
+    );
+  };
+
+  componentDidMount() {
+    this.initiateProfilePic();
+  }
 };
 
 const RatingRadialComponent = ({voteAverage, numberOfSeasons, numberOfEpisodes}) => {

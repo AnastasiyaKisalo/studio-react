@@ -101,6 +101,7 @@
         text-transform: uppercase;
         margin-bottom: 30px; }
         .navigationParent .navigationBody .navList li a {
+          display: block;
           color: #cccccc; }
           .navigationParent .navigationBody .navList li a .numero {
             padding: 10px;

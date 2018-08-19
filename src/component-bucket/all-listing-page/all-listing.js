@@ -148,7 +148,7 @@ class PopularPeople extends Component {
 
   render() {
     const {imageUrl, personName, id, loaderImage} = this.props,
-          queryUrl = "/person-bio?qt=" + personName.toLowerCase().split(" ").join("___") + "&st=person" + "&qid=" + id;
+          queryUrl = "/person-bio?st=person" + "&qid=" + id;
     return (
       <Col xs={12} sm={4} lg={3} className="movieListing">
         <Link to={queryUrl}>

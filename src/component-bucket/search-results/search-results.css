@@ -55,28 +55,32 @@
         font-family: "Roboto Mono", serif;
         color: #738290;
         font-size: 1.2rem; }
-      .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem {
-        margin-bottom: 45px; }
-        .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .imageContainer .itemImage {
-          max-height: 320px;
-          padding: 10px;
-          -webkit-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
-          -moz-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
-          box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55); }
-        .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .itemName p {
-          margin-top: 10px;
-          font-size: 1.2rem;
-          font-weight: 700;
-          font-family: "Roboto Mono", serif;
-          color: #139A43; }
-        .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .footerContainer img {
-          border: 1px solid rgba(0, 0, 0, 0.15);
-          padding: 5px;
-          display: inline-block;
-          -webkit-box-shadow: 0px 1px 5px 0px rgba(204, 204, 204, 0.15);
-          -moz-box-shadow: 0px 1px 5px 0px rgba(204, 204, 204, 0.15);
-          box-shadow: 0px 1px 5px 0px rgba(204, 204, 204, 0.15);
-          max-width: 28px; }
+      .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content {
+        padding-left: 0;
+        padding-right: 0; }
+        .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem {
+          margin-bottom: 45px; }
+          .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .imageContainer .itemImage {
+            padding: 10px;
+            -webkit-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
+            -moz-box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55);
+            box-shadow: 0px 4px 17px 0px rgba(204, 204, 204, 0.55); }
+          .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .imageContainer .itemImage.onLoading {
+            background: #cccccc; }
+          .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .itemName p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: "Roboto Mono", serif;
+            color: #139A43; }
+          .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .footerContainer img {
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            padding: 5px;
+            display: inline-block;
+            -webkit-box-shadow: 0px 1px 5px 0px rgba(204, 204, 204, 0.15);
+            -moz-box-shadow: 0px 1px 5px 0px rgba(204, 204, 204, 0.15);
+            box-shadow: 0px 1px 5px 0px rgba(204, 204, 204, 0.15);
+            max-width: 28px; }
 
 @media only screen and (min-width: 768px) {
   .searchResultsPage .resultsListingParent {
@@ -97,20 +101,13 @@
         border-bottom-color: rgba(0, 0, 0, 0.05);
         padding-left: 8px; }
         .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content .searchItem .borderBoxContainer .imageContainer .itemImage {
-          margin-bottom: 8px;
-          height: 260px; } }
+          margin-bottom: 8px; } }
 
 @media only screen and (min-width: 992px) {
   .searchResultsPage .resultsListingParent {
-    max-width: 991px; }
-    .searchResultsPage .resultsListingParent .row {
-      padding: 0 15px; }
-      .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.heading {
-        position: sticky;
-        top: 15px;
-        margin-left: 0; }
-      .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content {
-        padding: 0; } }
+    max-width: 992px; }
+    .searchResultsPage .resultsListingParent .row .searchTopLevelSegment.content {
+      padding: 0; } }
 
 @media only screen and (min-width: 1200px) {
   .searchResultsPage .resultsListingParent {
