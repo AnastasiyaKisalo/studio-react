@@ -411,7 +411,7 @@ class AllListing extends Component {
                 }
               </Row>
             </section>
-            <section className="listingContainerParent">
+            <section className="listingContainerParent last">
               <div className="blockHeading">
                 <header>
                   <h2>People<br/><span>Trending/Popular</span></h2>

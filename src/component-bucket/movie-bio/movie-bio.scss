@@ -66,10 +66,12 @@ $stableIndex: 20;
         letter-spacing: 2px;
         margin: 0 0 -2px;
         font-family: $contentFont;
+        text-align: center;
       }
       .genreList {
         margin-bottom: 0;
         margin-top: 1px;
+        text-align: center;
         li {
           color: $blue;
           display: inline-block;
@@ -87,6 +89,7 @@ $stableIndex: 20;
         margin: 30px 0;
         font-size: 1.2rem;
         line-height: 20px;
+        text-align: center;
       }
     }
   }
@@ -244,102 +247,105 @@ $stableIndex: 20;
 				padding: 0 20px;
         .countryBlock {
           margin-bottom: 35px;
-          .countryHeader {
-            padding: 15px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            width: 140px;
-            overflow: hidden;
-            img {
-              max-width: 35px;
-              padding: 10px;
-              border-radius: 3px;
-              -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
-              -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
-              box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
-            }
-            h4 {
-              font-weight: 700;
-              font-size: 4.5rem;
-              text-transform: uppercase;
-              margin: 10px 0 3px;
-              text-align: left;
-              color: $lightGrey;
-              text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.35);
-            }
-            p {
-              font-size: 1.2rem;
-              font-family: $contentFont;
-              color: $grey;
-              text-align: left;
+          .row {
+            margin: 0;
+            .countryHeader {
+              padding: 15px;
+              border: 1px solid rgba(0, 0, 0, 0.05);
+              width: 140px;
               overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-          }
-          .countryHeader:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            -webkit-transform: translateX(-50%);
-            width: 250px;
-            border-top: 1px dotted rgba(0, 0, 0, 0.15);
-            z-index: -1;
-          }
-          .countryBody {
-            margin-top: 5px;
-            ul {
-              margin-bottom: 0;
-              padding: 0 5px;
-              margin: 0 -10px;
-              li {
+              img {
+                max-width: 35px;
+                padding: 10px;
+                border-radius: 3px;
+                -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+                -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+                box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.15);
+              }
+              h4 {
+                font-weight: 700;
+                font-size: 4.5rem;
+                text-transform: uppercase;
+                margin: 10px 0 3px;
+                text-align: left;
+                color: $lightGrey;
+                text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.35);
+              }
+              p {
                 font-size: 1.2rem;
-                padding: 5px;
-                color: $black;
-                .borderBoxContainer {
-                  padding: 10px;
-                  border: 1px solid rgba(0, 0, 0, 0.1);
-                  .certification {
-                    color: $black;
-                    display: inline-block;
-                    font-weight: 700;
-                    font-size: 2.5rem;
-                    margin-bottom: 25px;
-                    span {
-                      font-size: 1.2rem;
-                      display: block;
-                      color: $lightGrey;
-                      text-transform: uppercase;
-                      letter-spacing: 3px;
+                font-family: $contentFont;
+                color: $grey;
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+            }
+            .countryHeader:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              -webkit-transform: translateX(-50%);
+              width: 250px;
+              border-top: 1px dotted rgba(0, 0, 0, 0.15);
+              z-index: -1;
+            }
+            .countryBody {
+              margin-top: 5px;
+              ul {
+                margin-bottom: 0;
+                padding: 0 5px;
+                margin: 0 -10px;
+                li {
+                  font-size: 1.2rem;
+                  padding: 5px;
+                  color: $black;
+                  .borderBoxContainer {
+                    padding: 10px;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    .certification {
+                      color: $black;
+                      display: inline-block;
+                      font-weight: 700;
+                      font-size: 2.5rem;
+                      margin-bottom: 25px;
+                      span {
+                        font-size: 1.2rem;
+                        display: block;
+                        color: $lightGrey;
+                        text-transform: uppercase;
+                        letter-spacing: 3px;
+                      }
+                    }
+                    .date {
+                      margin-bottom: 0;
+                      font-family: $contentFont;
+                    }
+                    .type {
+                      margin-bottom: 0;
+                      font-family: $contentFont;
                     }
                   }
-                  .date {
-                    margin-bottom: 0;
-                    font-family: $contentFont;
-                  }
-                  .type {
-                    margin-bottom: 0;
-                    font-family: $contentFont;
-                  }
                 }
-              }
-              li:nth-child(even) {
-                .borderBoxContainer {
-                  background: $lightGrey;
-                  .certification {
-                    span {
-                      color: $grey;
+                li:nth-child(even) {
+                  .borderBoxContainer {
+                    background: $lightGrey;
+                    .certification {
+                      span {
+                        color: $grey;
+                      }
                     }
                   }
                 }
-              }
-              li:nth-child(odd) {
-                .borderBoxContainer {
-                  background: #EDF0F6;
-                  .certification {
-                    span {
-                      color: $grey;
+                li:nth-child(odd) {
+                  .borderBoxContainer {
+                    background: #EDF0F6;
+                    .certification {
+                      span {
+                        color: $grey;
+                      }
                     }
                   }
                 }
@@ -394,6 +400,9 @@ $stableIndex: 20;
       .posContainer {
         left: auto;
         right: 10%;
+        h1, .genreList, p {
+          text-align: left;
+        }
         p {
           font-size: 1.3rem;
         }

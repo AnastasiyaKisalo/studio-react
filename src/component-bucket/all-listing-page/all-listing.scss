@@ -40,6 +40,7 @@
         font-family: $headingFont;
         letter-spacing: 2px;
         color: $grey;
+        display: none;
       }
       header, .defaultButton {
         vertical-align: middle;
@@ -115,6 +116,9 @@
         }
       }
     }
+  }
+  .listingContainerParent.last {
+    padding-bottom: 15px;
   }
 }
 

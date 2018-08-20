@@ -56,10 +56,12 @@
     .movieBioPage .movieJumbotron .posContainer h1 {
       letter-spacing: 2px;
       margin: 0 0 -2px;
-      font-family: "Roboto Mono", serif; }
+      font-family: "Roboto Mono", serif;
+      text-align: center; }
     .movieBioPage .movieJumbotron .posContainer .genreList {
       margin-bottom: 0;
-      margin-top: 1px; }
+      margin-top: 1px;
+      text-align: center; }
       .movieBioPage .movieJumbotron .posContainer .genreList li {
         color: #00FFC7;
         display: inline-block;
@@ -73,7 +75,8 @@
     .movieBioPage .movieJumbotron .posContainer p {
       margin: 30px 0;
       font-size: 1.2rem;
-      line-height: 20px; }
+      line-height: 20px;
+      text-align: center; }
 
 .movieBioPage .productionParent {
   background: #ffffff;
@@ -192,83 +195,85 @@
       padding: 0 20px; }
       .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock {
         margin-bottom: 35px; }
-        .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryHeader {
-          padding: 15px;
-          border: 1px solid rgba(0, 0, 0, 0.05);
-          width: 140px;
-          overflow: hidden; }
-          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryHeader img {
-            max-width: 35px;
-            padding: 10px;
-            border-radius: 3px;
-            -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
-            -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
-            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15); }
-          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryHeader h4 {
-            font-weight: 700;
-            font-size: 4.5rem;
-            text-transform: uppercase;
-            margin: 10px 0 3px;
-            text-align: left;
-            color: #cccccc;
-            text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.35); }
-          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryHeader p {
-            font-size: 1.2rem;
-            font-family: "Roboto Mono", serif;
-            color: #738290;
-            text-align: left;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap; }
-        .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryHeader:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          -webkit-transform: translateX(-50%);
-          width: 250px;
-          border-top: 1px dotted rgba(0, 0, 0, 0.15);
-          z-index: -1; }
-        .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody {
-          margin-top: 5px; }
-          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul {
-            margin-bottom: 0;
-            padding: 0 5px;
-            margin: 0 -10px; }
-            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li {
+        .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row {
+          margin: 0; }
+          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryHeader {
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            width: 140px;
+            overflow: hidden; }
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryHeader img {
+              max-width: 35px;
+              padding: 10px;
+              border-radius: 3px;
+              -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+              -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+              box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15); }
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryHeader h4 {
+              font-weight: 700;
+              font-size: 4.5rem;
+              text-transform: uppercase;
+              margin: 10px 0 3px;
+              text-align: left;
+              color: #cccccc;
+              text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.35); }
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryHeader p {
               font-size: 1.2rem;
-              padding: 5px;
-              color: #000000; }
-              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer {
-                padding: 10px;
-                border: 1px solid rgba(0, 0, 0, 0.1); }
-                .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer .certification {
-                  color: #000000;
-                  display: inline-block;
-                  font-weight: 700;
-                  font-size: 2.5rem;
-                  margin-bottom: 25px; }
-                  .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer .certification span {
-                    font-size: 1.2rem;
-                    display: block;
-                    color: #cccccc;
-                    text-transform: uppercase;
-                    letter-spacing: 3px; }
-                .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer .date {
-                  margin-bottom: 0;
-                  font-family: "Roboto Mono", serif; }
-                .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li .borderBoxContainer .type {
-                  margin-bottom: 0;
-                  font-family: "Roboto Mono", serif; }
-            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(even) .borderBoxContainer {
-              background: #cccccc; }
-              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(even) .borderBoxContainer .certification span {
-                color: #738290; }
-            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(odd) .borderBoxContainer {
-              background: #EDF0F6; }
-              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .countryBody ul li:nth-child(odd) .borderBoxContainer .certification span {
-                color: #738290; }
+              font-family: "Roboto Mono", serif;
+              color: #738290;
+              text-align: left;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap; }
+          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryHeader:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            width: 250px;
+            border-top: 1px dotted rgba(0, 0, 0, 0.15);
+            z-index: -1; }
+          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody {
+            margin-top: 5px; }
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul {
+              margin-bottom: 0;
+              padding: 0 5px;
+              margin: 0 -10px; }
+              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li {
+                font-size: 1.2rem;
+                padding: 5px;
+                color: #000000; }
+                .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .borderBoxContainer {
+                  padding: 10px;
+                  border: 1px solid rgba(0, 0, 0, 0.1); }
+                  .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .borderBoxContainer .certification {
+                    color: #000000;
+                    display: inline-block;
+                    font-weight: 700;
+                    font-size: 2.5rem;
+                    margin-bottom: 25px; }
+                    .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .borderBoxContainer .certification span {
+                      font-size: 1.2rem;
+                      display: block;
+                      color: #cccccc;
+                      text-transform: uppercase;
+                      letter-spacing: 3px; }
+                  .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .borderBoxContainer .date {
+                    margin-bottom: 0;
+                    font-family: "Roboto Mono", serif; }
+                  .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .borderBoxContainer .type {
+                    margin-bottom: 0;
+                    font-family: "Roboto Mono", serif; }
+              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:nth-child(even) .borderBoxContainer {
+                background: #cccccc; }
+                .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:nth-child(even) .borderBoxContainer .certification span {
+                  color: #738290; }
+              .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:nth-child(odd) .borderBoxContainer {
+                background: #EDF0F6; }
+                .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:nth-child(odd) .borderBoxContainer .certification span {
+                  color: #738290; }
 
 .movieBioPage .similarMoviesParent {
   z-index: 20;
@@ -303,6 +308,8 @@
   .movieBioPage .movieJumbotron .posContainer {
     left: auto;
     right: 10%; }
+    .movieBioPage .movieJumbotron .posContainer h1, .movieBioPage .movieJumbotron .posContainer .genreList, .movieBioPage .movieJumbotron .posContainer p {
+      text-align: left; }
     .movieBioPage .movieJumbotron .posContainer p {
       font-size: 1.3rem; }
   .movieBioPage .productionParent .row .productionCompanies .outerContainer {

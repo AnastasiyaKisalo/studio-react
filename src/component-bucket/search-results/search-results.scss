@@ -54,7 +54,7 @@
     }
   }
   .resultsListingParent {
-    padding-top: 45px;
+    padding-top: 15px;
     .row {
       margin: 0;
       .searchTopLevelSegment {
@@ -64,7 +64,7 @@
         h2 {
           font-size: 1.5rem;
           letter-spacing: 5px;
-          margin-top: 25px;
+          margin-top: 0;
         }
         p {
           font-family: $contentFont;
@@ -110,6 +110,9 @@
               }
             }
           }
+        }
+        .paginationContainer {
+          padding-bottom: 10px;
         }
       }
     }

@@ -86,11 +86,21 @@
           .personBioPage .mainBioParent .row .mainBioImageContainer .borderBoxContainer .footerContainer .akaList li:last-child {
             margin-bottom: 0; }
     .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditsHeading {
-      font-size: 1.5rem;
+      font-size: 2.0rem;
       font-family: "Roboto Mono", serif;
-      margin: 10px auto 20px;
+      margin: 20px auto 20px;
       text-transform: none;
-      text-align: center; }
+      text-align: center;
+      letter-spacing: 2px; }
+      .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditsHeading span {
+        color: #738290;
+        font-weight: 500;
+        font-size: 0.9rem;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 5px;
+        margin-top: 6px;
+        text-transform: uppercase;
+        display: block; }
     .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem {
       padding: 5px;
       margin-bottom: 15px; }
@@ -113,7 +123,7 @@
           white-space: nowrap; }
       .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .metaList {
         text-align: right;
-        margin-top: -8px; }
+        margin-top: 8px; }
         .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditItem .metaList li {
           display: inline-block;
           margin-bottom: 0;
@@ -226,7 +236,6 @@
       .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer {
         margin-bottom: 20px; }
         .personBioPage .mainBioParent .row .mainProfileContainer .borderBoxContainer .creditsHeading {
-          margin-top: 0;
           text-align: left;
           padding-left: 10px;
           border-left: 2px solid #00FFC7;

@@ -54,7 +54,7 @@ class BackgroundImageElement extends Component {
   };
 };
 
-const PosContainer = ({name, genres, languages, lCodes, overview, firstAirDate, createdBy}) => {
+const PosContainer = ({name, genres, overview, firstAirDate, createdBy}) => {
   let noImageIcon = "./assets/icons/no-image-icon.png";
   return (
     <div className="posContainer">
@@ -64,18 +64,6 @@ const PosContainer = ({name, genres, languages, lCodes, overview, firstAirDate, 
           genres.map((thisGenre, thisIndex) => {
             return (
               <li key={thisGenre + thisIndex}>{thisGenre.name}</li>
-            )
-          })
-        }
-      </ul>
-      <ul className="list-unstyled languageList">
-        {
-          languages.map((thisLang, thisIndex) => {
-            let codeObject = lCodes.find((thislCode, thisIndex) => {
-              return thislCode.code === thisLang
-            });
-            return (
-              <li key={thisLang + thisIndex}>{codeObject.name}</li>
             )
           })
         }
@@ -218,7 +206,7 @@ class SeasonsSegment extends Component {
           loaderImage = "./assets/icons/loading-img.png";
 
     return (
-      <Col xs={6} sm={4} md={3} className="seasonSegment">
+      <Col xs={6} sm={4} lg={3} className="seasonSegment">
         <div className="borderBoxContainer">
           <div className="imageContainer positionRelative">
             <img src={loaderImage}
@@ -278,6 +266,22 @@ const SeasonsListingComponent = ({seasonsListing}) => {
                       <Clearfix></Clearfix>
                     </WrapperObject>
                   );
+                }
+                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 4 === 0) {
+                  return (
+                    <WrapperObject key={thisSeason.name + thisIndex}>
+                      <SeasonsSegment {...thisSeason} airDateValue={airDateValue}/>
+                      <Clearfix visibleXsBlock visibleLgBlock></Clearfix>
+                    </WrapperObject>
+                  )
+                }
+                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0) {
+                  return (
+                    <WrapperObject key={thisSeason.name + thisIndex}>
+                      <SeasonsSegment {...thisSeason} airDateValue={airDateValue}/>
+                      <div className="clearfix hidden-lg"></div>
+                    </WrapperObject>
+                  )
                 }
                 else if((thisIndex + 1) % 4 === 0) {
                   return (
@@ -346,7 +350,7 @@ class CreditsSegment extends Component {
     const loaderImage = "./assets/icons/loading-img.png",
           {name, character} = this.props;
     return (
-      <Col xs={6} sm={4} md={3} className="creditsSegment">
+      <Col xs={6} sm={4} lg={3} className="creditsSegment">
         <div className="borderBoxContainer">
           <div className="imageContainer positionRelative">
             <img src={loaderImage} 
@@ -398,6 +402,22 @@ const CreditsComponent = ({creditsInfo}) => {
                       <Clearfix></Clearfix>
                     </WrapperObject>
                   );
+                }
+                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 4 === 0) {
+                  return (
+                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                      <CreditsSegment {...thisCreditsObject}/>
+                      <Clearfix visibleXsBlock visibleLgBlock></Clearfix>
+                    </WrapperObject>
+                  )
+                }
+                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0) {
+                  return (
+                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                      <CreditsSegment {...thisCreditsObject}/>
+                      <div className="clearfix hidden-lg"></div>
+                    </WrapperObject>
+                  )
                 }
                 else if((thisIndex + 1) % 4 === 0) {
                   return (
@@ -469,7 +489,7 @@ class SimilarSegment extends Component {
     const {name} = this.props,
           loaderImage = "./assets/icons/loading-img.png";
     return (
-      <Col xs={6} sm={4} md={3} className="similarSegment">
+      <Col xs={6} sm={4} lg={3} className="similarSegment">
         <div className="borderBoxContainer">
           <div className="imageContainer positionRelative">
             <img src={loaderImage}
@@ -519,6 +539,22 @@ const SimilarShowsComponent = ({similarListings}) => {
                         <Clearfix></Clearfix>
                       </WrapperObject>
                     );
+                  }
+                  else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 4 === 0) {
+                    return (
+                      <WrapperObject key={thisSimilarObject.name + thisIndex}>
+                        <SimilarSegment {...thisSimilarObject}/>
+                        <Clearfix visibleXsBlock visibleLgBlock></Clearfix>
+                      </WrapperObject>
+                    )
+                  }
+                  else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0) {
+                    return (
+                      <WrapperObject key={thisSimilarObject.name + thisIndex}>
+                        <SimilarSegment {...thisSimilarObject}/>
+                        <div className="clearfix hidden-lg"></div>
+                      </WrapperObject>
+                    )
                   }
                   else if((thisIndex + 1) % 4 === 0) {
                     return (

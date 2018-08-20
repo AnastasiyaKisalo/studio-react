@@ -156,7 +156,7 @@ const SearchItemComponent = ({resultsArray, searchType}) => {
             return (
             <WrapperObject key={searchKeyValue}>
               <SearchItem {...thisResultObject} searchType={searchType}/>
-              <Clearfix visibleSmBlock></Clearfix>
+              <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
             </WrapperObject>
             );
           }

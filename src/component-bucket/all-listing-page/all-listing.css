@@ -35,7 +35,8 @@
         font-size: 1.2rem;
         font-family: "Roboto", sans-serif;
         letter-spacing: 2px;
-        color: #738290; }
+        color: #738290;
+        display: none; }
       .allListing .listingContainerParent .blockHeading header, .allListing .listingContainerParent .blockHeading .defaultButton {
         vertical-align: middle;
         margin-top: -4px; }
@@ -93,6 +94,8 @@
           border-radius: 3px; }
           .allListing .listingContainerParent .movieListing .footerContainer .metaList .viewDetails img {
             max-width: 15px; }
+  .allListing .listingContainerParent.last {
+    padding-bottom: 15px; }
 
 @media only screen and (min-width: 768px) {
   .allListing .listingContainerParent {

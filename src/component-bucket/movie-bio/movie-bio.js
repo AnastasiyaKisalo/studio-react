@@ -157,7 +157,7 @@ class CreditsSegment extends Component {
     const loaderImage = "./assets/icons/loading-img.png",
           {name, character} = this.props;
     return (
-      <Col xs={6} sm={4} md={3} className="creditsSegment">
+      <Col xs={6} sm={4} lg={3} className="creditsSegment">
         <div className="borderBoxContainer">
           <div className="imageContainer positionRelative">
             <img ref={this.imageRef} src={loaderImage} className="img-responsive center-block" alt={name} title={name}/>
@@ -205,6 +205,22 @@ const CreditsComponent = ({creditsInfo}) => {
                     </WrapperObject>
                   );
                 }
+                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 4 === 0) {
+                  return (
+                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                      <CreditsSegment {...thisCreditsObject}/>
+                      <Clearfix visibleXsBlock visibleLgBlock></Clearfix>
+                    </WrapperObject>
+                  )
+                }
+                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0) {
+                  return (
+                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
+                      <CreditsSegment {...thisCreditsObject}/>
+                      <div className="clearfix hidden-lg"></div>
+                    </WrapperObject>
+                  )
+                }
                 else if((thisIndex + 1) % 4 === 0) {
                   return (
                   <WrapperObject key={thisCreditsObject.name + thisIndex}>
@@ -217,7 +233,7 @@ const CreditsComponent = ({creditsInfo}) => {
                   return (
                   <WrapperObject key={thisCreditsObject.name + thisIndex}>
                     <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix visibleSmBlock></Clearfix>
+                    <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
                   </WrapperObject>
                   );
                 }

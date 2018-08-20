@@ -520,7 +520,10 @@ class PersonBioPage extends Component {
                       {
                         !!celebrityObject.movieCast && celebrityObject.movieCast.length > 0 &&
                         <div className="borderBoxContainer">
-                          <h3 className="creditsHeading">Movie Castings/Creatives</h3>
+                          <h3 className="creditsHeading">
+                            Movie Castings
+                            <span>And Creatives</span>
+                          </h3>
                           <Row className="show-grid">
                             {
                               <CreditItems castArray={celebrityObject.movieCast} forType="movies"/>
@@ -531,7 +534,10 @@ class PersonBioPage extends Component {
                       {
                         !!celebrityObject.tvCast && celebrityObject.tvCast.length > 0 &&
                         <div className="borderBoxContainer">
-                          <h3 className="creditsHeading">TV Show Castings</h3>
+                          <h3 className="creditsHeading">
+                            TV Show Castings
+                            <span>The Small Screen</span>
+                          </h3>
                           <Row className="show-grid">
                             {
                               <CreditItems castArray={celebrityObject.tvCast}/>
