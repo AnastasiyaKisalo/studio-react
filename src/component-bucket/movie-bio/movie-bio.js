@@ -622,6 +622,7 @@ class MovieBioPage extends Component {
   componentDidMount() {
     let locationQuery = this.props.location.search,
         searchObject = this.makeLocationQuerySplit(locationQuery);
+    console.log(locationQuery);
     this.buildMovieBioPage(searchObject);
   };
   
