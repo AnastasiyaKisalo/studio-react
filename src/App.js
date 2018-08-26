@@ -4,6 +4,9 @@ import './App.css';
 //Routes and Links Import Details Starts Here;
 import { Switch, Route } from "react-router-dom";
 
+//Required WrapperObject Import
+import WrapperObject from "./component-bucket/wrapper-component/wrapper-component.js";
+
 import { NavbarComponent, NavigationComponent } from "./component-bucket/navigation/navigation.js";
 import HomePage from "./component-bucket/home-page/home-page.js";
 import SearchResultsPage from "./component-bucket/search-results/search-results.js";
@@ -12,8 +15,19 @@ import PersonBioPage from "./component-bucket/person-bio/person-bio.js";
 import TvBioPage from "./component-bucket/tv-bio/tv-bio.js";
 import MovieBioPage from "./component-bucket/movie-bio/movie-bio.js";
 
-const WrapperObject = (props) => {
-  return props.children;
+const RefreshLoaderComponent = ({path = "/"}) => {
+	return (
+		<Route
+			path={path}
+			component={({ history, location, match }) => {
+				history.replace({
+						...location,
+						pathname: location.pathname.substring(match.path.length)
+				});
+				return null;
+			}}
+		/>
+	);
 };
 
 class App extends Component {
@@ -50,6 +64,7 @@ class App extends Component {
           <Route path="/person-bio" render={() => {return (<PersonBioPage/>)}} />
           <Route path="/tv-bio" render={()=> {return (<TvBioPage/>)}} />
           <Route path="/movie-bio" render={() => {return (<MovieBioPage/>)}} />
+          <RefreshLoaderComponent path="/refresh"/>
         </Switch>
       </WrapperObject>
     );
