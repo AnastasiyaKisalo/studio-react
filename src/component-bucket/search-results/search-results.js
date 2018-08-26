@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Row, Col, Clearfix } from "react-bootstrap";
 import Pagination from "react-js-pagination";
-import "./search-results.css";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
+//Required Form Imports from Main Form Component File;
 import FormComponent from "../main-form-component/main-form.js";
 
 //Redux State Handler With Mapping Requirements Starts Here;
@@ -18,13 +18,11 @@ import apiSetupObject from "../../axios/axios-setup.js";
 //Required Import for Loader Component;
 import LoaderComponent from "../loading-component/loader.js";
 
-//Import Requirements from Local Functionalities and Testings;
-import {TestObjectEmptiness} from "../functionalities.js";
+//Required WrapperObject Import
+import WrapperObject from "../wrapper-component/wrapper-component.js";
 
-
-const WrapperObject = (props) => {
-  return props.children;
-};
+//Required CSS File Import;
+import "./search-results.css";
 
 const NoResultsComponent = (props) => {
   return (
@@ -76,7 +74,6 @@ class SearchItem extends Component {
 
   render() {
     let searchItemName = this.props.name || this.props.original_title,
-        imageUrl = this.props.profile_path || this.props.poster_path,
         queryUrl = "?st=" + this.props.searchType + "&qid=" + this.props.id,
         baseUrl = "/" + this.props.searchType + "-bio",
         loaderImage = "./assets/icons/loading-img.png";
@@ -297,9 +294,7 @@ class SearchResultsPage extends Component {
   };
 
   render() {
-    let FinalRenderComponent,
-        mainContainerClasses = ["outerBorder", "searchResultsPage", "positionRelative", "preventBodyScroll"],
-        hasBeenBuilt = !this.state.isBuilding ? true : false;
+    let mainContainerClasses = ["outerBorder", "searchResultsPage", "positionRelative", "preventBodyScroll"];
     return (
       <div className={mainContainerClasses.join(" ")}>
         <LoaderComponent isBuilding={this.state.isBuilding}/>

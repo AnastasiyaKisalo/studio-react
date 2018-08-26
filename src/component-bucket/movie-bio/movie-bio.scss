@@ -447,31 +447,33 @@ $stableIndex: 20;
 		.releaseAndCertificationsParent {
 			.outerContainer {
 				padding: 60px 0;
-				.countryBlock {
-          .row {
-            margin: 0;
-            .countryHeader {
-              float: left;
-            }
-            .countryBody {
-              margin-top: 0;
-              float: left;
-              width: calc(100% - 250px);
-              ul {
-                margin: 0;
-                li {
-                  padding-top: 0;
-                  display: inline-block;
-                  width: 220px;
-                  margin-bottom: 5px;
-                  .type, .date {
-                    text-align: right;
+        .countries {
+          .countryBlock {
+            .row {
+              margin: 0;
+              .countryHeader {
+                float: left;
+              }
+              .countryBody {
+                margin-top: 0;
+                float: left;
+                width: calc(100% - 250px);
+                ul {
+                  margin: 0;
+                  li {
+                    padding-top: 0;
+                    display: inline-block;
+                    width: 220px;
+                    margin-bottom: 5px;
+                    .type, .date {
+                      text-align: right;
+                    }
                   }
                 }
               }
             }
           }
-				}
+        }
 			}
 		}
   }
@@ -481,35 +483,37 @@ $stableIndex: 20;
   .movieBioPage {
 		.releaseAndCertificationsParent {
 			.outerContainer {
-				.countryBlock {
-          .row {
-            margin: 0;
-            .countryBody {
-              ul {
-                li {
-                  width: 250px;
-                  .borderBoxContainer {
-                    @include transition(all, 0.25s, linear);
-                  }
-                }
-                li:hover {
-                  .borderBoxContainer {
-                    background: $black;
-                  }
-                  .certification {
-                    color: $white;
-                    span {
-                      color: $lightGrey;
+        .countries {
+          .countryBlock {
+            .row {
+              margin: 0;
+              .countryBody {
+                ul {
+                  li {
+                    width: 250px;
+                    .borderBoxContainer {
+                      @include transition(all, 0.25s, linear);
                     }
                   }
-                  .type, .date {
-                    color: $white;
+                  li:hover {
+                    .borderBoxContainer {
+                      background: $black;
+                    }
+                    .certification {
+                      color: $white;
+                      span {
+                        color: $lightGrey;
+                      }
+                    }
+                    .type, .date {
+                      color: $white;
+                    }
                   }
                 }
               }
             }
           }
-				}
+        }
 			}
 		}
   }

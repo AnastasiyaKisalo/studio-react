@@ -10,11 +10,11 @@ import apiSetupObject from "../../axios/axios-setup.js";
 //Required Import for Loader Component;
 import LoaderComponent from "../loading-component/loader.js";
 
-import "./all-listing.css";
+//Required WrapperObject Import
+import WrapperObject from "../wrapper-component/wrapper-component.js";
 
-const WrapperObject = (props) => {
-  return props.children;
-};
+//Required CSS File Import;
+import "./all-listing.css";
 
 class MovieListing extends Component {
   constructor(props) {

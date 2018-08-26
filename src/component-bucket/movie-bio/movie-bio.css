@@ -328,30 +328,30 @@
       box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
   .movieBioPage .releaseAndCertificationsParent .outerContainer {
     padding: 60px 0; }
-    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row {
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row {
       margin: 0; }
-      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryHeader {
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryHeader {
         float: left; }
-      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody {
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody {
         margin-top: 0;
         float: left;
         width: calc(100% - 250px); }
-        .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul {
+        .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul {
           margin: 0; }
-          .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li {
+          .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li {
             padding-top: 0;
             display: inline-block;
             width: 220px;
             margin-bottom: 5px; }
-            .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li .type, .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li .date {
+            .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .type, .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .date {
               text-align: right; } }
 
 @media only screen and (min-width: 1200px) {
-  .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row {
+  .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row {
     margin: 0; }
-    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li {
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li {
       width: 250px; }
-      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li .borderBoxContainer {
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li .borderBoxContainer {
         transition-property: all;
         -moz-transition-property: all;
         -webkit-transition-property: all;
@@ -367,11 +367,11 @@
         -o-transition-timing-function: linear;
         -ms-transition-timing-function: linear;
         -moz-transition-timing-function: linear; }
-    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .borderBoxContainer {
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:hover .borderBoxContainer {
       background: #000000; }
-    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .certification {
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:hover .certification {
       color: #ffffff; }
-      .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .certification span {
+      .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:hover .certification span {
         color: #cccccc; }
-    .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .type, .movieBioPage .releaseAndCertificationsParent .outerContainer .countryBlock .row .countryBody ul li:hover .date {
+    .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:hover .type, .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row .countryBody ul li:hover .date {
       color: #ffffff; } }

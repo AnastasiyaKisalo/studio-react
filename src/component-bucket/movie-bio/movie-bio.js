@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Clearfix } from "react-bootstrap";
 import uuidv1 from "uuid/v1";
-import "./movie-bio.css";
 import { withRouter } from "react-router";
 
 //Required Imports For Axios
@@ -11,9 +10,11 @@ import apiSetupObject from "../../axios/axios-setup.js";
 //Required Import for Loader Component;
 import LoaderComponent from "../loading-component/loader.js";
 
-const WrapperObject = (props) => {
-  return props.children;
-};
+//Required WrapperObject Import
+import WrapperObject from "../wrapper-component/wrapper-component.js";
+
+//Required CSS File Import
+import "./movie-bio.css";
 
 const CurtainElement = (props) => {
   return (

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
 import { Col, Row, Modal, Button, Clearfix } from "react-bootstrap";
-import "./person-bio.css";
 import { withRouter } from "react-router";
 
 //Import Requirements from Local Functionalities and Testings;
@@ -14,9 +13,11 @@ import apiSetupObject from "../../axios/axios-setup.js";
 //Required Import for Loader Component;
 import LoaderComponent from "../loading-component/loader.js";
 
-const WrapperObject = (props) => {
-  return props.children;
-};
+//Required WrapperObject Import
+import WrapperObject from "../wrapper-component/wrapper-component.js";
+
+//Required CSS File Import;
+import "./person-bio.css";
 
 class CelebrityPicture extends Component {
   constructor(props) {
