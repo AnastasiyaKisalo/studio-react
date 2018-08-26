@@ -114,12 +114,10 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    /*Commented out video upload
     let viewportWidth = window.innerWidth;
     if(!this.state.loadVideoElement && viewportWidth > 767) {
       this.loadVideoComponent();
     }
-    */
   };
 }
 export default HomePage;
