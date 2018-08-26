@@ -67,7 +67,8 @@
     max-width: 1200px;
     margin: 0 auto; }
     .movieBioPage .productionParent .row .blocks {
-      padding: 0; }
+      padding: 0;
+      min-height: 0; }
     .movieBioPage .productionParent .row .productionCompanies {
       background: #ffffff; }
       .movieBioPage .productionParent .row .productionCompanies .outerContainer {

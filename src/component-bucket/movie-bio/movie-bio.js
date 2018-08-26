@@ -38,59 +38,69 @@ const PosContainer = ({genres, movieName, movieDescription}) => {
 };
 
 const ProductionCompaniesList = ({productionCompanies}) => {
-  return (
-    <section className="productionCompanies positionRelative">
-      <div className="outerContainer">
-        <div className="blockHeading">
-          <header>
-            <h2>Production Companies<br/><span>The Works</span></h2>
-          </header>
+  if(productionCompanies.length > 0) {
+    return (
+      <section className="productionCompanies positionRelative">
+        <div className="outerContainer">
+          <div className="blockHeading">
+            <header>
+              <h2>Production Companies<br/><span>The Works</span></h2>
+            </header>
+          </div>
+          <ul className="list-unstyled">
+            {
+              productionCompanies.map((thisCompanyObject, thisIndex) => {
+                return (
+                  <li key={thisIndex + thisCompanyObject.name}>
+                    <div className="borderBoxContainer">
+                      {thisCompanyObject.name}
+                    </div>
+                  </li>
+                );
+              })
+            }
+          </ul>
         </div>
-        <ul className="list-unstyled">
-          {
-            productionCompanies.map((thisCompanyObject, thisIndex) => {
-              return (
-                <li key={thisIndex + thisCompanyObject.name}>
-                  <div className="borderBoxContainer">
-                    {thisCompanyObject.name}
-                  </div>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
+  else {
+    return null;
+  }
 };
 
 const ProductionCountries = ({productionCountries}) => {
-  return (
-    <section className="productionCountries positionRelative">
-      <div className="outerContainer">
-        <div className="blockHeading">
-          <header>
-            <h3>Production Countries<br/><span>The Where</span></h3>
-          </header>
+  if(productionCountries.length > 0) {
+    return (
+      <section className="productionCountries positionRelative">
+        <div className="outerContainer">
+          <div className="blockHeading">
+            <header>
+              <h3>Production Countries<br/><span>The Where</span></h3>
+            </header>
+          </div>
+          <ul className="list-unstyled">
+            {
+              productionCountries.map((thisCountryObject, thisIndex) => {
+                return (
+                  <li key={thisCountryObject.name + thisIndex}>
+                    <div className="borderBoxContainer">
+                      <img src="./assets/icons/location-icon.svg" className="img-responsive" alt={thisCountryObject.name} title={thisCountryObject.name}/>
+                      <span className="shortCode">{thisCountryObject.iso_3166_1}</span>
+                      <span className="countryName">{thisCountryObject.name}</span>
+                    </div>
+                  </li>
+                );
+              })
+            }
+          </ul>
         </div>
-        <ul className="list-unstyled">
-          {
-            productionCountries.map((thisCountryObject, thisIndex) => {
-              return (
-                <li key={thisCountryObject.name + thisIndex}>
-                  <div className="borderBoxContainer">
-                    <img src="./assets/icons/location-icon.svg" className="img-responsive" alt={thisCountryObject.name} title={thisCountryObject.name}/>
-                    <span className="shortCode">{thisCountryObject.iso_3166_1}</span>
-                    <span className="countryName">{thisCountryObject.name}</span>
-                  </div>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
+  else {
+    return null;
+  }
 };
 
 const CountryBlock = ({iso_3166_1: isoCode, countryString, release_dates: infoArray}) => {
