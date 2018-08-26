@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MetaTags from "react-meta-tags";
 import { Row, Col, Button, Clearfix } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
@@ -12,6 +13,9 @@ import LoaderComponent from "../loading-component/loader.js";
 
 //Required WrapperObject Import
 import WrapperObject from "../wrapper-component/wrapper-component.js";
+
+//Required Imports from common component file;
+import {BuildSeoTags} from "../common-components/common-components.js";
 
 //Required CSS File Import;
 import "./all-listing.css";
@@ -189,6 +193,12 @@ class AllListing extends Component {
       popularPeople: null
     };
 
+    this.seoTags = {
+      titleTag: "Studio React | Latest Movies Playing, Tv Shows on Air, Trending Celebrities and more...",
+      descriptionMeta: "Get the latest listing of Movies, On Air Tv Shows, Trending Celebrities and more on Studio React's all listing section",
+      keywordsMeta: "Studio React, studio react, celebrity app, movie app, tv show app, celebrity info, tv show info, movie info, Trending Celebrities, Latest Movies, On Air Tv Shows",
+      cannonicalMeta: "/view-listings"
+    };
     this.initiatePageLoadApis = this.initiatePageLoadApis.bind(this);
     this.getMoviesNowPlaying = this.getMoviesNowPlaying.bind(this);
     this.getTvShowsOnAir = this.getTvShowsOnAir.bind(this);
@@ -335,121 +345,126 @@ class AllListing extends Component {
     }
 
     return (
-      <div className={mainContainerClasses.join(" ")}>
-        {
-          <WrapperObject>
-            <LoaderComponent isBuilding={this.state.isBuilding}/>
-            <section className="listingContainerParent">
-              <div className="blockHeading">
-                <header>
-                  <h2>Movies<br/><span>Now Playing</span></h2>
-                </header>
-                <Button className="defaultButton">See More</Button>
-              </div>
-              <Row className="show-grid">
-                {
-                  !!this.state.moviesNowPlaying &&
-                    this.state.moviesNowPlaying.map((thisMovieObject, thisIndex) => {
-                      thisMovieObject.loaderImage = loaderImageUrl;
+      <WrapperObject>
+        <MetaTags>
+          <BuildSeoTags {...this.seoTags}/>
+        </MetaTags>
+        <div className={mainContainerClasses.join(" ")}>
+          {
+            <WrapperObject>
+              <LoaderComponent isBuilding={this.state.isBuilding}/>
+              <section className="listingContainerParent">
+                <div className="blockHeading">
+                  <header>
+                    <h2>Movies<br/><span>Now Playing</span></h2>
+                  </header>
+                  <Button className="defaultButton">See More</Button>
+                </div>
+                <Row className="show-grid">
+                  {
+                    !!this.state.moviesNowPlaying &&
+                      this.state.moviesNowPlaying.map((thisMovieObject, thisIndex) => {
+                        thisMovieObject.loaderImage = loaderImageUrl;
 
-                      if((thisIndex + 1) % 4 === 0) {
-                        return (
-                          <WrapperObject key={thisMovieObject.movieName}>
-                            <MovieListing {...thisMovieObject}/>
-                            <Clearfix visibleLgBlock></Clearfix>
-                          </WrapperObject>
-                        );
-                      }
-                      else if((thisIndex + 1) % 3 === 0) {
-                        return (
-                          <WrapperObject key={thisMovieObject.movieName}>
-                            <MovieListing {...thisMovieObject}/>
-                            <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
-                          </WrapperObject>
-                        );
-                      }
-                      else {
-                        return <MovieListing {...thisMovieObject} key={thisMovieObject.movieName}/>
-                      }
-                    })
-                }
-              </Row>
-            </section>
-            <section className="listingContainerParent">
-              <div className="blockHeading">
-                <header>
-                  <h2>Tv Shows<br/><span>On The Air</span></h2>
-                </header>
-                <Button className="defaultButton">See More</Button>
-              </div>
-              <Row className="show-grid">
-                {
-                  !!this.state.tvShowsNowPlaying &&
-                    this.state.tvShowsNowPlaying.map((thisTvObject, thisIndex) => {
-                      thisTvObject.loaderImage = loaderImageUrl;
+                        if((thisIndex + 1) % 4 === 0) {
+                          return (
+                            <WrapperObject key={thisMovieObject.movieName}>
+                              <MovieListing {...thisMovieObject}/>
+                              <Clearfix visibleLgBlock></Clearfix>
+                            </WrapperObject>
+                          );
+                        }
+                        else if((thisIndex + 1) % 3 === 0) {
+                          return (
+                            <WrapperObject key={thisMovieObject.movieName}>
+                              <MovieListing {...thisMovieObject}/>
+                              <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
+                            </WrapperObject>
+                          );
+                        }
+                        else {
+                          return <MovieListing {...thisMovieObject} key={thisMovieObject.movieName}/>
+                        }
+                      })
+                  }
+                </Row>
+              </section>
+              <section className="listingContainerParent">
+                <div className="blockHeading">
+                  <header>
+                    <h2>Tv Shows<br/><span>On The Air</span></h2>
+                  </header>
+                  <Button className="defaultButton">See More</Button>
+                </div>
+                <Row className="show-grid">
+                  {
+                    !!this.state.tvShowsNowPlaying &&
+                      this.state.tvShowsNowPlaying.map((thisTvObject, thisIndex) => {
+                        thisTvObject.loaderImage = loaderImageUrl;
 
-                      if((thisIndex + 1) % 4 === 0) {
-                        return (
-                          <WrapperObject key={thisTvObject.movieName}>
-                            <TvOnAir {...thisTvObject}/>
-                            <Clearfix visibleLgBlock></Clearfix>
-                          </WrapperObject>
-                        );
-                      }
-                      else if((thisIndex + 1) % 3 === 0) {
-                        return (
-                          <WrapperObject key={thisTvObject.movieName}>
-                            <TvOnAir {...thisTvObject}/>
-                            <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
-                          </WrapperObject>
-                        );
-                      }
-                      else {
-                        return <TvOnAir {...thisTvObject} key={thisTvObject.movieName}/>
-                      }
-                    })
-                }
-              </Row>
-            </section>
-            <section className="listingContainerParent last">
-              <div className="blockHeading">
-                <header>
-                  <h2>People<br/><span>Trending/Popular</span></h2>
-                </header>
-                <Button className="defaultButton">See More</Button>
-              </div>
-              <Row className="show-grid">
-                {
-                  !!this.state.popularPeople &&
-                    this.state.popularPeople.map((thisPersonObject, thisIndex) => {
-                      thisPersonObject.loaderImage = loaderImageUrl;
+                        if((thisIndex + 1) % 4 === 0) {
+                          return (
+                            <WrapperObject key={thisTvObject.movieName}>
+                              <TvOnAir {...thisTvObject}/>
+                              <Clearfix visibleLgBlock></Clearfix>
+                            </WrapperObject>
+                          );
+                        }
+                        else if((thisIndex + 1) % 3 === 0) {
+                          return (
+                            <WrapperObject key={thisTvObject.movieName}>
+                              <TvOnAir {...thisTvObject}/>
+                              <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
+                            </WrapperObject>
+                          );
+                        }
+                        else {
+                          return <TvOnAir {...thisTvObject} key={thisTvObject.movieName}/>
+                        }
+                      })
+                  }
+                </Row>
+              </section>
+              <section className="listingContainerParent last">
+                <div className="blockHeading">
+                  <header>
+                    <h2>People<br/><span>Trending/Popular</span></h2>
+                  </header>
+                  <Button className="defaultButton">See More</Button>
+                </div>
+                <Row className="show-grid">
+                  {
+                    !!this.state.popularPeople &&
+                      this.state.popularPeople.map((thisPersonObject, thisIndex) => {
+                        thisPersonObject.loaderImage = loaderImageUrl;
 
-                      if((thisIndex + 1) % 4 === 0) {
-                        return (
-                          <WrapperObject key={thisPersonObject.personName}>
-                            <PopularPeople {...thisPersonObject}/>
-                            <Clearfix visibleLgBlock></Clearfix>
-                          </WrapperObject>
-                        );
-                      }
-                      else if((thisIndex + 1) % 3 === 0) {
-                        return (
-                          <WrapperObject key={thisPersonObject.personName}>
-                            <PopularPeople {...thisPersonObject}/>
-                            <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
-                          </WrapperObject>
-                        );
-                      }
-                      else {
-                        return <PopularPeople {...thisPersonObject} key={thisPersonObject.personName}/>
-                      }
-                    })
-                 }
-              </Row>
-            </section>
-          </WrapperObject>
-        }
-      </div>
+                        if((thisIndex + 1) % 4 === 0) {
+                          return (
+                            <WrapperObject key={thisPersonObject.personName}>
+                              <PopularPeople {...thisPersonObject}/>
+                              <Clearfix visibleLgBlock></Clearfix>
+                            </WrapperObject>
+                          );
+                        }
+                        else if((thisIndex + 1) % 3 === 0) {
+                          return (
+                            <WrapperObject key={thisPersonObject.personName}>
+                              <PopularPeople {...thisPersonObject}/>
+                              <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
+                            </WrapperObject>
+                          );
+                        }
+                        else {
+                          return <PopularPeople {...thisPersonObject} key={thisPersonObject.personName}/>
+                        }
+                      })
+                   }
+                </Row>
+              </section>
+            </WrapperObject>
+          }
+        </div>
+      </WrapperObject>
     );
   };
 

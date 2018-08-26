@@ -7,6 +7,19 @@ import WrapperObject from "../wrapper-component/wrapper-component.js";
 //Required CSS File Imports;
 import "./common-components.css";
 
+//Meta Tag for Author Details;
+export const BuildSeoTags = ({titleTag, descriptionMeta, keywordsMeta, cannonicalMeta}) => {
+  return (
+    <WrapperObject>
+      <title>{titleTag}</title>
+      <meta name="description" content={descriptionMeta}/>
+      <meta name="keywords" content={keywordsMeta}/>
+      <meta name="author" content="Sricharan Krishnan |  https://github.com/sricharankrishnan/studio-react | sricharan.krishnan@gmail.com"/>
+      <link rel="cannonical" href={cannonicalMeta}/>
+    </WrapperObject>
+  );
+}; 
+
 //Curain Element for Transparent Backdrop;
 export const CurtainElement = (props) => {
   return (
