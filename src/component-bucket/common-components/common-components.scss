@@ -58,6 +58,33 @@ $stableIndex: 20;
   }
 }
 
+.similarSegment {
+  padding: 0 8px;
+  margin-bottom: 20px;
+  .borderBoxContainer {
+    padding: 10px;
+    .imageContainer {
+      p {
+        padding: 8px 5px;
+        background: rgba(0, 0, 0, 0.85);
+        color: $white;
+        position: absolute;
+        bottom: 0;
+        left: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        margin-bottom: 0;
+        font-family: $contentFont;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-align: center;
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .creditsListingParent {
     .outerContainer {
@@ -76,6 +103,52 @@ $stableIndex: 20;
                 box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
               }
             }
+          }
+        }
+      }
+    }
+  }
+  .similarSegment {
+    .borderBoxContainer {
+      .imageContainer {
+        border: 1px solid transparent;
+        border-left-color: rgba(255, 255, 255, 0.05);
+        border-bottom-color: rgba(255, 255, 255, 0.05);
+        padding-left: 10px;
+        padding-bottom: 10px;
+        img {
+          -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+          -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+          box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+        }
+        p {
+          max-width: calc(100% - 10px);
+          left: 10px;
+          bottom: 10px;
+        }
+        .episodeCount {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 60px;
+          height: 60px;
+          background: $black;
+          color: $blue;
+          border-radius: 50%;
+          display: block;
+          padding: 5px;
+          -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+          -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+          box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.95);
+          span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            font-family: $contentFont;
+            font-size: 0.9rem;
+            font-weight: 700;
           }
         }
       }

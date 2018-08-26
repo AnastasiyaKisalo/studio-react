@@ -14,7 +14,7 @@ import LoaderComponent from "../loading-component/loader.js";
 import WrapperObject from "../wrapper-component/wrapper-component.js";
 
 //Required Imports from Common Component File;
-import {BackdropComponent, CurtainElement, CreditsComponent} from "../common-components/common-components.js";
+import {BackdropComponent, CurtainElement, CreditsComponent, SimilarSegment} from "../common-components/common-components.js";
 
 //Required CSS File Import
 import "./movie-bio.css";
@@ -159,52 +159,6 @@ const ReleaseAndCertifications = ({releaseCertsObject, countryCodes}) => {
     </WrapperObject>
   );
 };
-
-class SimilarSegment extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.imageRef = React.createRef();
-    
-    this.loadProfileImage = this.loadProfileImage.bind(this);
-  };
-
-  loadProfileImage() {
-    const baseUrl = "https://image.tmdb.org/t/p/original",
-          imageElement = this.imageRef.current,
-          errorImageUrl = "./assets/icons/no-image-icon.png";
-
-    let tempImage = new Image();
-    tempImage.setAttribute("src", baseUrl + this.props.poster_path);
-    tempImage.addEventListener("load", () => {
-      imageElement.setAttribute("src", tempImage.getAttribute("src"));
-    });
-    tempImage.addEventListener("error", () => {
-      setTimeout(() => {
-        imageElement.setAttribute("src", errorImageUrl);
-      }, 1000);
-    });
-  };
-
-  render() {
-    const {title} = this.props,
-          loaderImage = "./assets/icons/loading-img.png";
-    return (
-      <Col xs={6} sm={4} md={3} className="creditsSegment">
-        <div className="borderBoxContainer">
-          <div className="imageContainer positionRelative">
-            <img ref={this.imageRef} src={loaderImage} className="img-responsive center-block" alt={title} title={title}/>
-            <p className="movieName text-center">{title}</p>
-          </div>
-        </div>
-      </Col>
-    );
-  };
-
-  componentDidMount() {
-    this.loadProfileImage();
-  };
-}
 
 const SimilarComponent = ({similarListings}) => {
   return (

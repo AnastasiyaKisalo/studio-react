@@ -238,25 +238,6 @@
     margin: 0 auto; }
     .movieBioPage .similarMoviesParent .outerContainer .row {
       margin: 0; }
-      .movieBioPage .similarMoviesParent .outerContainer .row .creditsSegment {
-        padding: 0 8px;
-        margin-bottom: 20px; }
-        .movieBioPage .similarMoviesParent .outerContainer .row .creditsSegment .borderBoxContainer {
-          padding: 10px; }
-          .movieBioPage .similarMoviesParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer .movieName {
-            font-size: 1.2rem;
-            font-weight: 700;
-            font-family: "Roboto Mono", serif;
-            margin-bottom: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 8px 5px; }
 
 @media only screen and (min-width: 768px) {
   .movieBioPage .movieJumbotron .posContainer {
@@ -270,16 +251,6 @@
     padding: 60px 0; }
   .movieBioPage .productionParent .row .productionCountries .outerContainer {
     padding: 60px 0; }
-  .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer {
-    border: 1px solid transparent;
-    border-left-color: rgba(255, 255, 255, 0.05);
-    border-bottom-color: rgba(255, 255, 255, 0.05);
-    padding-left: 10px;
-    padding-bottom: 10px; }
-    .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer img {
-      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
-      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
-      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
   .movieBioPage .releaseAndCertificationsParent .outerContainer {
     padding: 60px 0; }
     .movieBioPage .releaseAndCertificationsParent .outerContainer .countries .countryBlock .row {

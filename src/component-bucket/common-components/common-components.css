@@ -47,6 +47,28 @@
             text-overflow: ellipsis;
             white-space: nowrap; }
 
+.similarSegment {
+  padding: 0 8px;
+  margin-bottom: 20px; }
+  .similarSegment .borderBoxContainer {
+    padding: 10px; }
+    .similarSegment .borderBoxContainer .imageContainer p {
+      padding: 8px 5px;
+      background: rgba(0, 0, 0, 0.85);
+      color: #ffffff;
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      margin-bottom: 0;
+      font-family: "Roboto Mono", serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-align: center; }
+
 @media only screen and (min-width: 768px) {
   .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer {
     border: 1px solid transparent;
@@ -57,4 +79,41 @@
     .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .imageContainer img {
       -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
       -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
-      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); } }
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+  .similarSegment .borderBoxContainer .imageContainer {
+    border: 1px solid transparent;
+    border-left-color: rgba(255, 255, 255, 0.05);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+    padding-left: 10px;
+    padding-bottom: 10px; }
+    .similarSegment .borderBoxContainer .imageContainer img {
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+    .similarSegment .borderBoxContainer .imageContainer p {
+      max-width: calc(100% - 10px);
+      left: 10px;
+      bottom: 10px; }
+    .similarSegment .borderBoxContainer .imageContainer .episodeCount {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 60px;
+      height: 60px;
+      background: #000000;
+      color: #00FFC7;
+      border-radius: 50%;
+      display: block;
+      padding: 5px;
+      -webkit-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      -moz-box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95);
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.95); }
+      .similarSegment .borderBoxContainer .imageContainer .episodeCount span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        font-family: "Roboto Mono", serif;
+        font-size: 0.9rem;
+        font-weight: 700; } }

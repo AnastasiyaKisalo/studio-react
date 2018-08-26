@@ -190,3 +190,54 @@ export const CreditsComponent = ({creditsInfo}) => {
   );
 };
 
+//Individual Similar Segments for Tv Bio and Movie Bio Pages;
+export class SimilarSegment extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.imageRef = React.createRef();
+    
+    this.loadProfileImage = this.loadProfileImage.bind(this);
+  };
+  
+  loadProfileImage() {
+    const baseUrl = "https://image.tmdb.org/t/p/original",
+          imageElement = this.imageRef.current,
+          errorImageUrl = "./assets/icons/no-image-icon.png";
+
+    let tempImage = new Image();
+    tempImage.setAttribute("src", baseUrl + this.props.poster_path);
+    tempImage.addEventListener("load", () => {
+      imageElement.setAttribute("src", tempImage.getAttribute("src"));
+    });
+    tempImage.addEventListener("error", () => {
+      setTimeout(() => {
+        imageElement.setAttribute("src", errorImageUrl);
+      }, 1000);
+    });
+  };
+
+  render() {
+    const thisTitle = this.props.name || this.props.title,
+          loaderImage = "./assets/icons/loading-img.png";
+    return (
+      <Col xs={6} sm={4} lg={3} className="similarSegment">
+        <div className="borderBoxContainer">
+          <div className="imageContainer positionRelative">
+            <img src={loaderImage}
+            className="img-responsive center-block" 
+            alt={thisTitle} title={thisTitle}
+            ref={this.imageRef}
+            />
+            <p>{thisTitle}</p>
+          </div>
+        </div>
+      </Col>
+    )
+  };
+  
+  componentDidMount() {
+    this.loadProfileImage();
+  };
+}
+
