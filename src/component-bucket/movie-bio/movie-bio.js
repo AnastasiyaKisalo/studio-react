@@ -13,48 +13,11 @@ import LoaderComponent from "../loading-component/loader.js";
 //Required WrapperObject Import
 import WrapperObject from "../wrapper-component/wrapper-component.js";
 
+//Required Imports from Common Component File;
+import {BackdropComponent, CurtainElement, CreditsComponent} from "../common-components/common-components.js";
+
 //Required CSS File Import
 import "./movie-bio.css";
-
-const CurtainElement = (props) => {
-  return (
-    <div className="curtain"></div>
-  );
-};
-
-class MovieBackdrop extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bgUrl: null
-    }
-
-    this.baseUrl = "https://image.tmdb.org/t/p/original";
-    this.initiateBg = this.initiateBg.bind(this);
-  };
-
-  initiateBg() {
-    const tempImage = new Image();
-    tempImage.setAttribute("src", this.baseUrl + this.props.bgSetup);
-    tempImage.addEventListener("load", () => {
-      this.setState(($prevState, $nowProps) => {
-        return {
-          bgUrl: tempImage.getAttribute("src")
-        }
-      });
-    });
-  }
-
-  render() {
-    return (
-      <div className="movieBackdrop" style={{backgroundImage: 'url(' + this.state.bgUrl + ')'}}></div>
-    );
-  };
-
-  componentDidMount() {
-    this.initiateBg();
-  };
-};
 
 const PosContainer = ({genres, movieName, movieDescription}) => {
   return (
@@ -127,139 +90,6 @@ const ProductionCountries = ({productionCountries}) => {
         </ul>
       </div>
     </section>
-  );
-};
-
-class CreditsSegment extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.imageRef = React.createRef();
-  };
-
-  loadProfileImage() {
-    const baseUrl = "https://image.tmdb.org/t/p/original",
-          imageElement = this.imageRef.current,
-          errorImageUrl = "./assets/icons/no-image-icon.png";
-
-    let tempImage = new Image();
-    tempImage.setAttribute("src", baseUrl + this.props.profile_path);
-    tempImage.addEventListener("load", () => {
-      imageElement.setAttribute("src", tempImage.getAttribute("src"));
-    });
-    tempImage.addEventListener("error", () => {
-      setTimeout(() => {
-        imageElement.setAttribute("src", errorImageUrl);
-      }, 1000);
-    });
-  };
-
-  render() {
-    const loaderImage = "./assets/icons/loading-img.png",
-          {name, character} = this.props;
-    return (
-      <Col xs={6} sm={4} lg={3} className="creditsSegment">
-        <div className="borderBoxContainer">
-          <div className="imageContainer positionRelative">
-            <img ref={this.imageRef} src={loaderImage} className="img-responsive center-block" alt={name} title={name}/>
-          </div>
-          <p className="actorName text-center">{name}</p>
-          <p className="characterName text-center">{character}</p>
-        </div>
-      </Col>
-    );
-  };
-
-  componentDidMount() {
-    this.loadProfileImage();
-  };
-};
-
-const CreditsComponent = ({creditsInfo}) => {
-  return (
-    <WrapperObject>
-    {
-      creditsInfo.length > 0 ?
-      <div className="creditsListingParent positionRelative">
-        <div className="outerContainer">
-          <div className="blockHeading">
-            <header>
-              <h3>Credits<br/><span>The People</span></h3>
-            </header>
-          </div>
-          <Row className="show-grid">
-            {
-              creditsInfo.map((thisCreditsObject, thisIndex) => {
-                if((thisIndex + 1) === 2) {
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <Clearfix visibleXsBlock></Clearfix>
-                    </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0 && (thisIndex + 1) % 4 === 0){
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <Clearfix></Clearfix>
-                    </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 4 === 0) {
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <Clearfix visibleXsBlock visibleLgBlock></Clearfix>
-                    </WrapperObject>
-                  )
-                }
-                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0) {
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <div className="clearfix hidden-lg"></div>
-                    </WrapperObject>
-                  )
-                }
-                else if((thisIndex + 1) % 4 === 0) {
-                  return (
-                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                    <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix visibleMdBlock visibleLgBlock></Clearfix>
-                  </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 3 === 0) {
-                  return (
-                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                    <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix visibleSmBlock visibleMdBlock></Clearfix>
-                  </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 2 === 0) {
-                  return (
-                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                    <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix visibleXsBlock></Clearfix>
-                  </WrapperObject>
-                  );
-                }
-                else {
-                  return (
-                    <CreditsSegment {...thisCreditsObject} key={thisCreditsObject.name + thisIndex}/>
-                  );
-                }
-              })
-            }
-          </Row>
-        </div>
-      </div>
-      :
-      null
-    }
-    </WrapperObject>
   );
 };
 
@@ -596,7 +426,7 @@ class MovieBioPage extends Component {
               <WrapperObject>
                 <div className="movieJumbotron positionRelative">
                   <CurtainElement />
-                  <MovieBackdrop bgSetup={searchResultsObject.backdropPath}/>
+                  <BackdropComponent bgSetup={searchResultsObject.backdropPath}/>
                   <PosContainer {...searchResultsObject.posContainerComponent}/>
                 </div>
                 <div className="productionParent positionRelative">

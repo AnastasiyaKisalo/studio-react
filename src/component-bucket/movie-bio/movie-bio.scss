@@ -31,27 +31,6 @@ $stableIndex: 20;
   .movieJumbotron {
     margin-top: 55px;
     height: calc(100vh - 55px);
-    .curtain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      //background: rgba(255, 255, 255, 0.96);
-      z-index: 2;
-      background: rgba(0,0,0,0.9);
-    }
-    .movieBackdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-      background-size: cover;
-      background-position: top center;
-      background-repeat: no-repeat;
-    }
     .posContainer {
       z-index: $stableIndex;
       position: absolute;
@@ -195,41 +174,6 @@ $stableIndex: 20;
 			}
 		}
 	}
-  .creditsListingParent {
-    z-index: $stableIndex;
-    background: rgba(0, 0, 0, 0.35);
-    .outerContainer {
-      padding-top: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-      .row {
-        margin: 0;
-        .creditsSegment {
-          padding: 0 8px;
-          margin-bottom: 20px;
-          .borderBoxContainer {
-            padding: 10px;
-            .actorName {
-              margin-top: 10px;
-              margin-bottom: 0;
-              font-weight: 400;
-            }
-            .characterName {
-              color: $blue;
-              font-family: $contentFont;
-              font-weight: 600;
-            }
-            .actorName, .characterName {
-              font-size: 1.2rem;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-          }
-        }
-      }
-    }
-  }
 	.releaseAndCertificationsParent {
     z-index: $stableIndex;
 		background: $white;

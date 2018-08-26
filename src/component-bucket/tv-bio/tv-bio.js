@@ -12,48 +12,11 @@ import LoaderComponent from "../loading-component/loader.js";
 //Required WrapperObject Import
 import WrapperObject from "../wrapper-component/wrapper-component.js";
 
+//Required Imports from Common Component Files;
+import {CurtainElement, BackdropComponent, CreditsComponent} from "../common-components/common-components.js"
+
 //Required CSS File Import
 import "./tv-bio.css";
-
-const CurtainElement = (props) => {
-  return (
-    <div className="curtain"></div>
-  );
-};
-
-class BackgroundImageElement extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bgUrl: null
-    }
-
-    this.initiateBg = this.initiateBg.bind(this);
-  };
-
-  initiateBg() {
-    console.log(this.props.bgSetup);
-    const tempImage = new Image();
-    tempImage.setAttribute("src", this.props.bgSetup);
-    tempImage.addEventListener("load", () => {
-      this.setState(($prevState, $nowProps) => {
-        return {
-          bgUrl: tempImage.getAttribute("src")
-        }
-      });
-    });
-  };
-
-  render() {
-    return (
-      <div className="bgImageContainer" style={{backgroundImage: 'url(' + this.state.bgUrl + ')'}}></div>
-    );
-  };
-  
-  componentDidMount() {
-    this.initiateBg();
-  };
-};
 
 const PosContainer = ({name, genres, overview, firstAirDate, createdBy}) => {
   let noImageIcon = "./assets/icons/no-image-icon.png";
@@ -143,8 +106,6 @@ const RatingRadialComponent = ({voteAverage, numberOfSeasons, numberOfEpisodes})
         percentage = {
           strokeDashoffset: pVal
         };
-
-  console.log(circumference, rawPercentage, pVal);
 
   return (
     <WrapperObject>
@@ -311,142 +272,6 @@ const SeasonsListingComponent = ({seasonsListing}) => {
                 else {
                   return (
                     <SeasonsSegment {...thisSeason} airDateValue={airDateValue} key={thisSeason.name + thisIndex}/>
-                  );
-                }
-              })
-            }
-          </Row>
-        </div>
-      </div>
-    }
-    </WrapperObject>
-  );
-};
-
-class CreditsSegment extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.imageRef = React.createRef();
-  };
-
-  loadProfileImage() {
-    const baseUrl = "https://image.tmdb.org/t/p/original",
-          imageElement = this.imageRef.current,
-          errorImageUrl = "./assets/icons/no-image-icon.png";
-
-    let tempImage = new Image();
-    tempImage.setAttribute("src", baseUrl + this.props.profile_path);
-    tempImage.addEventListener("load", () => {
-      imageElement.setAttribute("src", tempImage.getAttribute("src"));
-    });
-    tempImage.addEventListener("error", () => {
-      setTimeout(() => {
-        imageElement.setAttribute("src", errorImageUrl);
-      }, 1000);
-    });
-  };
-
-  render() {
-    const loaderImage = "./assets/icons/loading-img.png",
-          {name, character} = this.props;
-    return (
-      <Col xs={6} sm={4} lg={3} className="creditsSegment">
-        <div className="borderBoxContainer">
-          <div className="imageContainer positionRelative">
-            <img src={loaderImage} 
-              className="img-responsive center-block" 
-              alt={name}
-              title={name}
-              ref={this.imageRef}
-              />
-          </div>
-          <p className="actorName text-center">{name}</p>
-          <p className="characterName text-center">{character}</p>
-        </div>
-      </Col>
-    );
-  };
-
-  componentDidMount() {
-    this.loadProfileImage();
-  };
-}
-
-const CreditsComponent = ({creditsInfo}) => {
-  return (
-    <WrapperObject>
-    {
-      !!creditsInfo && creditsInfo.length > 0 &&
-      <div className="creditsListingParent">
-        <div className="outerContainer">
-          <div className="blockHeading">
-            <header>
-              <h3>Credits<br/><span>The People</span></h3>
-            </header>
-          </div>
-          <Row className="show-grid">
-            {
-              creditsInfo.map((thisCreditsObject, thisIndex) => {
-                if((thisIndex + 1) === 2) {
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <Clearfix visibleXsBlock></Clearfix>
-                    </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0 && (thisIndex + 1) % 4 === 0){
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <Clearfix></Clearfix>
-                    </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 4 === 0) {
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <Clearfix visibleXsBlock visibleLgBlock></Clearfix>
-                    </WrapperObject>
-                  )
-                }
-                else if((thisIndex + 1) % 2 === 0 && (thisIndex + 1) % 3 === 0) {
-                  return (
-                    <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                      <CreditsSegment {...thisCreditsObject}/>
-                      <div className="clearfix hidden-lg"></div>
-                    </WrapperObject>
-                  )
-                }
-                else if((thisIndex + 1) % 4 === 0) {
-                  return (
-                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                    <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix visibleMdBlock visibleLgBlock></Clearfix>
-                  </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 3 === 0) {
-                  return (
-                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                    <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix visibleSmBlock></Clearfix>
-                  </WrapperObject>
-                  );
-                }
-                else if((thisIndex + 1) % 2 === 0) {
-                  return (
-                  <WrapperObject key={thisCreditsObject.name + thisIndex}>
-                    <CreditsSegment {...thisCreditsObject}/>
-                    <Clearfix visibleXsBlock></Clearfix>
-                  </WrapperObject>
-                  );
-                }
-                else {
-                  return (
-                    <CreditsSegment {...thisCreditsObject} key={thisCreditsObject.name + thisIndex}/>
                   );
                 }
               })
@@ -632,7 +457,6 @@ class TvBioPage extends Component {
 
     axios.get("https://sricharankrishnan.github.io/iso-group-code-files/iso_639-1-language.json")
     .then((apiResponseObject) => {
-      console.log("iso");
       if(apiResponseObject.status === 200) {
         return apiResponseObject.data;
       }
@@ -654,7 +478,6 @@ class TvBioPage extends Component {
       }
     })
     .then((apiResponseObject) => {
-      console.log("tv api");
       if(apiResponseObject.status === 200 && apiResponseObject.statusText === "OK") {
         return apiResponseObject.data;
       }
@@ -666,8 +489,7 @@ class TvBioPage extends Component {
             vote_average: voteAverage, number_of_episodes: numberOfEpisodes, number_of_seasons: numberOfSeasons, seasons: seasonsListing,
             credits, similar
     }) => {
-      const backdropPath = "https://image.tmdb.org/t/p/original" + backdrop_path,
-            posterPath = "https://image.tmdb.org/t/p/original" + poster_path,
+      const posterPath = "https://image.tmdb.org/t/p/original" + poster_path,
             monthArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       let d = new Date(first_air_date),
@@ -677,7 +499,7 @@ class TvBioPage extends Component {
         return {
           languageCodes: languageCodesResponse,
           searchResultsObject: {
-            backdropPath,
+            backdropPath: backdrop_path,
             imageContainer: {
               posterPath,
             },
@@ -739,7 +561,7 @@ class TvBioPage extends Component {
             <WrapperObject>
               <div className="tvBioJumbotron positionRelative">
                 <CurtainElement />
-                <BackgroundImageElement bgSetup={searchResultsObject.backdropPath}/>
+                <BackdropComponent bgSetup={searchResultsObject.backdropPath}/>
                 <div className="contentBox positionRelative">
                   <Row className="show-grid">
                     <Col xs={12} sm={6} className="segment">

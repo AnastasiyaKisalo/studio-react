@@ -25,24 +25,6 @@
 .movieBioPage .movieJumbotron {
   margin-top: 55px;
   height: calc(100vh - 55px); }
-  .movieBioPage .movieJumbotron .curtain {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.9); }
-  .movieBioPage .movieJumbotron .movieBackdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat; }
   .movieBioPage .movieJumbotron .posContainer {
     z-index: 20;
     position: absolute;
@@ -151,34 +133,6 @@
             background: #738290; }
           .movieBioPage .productionParent .row .productionCountries .outerContainer ul li:nth-child(even) .borderBoxContainer {
             background: #cccccc; }
-
-.movieBioPage .creditsListingParent {
-  z-index: 20;
-  background: rgba(0, 0, 0, 0.35); }
-  .movieBioPage .creditsListingParent .outerContainer {
-    padding-top: 30px;
-    max-width: 1200px;
-    margin: 0 auto; }
-    .movieBioPage .creditsListingParent .outerContainer .row {
-      margin: 0; }
-      .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment {
-        padding: 0 8px;
-        margin-bottom: 20px; }
-        .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer {
-          padding: 10px; }
-          .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .actorName {
-            margin-top: 10px;
-            margin-bottom: 0;
-            font-weight: 400; }
-          .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .characterName {
-            color: #00FFC7;
-            font-family: "Roboto Mono", serif;
-            font-weight: 600; }
-          .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .actorName, .movieBioPage .creditsListingParent .outerContainer .row .creditsSegment .borderBoxContainer .characterName {
-            font-size: 1.2rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap; }
 
 .movieBioPage .releaseAndCertificationsParent {
   z-index: 20;
